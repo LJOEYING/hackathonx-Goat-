@@ -35,38 +35,93 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
               ClipPath(
                 clipper: AppBarClipper(),
                 child: Container(
-                  height: 200,
-                  color: Colors.blue,
+                  height: 130,
+                  color: Color.fromRGBO(48, 75, 52, 100),
                 ),
               ),
               Positioned(
-                top: 50,
+                top: 25,
                 left: 0,
                 right: 0,
-                child: AppBar(
-                  title: const Text('Car Pool'),
-                  backgroundColor: Colors.transparent, // Show curved background
-                  elevation: 0,
-                  actions: [
-                    IconButton(
-                      icon: const Icon(Icons.filter_alt),
-                      onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (context) => const CarPoolFilter(), // CarPool Filter Modal
-                        );
-                      },
+                child: Padding(
+                  // Add padding to the AppBar
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0), // Adjust horizontal padding as needed
+                  child: AppBar(
+                    title: const Text(
+                      'Car Pool',
+                      style: TextStyle(
+                        fontSize: 35,
+                        color: Colors.white, // Adjusted font color
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.add),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => const CreateNewPostDialog(), // Create New Post Dialog
-                        );
-                      },
-                    ),
-                  ],
+                    backgroundColor:
+                        Colors.transparent, // Show curved background
+                    elevation: 0,
+                    actions: [
+                      Container(
+                        width: 40, // Adjust the width of the circle
+                        height: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.black, // Border color
+                            width: 2, // Border width
+                          ),
+                        ),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: IconButton(
+                            padding: EdgeInsets.zero, // Remove default padding
+                            icon: const Icon(
+                              Icons.filter_alt,
+                              size: 20, // Adjusted icon size
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) => const CarPoolFilter(),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12), // Spacing between icons
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 2,
+                          ),
+                        ),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: const Icon(
+                              Icons.add,
+                              size: 30,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) =>
+                                    const CreateNewPostDialog(),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -183,10 +238,18 @@ class AppBarClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
-    path.lineTo(0, size.height - 50);
-    path.quadraticBezierTo(size.width / 2, size.height, size.width, size.height - 50);
-    path.lineTo(size.width, 0);
-    path.close();
+    path.lineTo(
+        0, size.height - 60); // Move to bottom-left with curve start point
+    // Bottom-left curve (20px curve)
+    path.quadraticBezierTo(0, size.height, 60, size.height);
+
+    path.lineTo(size.width - 60, size.height); // Move to the bottom-right curve
+    // Bottom-right curve (20px curve)
+    path.quadraticBezierTo(
+        size.width, size.height, size.width, size.height - 60);
+
+    path.lineTo(size.width, 0); // Move to the top-right
+    path.close(); // Close the path by connecting back to the start (top-left)
 
     return path;
   }
