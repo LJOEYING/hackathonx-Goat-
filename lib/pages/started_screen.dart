@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackathonx/pages/login.dart';
+import 'package:hackathonx/widgets/long_button.dart';
 
 class StartedScreen extends StatelessWidget {
   const StartedScreen({super.key});
@@ -11,7 +13,7 @@ class StartedScreen extends StatelessWidget {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [Color(0xff5A8A62), Color(0xff17241A)],
                   begin: Alignment.topCenter,
@@ -32,7 +34,7 @@ class StartedScreen extends StatelessWidget {
                         child: Text(
                           "Save",
                           style: GoogleFonts.kayPhoDu(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                   fontSize: 48,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
@@ -43,7 +45,7 @@ class StartedScreen extends StatelessWidget {
                         child: Text(
                           "The",
                           style: GoogleFonts.kayPhoDu(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                   fontSize: 48,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
@@ -54,7 +56,7 @@ class StartedScreen extends StatelessWidget {
                         child: Text(
                           "Planet",
                           style: GoogleFonts.kayPhoDu(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                   fontSize: 48,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
@@ -69,23 +71,17 @@ class StartedScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 50),
-                  child: Container(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0))),
-                      onPressed: () {},
-                      child: Text("Get Started",
-                          style: GoogleFonts.inter(
-                              textStyle: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w800,
-                                  color: Color(0xff489658)))),
-                    ),
+                  child: LongButton(
+                    backgroundColor: 0xffffffff,
+                    fontColor: 0xff489658,
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Login()));
+                    },
+                    buttonText: "Get Started",
+                    fontSize: 24,
                   ),
-                )
+                ),
               ],
             ),
           ),
