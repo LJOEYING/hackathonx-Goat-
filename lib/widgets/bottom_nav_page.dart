@@ -60,7 +60,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
               color: Colors.white,
             ),
             Icon(
-              Icons.car_crash,
+              Icons.directions_car,
               size: 32,
               color: Colors.white,
             ),
