@@ -1,6 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathonx/pages/car_pooling.dart';
+import 'package:hackathonx/pages/carpool.dart';
 import 'package:hackathonx/pages/green_map.dart';
 import 'package:hackathonx/pages/reconnect.dart';
 import 'package:hackathonx/pages/remarket.dart';
@@ -60,7 +60,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
               color: Colors.white,
             ),
             Icon(
-              Icons.car_crash,
+              Icons.directions_car,
               size: 32,
               color: Colors.white,
             ),
