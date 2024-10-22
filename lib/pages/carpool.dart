@@ -51,7 +51,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
                     title: const Text(
                       'Car Pool',
                       style: TextStyle(
-                        fontSize: 35,
+                        fontSize: 38,
                         color: Colors.white, // Adjusted font color
                         fontWeight: FontWeight.w700,
                       ),
@@ -68,7 +68,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
                           color: Colors.white,
                           border: Border.all(
                             color: Colors.black, // Border color
-                            width: 2, // Border width
+                            width: 1.5, // Border width
                           ),
                         ),
                         child: Align(
@@ -77,7 +77,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
                             padding: EdgeInsets.zero, // Remove default padding
                             icon: const Icon(
                               Icons.filter_alt,
-                              size: 20, // Adjusted icon size
+                              size: 25, // Adjusted icon size
                               color: Colors.black,
                             ),
                             onPressed: () {
@@ -98,7 +98,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
                           color: Colors.white,
                           border: Border.all(
                             color: Colors.black,
-                            width: 2,
+                            width: 1.5,
                           ),
                         ),
                         child: Align(
@@ -107,7 +107,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
                             padding: EdgeInsets.zero,
                             icon: const Icon(
                               Icons.add,
-                              size: 30,
+                              size: 35,
                               color: Colors.black,
                             ),
                             onPressed: () {
