@@ -128,28 +128,46 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
           ),
           // Toggle driver/passenger buttons outside the curved AppBar
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            padding: const EdgeInsets.symmetric(
+                vertical: 25.0,
+                horizontal: 16.0), // Add horizontal padding for spacing
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start, // Align to the left
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      isDriver = true;
-                    });
-                  },
-                  child: const Text('Driver'),
+                Icon(
+                  Icons.pin_drop,
+                  size: 25, // Adjusted icon size
+                  color: Colors.red,
                 ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      isDriver = false;
-                    });
-                  },
-                  child: const Text('Passenger'),
+                Text(
+                  ' Your Location : ',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Text(
+                  'Kolej Canselor, UPM',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 0.0),
+            child: DividedButton(
+              leftText: 'Driver',
+              rightText: 'Passenger',
+              onPressed: () {
+                setState(() {
+                  isDriver = !isDriver; // Toggle state on button press
+                });
+              },
+              leftColor: isDriver ? Colors.black : Colors.grey,
+              rightColor: isDriver ? Colors.grey : Colors.black,
             ),
           ),
           // Display carpool list based on selection
@@ -229,6 +247,77 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
           MaterialPageRoute(builder: (context) => ChatScreen(name: name)),
         );
       },
+    );
+  }
+}
+
+class DividedButton extends StatelessWidget {
+  final String leftText;
+  final String rightText;
+  final VoidCallback onPressed;
+  final Color leftColor;
+  final Color rightColor;
+
+  const DividedButton({
+    Key? key,
+    required this.leftText,
+    required this.rightText,
+    required this.onPressed,
+    this.leftColor = Colors.grey,
+    this.rightColor = Colors.black,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              height: 35,
+              decoration: BoxDecoration(
+                color: leftColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(35),
+                  bottomLeft: Radius.circular(35),
+                ),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                leftText,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              height: 35,
+              decoration: BoxDecoration(
+                color: rightColor,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(35),
+                  bottomRight: Radius.circular(35),
+                ),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                rightText,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
