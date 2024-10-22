@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathonx/pages/started_screen.dart';
 import 'package:hackathonx/widgets/bottom_nav_page.dart';
 
 void main() {

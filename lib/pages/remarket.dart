@@ -11,7 +11,12 @@ class Remarket extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("Yes"), Text("Yes")],
+          children: [
+            // Container(
+            //   decoration: BoxDecoration(color: Colors.amber),
+            //   height: MediaQuery.of(context).size.height * 1,
+            // ),
+          ],
         ),
       ),
     );
