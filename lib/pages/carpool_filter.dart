@@ -1,55 +1,308 @@
 import 'package:flutter/material.dart';
+import 'package:hackathonx/pages/carpool.dart';
 
-class CarPoolFilter extends StatelessWidget {
-  const CarPoolFilter({super.key});
+class CarPoolFilter extends StatefulWidget {
+  final double price;
+  final String? location;
+  final DateTime? date;
+
+  CarPoolFilter({
+    required this.price,
+    required this.location,
+    required this.date,
+  });
+
+  @override
+  _CarPoolFilterState createState() => _CarPoolFilterState();
+}
+
+class _CarPoolFilterState extends State<CarPoolFilter> {
+  late double _price;
+  String? _location;
+  DateTime? _date;
+  TimeOfDay? _time;
+  bool isDriver = true;
+  String? _gender;
+
+  @override
+  void initState() {
+    super.initState();
+    _price = widget.price;
+    _location = widget.location;
+    _date = widget.date;
+  }
+
+  Future<void> _selectDate() async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _date ?? DateTime.now(),
+      firstDate: DateTime(2010),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null) {
+      setState(() {
+        _date = picked;
+      });
+    }
+  }
+
+  Future<void> _selectTime() async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _time ?? TimeOfDay.now(),
+    );
+
+    if (picked != null) {
+      setState(() {
+        _time = picked;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text('Car Pool Filter', style: TextStyle(fontSize: 20)),
-          const SizedBox(height: 10),
-           DropdownButtonFormField<String>(
-            decoration: InputDecoration(labelText: 'Location'),
-            items: [
-              DropdownMenuItem(value: 'Drive Hill', child: Text('Drive Hill')),
-              DropdownMenuItem(
-                  value: 'Cheras Traders Square',
-                  child: Text('Cheras Traders Square')),
-              DropdownMenuItem(value: 'Pavilion KL', child: Text('Pavilion KL')),
-              DropdownMenuItem(value: 'IOI City Mall', child: Text('IOI City Mall')),
-              DropdownMenuItem(value: 'TBS', child: Text('TBS')),
-            ],
-            onChanged: null,
-          ),
-          const SizedBox(height: 10),
-          const Text('Time', style: TextStyle(fontSize: 16)),
-          Row(
-            children: const [
-              Expanded(child: TextField(decoration: InputDecoration(hintText: 'HH'))),
-              Expanded(child: TextField(decoration: InputDecoration(hintText: 'MM'))),
-            ],
-          ),
-          const SizedBox(height: 10),
-          const Text('Gender Preferred', style: TextStyle(fontSize: 16)),
-          Row(
-            children: const [
-              Icon(Icons.male, color: Colors.blue),
-              Icon(Icons.female, color: Colors.pink),
-            ],
-          ),
-          const SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context); // Close the filter modal
-            },
-            child: const Text('Done'),
-          ),
-        ],
+    return AlertDialog(
+      contentPadding: EdgeInsets.all(10.0),
+      insetPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      title: Text(
+        'Car Pool Filters',
+        style: TextStyle(
+          fontSize: 28.0,
+          fontWeight: FontWeight.bold,
+        ),
       ),
+      content: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 0, bottom: 0.0),
+              child: Divider(
+                thickness: 3.0,
+                color: Colors.black,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15.0),
+              child: DividedButton(
+                leftText: 'Driver',
+                rightText: 'Passenger',
+                onPressed: () {
+                  setState(() {
+                    isDriver = !isDriver;
+                  });
+                },
+                leftColor: isDriver ? Colors.black : Colors.grey,
+                rightColor: isDriver ? Colors.grey : Colors.black,
+              ),
+            ),
+            Text(
+              'Location',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 19.0,
+              ),
+            ),
+            SizedBox(height: 13.0),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: DropdownButtonFormField<String>(
+                value: _location,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 6.0),
+                  border: InputBorder.none,
+                ),
+                hint: Text('Select a location to go'),
+                items: [
+                  'IOI City Mall',
+                  'Olive Hill',
+                  'Pavillion KL',
+                  'Cheras Traders Square',
+                  'Terminal Bersepadu Selatan (TBS)'
+                ].map((state) {
+                  return DropdownMenuItem<String>(
+                    value: state,
+                    child: Text(state),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _location = value;
+                  });
+                },
+                isExpanded: true,
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+              child: Divider(
+                thickness: 1.0,
+                color: Colors.grey,
+              ),
+            ),
+            Text(
+              'Date',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 19.0,
+              ),
+            ),
+            SizedBox(height: 10),
+            TextButton(
+              onPressed: _selectDate,
+              child: Text(
+                _date != null
+                    ? '${_date!.toLocal().toString().split(' ')[0]}'
+                    : 'Select date',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 17.0,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+              child: Divider(
+                thickness: 1.0,
+                color: Colors.grey,
+              ),
+            ),
+            Text(
+              'Time',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 19.0,
+              ),
+            ),
+            SizedBox(height: 10),
+            TextButton(
+              onPressed: _selectTime,
+              child: Text(
+                _time != null ? '${_time!.format(context)}' : 'Select time',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 17.0,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+              child: Divider(
+                thickness: 1.0,
+                color: Colors.grey,
+              ),
+            ),
+            Text(
+              'Price: \RM ${_price.toStringAsFixed(2)}',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 19.0,
+              ),
+            ),
+            Slider(
+              value: _price,
+              min: 0,
+              max: 100,
+              onChanged: (value) {
+                setState(() {
+                  _price = value;
+                });
+              },
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+              child: Divider(
+                thickness: 1.0,
+                color: Colors.grey,
+              ),
+            ),
+            Text(
+              'Gender Preference',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 19.0,
+              ),
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _gender = 'Male';
+                    });
+                  },
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.male,
+                        color: _gender == 'Male' ? Colors.blue : Colors.grey,
+                        size: 40,
+                      ),
+                      Text(
+                        'Male',
+                        style: TextStyle(
+                          color: _gender == 'Male' ? Colors.blue : Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _gender = 'Female';
+                    });
+                  },
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.female,
+                        color: _gender == 'Female' ? Colors.pink : Colors.grey,
+                        size: 40,
+                      ),
+                      Text(
+                        'Female',
+                        style: TextStyle(
+                          color:
+                              _gender == 'Female' ? Colors.pink : Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 30),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          child: Text('Cancel'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        TextButton(
+          child: Text('Done'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
     );
   }
 }
