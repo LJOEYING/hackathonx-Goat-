@@ -285,22 +285,43 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+              child: Divider(
+                thickness: 1.0,
+                color: Colors.grey,
+              ),
+            ),
           ],
         ),
       ),
       actions: [
-        TextButton(
+        ElevatedButton(
           child: Text('Cancel'),
           onPressed: () {
             Navigator.of(context).pop();
           },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.red,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
         ),
-        TextButton(
+        ElevatedButton(
           child: Text('Done'),
           onPressed: () {
             Navigator.of(context).pop();
           },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.green,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
         ),
       ],
     );

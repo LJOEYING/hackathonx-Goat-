@@ -35,7 +35,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
                 clipper: AppBarClipper(),
                 child: Container(
                   height: 130,
-                  color: Color.fromRGBO(48, 75, 52, 100),
+                  color: Color.fromRGBO(48, 75, 52, 1),
                 ),
               ),
               Positioned(
