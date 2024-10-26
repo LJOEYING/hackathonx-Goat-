@@ -2,19 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
 
-class Remarket extends StatefulWidget {
-  const Remarket({super.key});
+class Temp_Remarket extends StatefulWidget {
+  const Temp_Remarket({super.key});
 
   @override
-  State<Remarket> createState() => _RemarketState();
+  State<Temp_Remarket> createState() => _Temp_RemarketState();
 }
 
-class _RemarketState extends State<Remarket> {
+class _Temp_RemarketState extends State<Temp_Remarket> {
   late PageController _pageController;
   late int _currentPage;
-  bool _isSelectedGoods = true;
   // List of image paths
   final List<String> _imagePaths = [
     'assets/advertisement1.jpg',
@@ -28,7 +26,7 @@ class _RemarketState extends State<Remarket> {
     _pageController = PageController();
     _currentPage = 0;
 
-    // Automatically scroll images every 5 seconds
+    // Automatically scroll images every 3 seconds
     SchedulerBinding.instance.addPostFrameCallback((_) {
       Timer.periodic(Duration(seconds: 5), (timer) {
         if (_pageController.hasClients) {
@@ -47,16 +45,9 @@ class _RemarketState extends State<Remarket> {
     });
   }
 
-  void _toggleTab(bool isSelectedGoods) {
-    setState(() {
-      _isSelectedGoods = isSelectedGoods;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final pointsBarHeight = 60.0;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(90, 138, 98, 1),
@@ -95,44 +86,42 @@ class _RemarketState extends State<Remarket> {
             //   height: 20,
             // ),
             // E-waste Awareness Banner with Slider
-            Container(
-              height: screenWidth * 0.55 + pointsBarHeight / 2,
-              child: Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  // Add a PageView for horizontal scrolling
-                  Container(
-                    height: screenWidth * 0.55, // Adjust height as needed
-                    child: PageView.builder(
-                      controller: _pageController,
-                      itemCount:
-                          _imagePaths.length, // Use length of imagePaths list
-                      onPageChanged: (index) {
-                        setState(() {
-                          _currentPage = index;
-                        });
-                      },
-                      itemBuilder: (context, index) {
-                        // Use local images from assets
-                        final imagePath = _imagePaths[index];
-                        return Container(
-                          // margin: EdgeInsets.symmetric(horizontal: 20.0),
-                          child: ClipRRect(
-                            child: Image.asset(
-                              imagePath,
-                              fit: BoxFit.cover,
-                              width:
-                                  screenWidth * 0.8, // Adjust width as needed
-                            ),
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                // Add a PageView for horizontal scrolling
+                Container(
+                  height: screenWidth * 0.5, // Adjust height as needed
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount:
+                        _imagePaths.length, // Use length of imagePaths list
+                    onPageChanged: (index) {
+                      setState(() {
+                        _currentPage = index;
+                      });
+                    },
+                    itemBuilder: (context, index) {
+                      // Use local images from assets
+                      final imagePath = _imagePaths[index];
+                      return Container(
+                        // margin: EdgeInsets.symmetric(horizontal: 20.0),
+                        child: ClipRRect(
+                          child: Image.asset(
+                            imagePath,
+                            fit: BoxFit.cover,
+                            width: screenWidth * 0.8, // Adjust width as needed
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
-                  // Add a circular bullet indicator at the bottom center
-                  Positioned(
-                    // bottom: 50,
-                    bottom: pointsBarHeight + 10,
+                ),
+                // Add a circular bullet indicator at the bottom center
+                Positioned(
+                  bottom: 10,
+                  child: Container(
+                    height: 20,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(_imagePaths.length, (index) {
@@ -150,25 +139,54 @@ class _RemarketState extends State<Remarket> {
                       }),
                     ),
                   ),
-                  // ),
-                  Positioned(
-                    bottom: 0, // Adjust this value to control the overlap
-                    left: 0,
-                    right: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: FractionallySizedBox(
-                          widthFactor: 0.95, child: PointsBar()),
-                    ), // Use your PointsBar widget here
+                ),
+              ],
+            ),
+            // GreenPay Balance & Points
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                elevation: 5,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'RM 100.00',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          Text('GreenPay'),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            '1,000 points',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          Text('Redeem Goodies'),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
-
             // Selected Goods Section (Recommended & Daily Discover)
             Padding(
               // padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -221,90 +239,6 @@ class _RemarketState extends State<Remarket> {
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class PointsBar extends StatelessWidget {
-  Widget iconTextSection(
-      IconData icon, Color iconColor, String text, String subtitle) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Icon(icon, color: iconColor),
-            SizedBox(width: 5),
-            Text(
-              text,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-            ),
-          ],
-        ),
-        Text(
-          subtitle,
-          style:
-              TextStyle(color: Color.fromRGBO(122, 111, 111, 1), fontSize: 14),
-        ),
-      ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var pointsBarHeight;
-    return Container(
-      height: pointsBarHeight, // Adjust height as needed
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 3,
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.qr_code_scanner, color: Colors.grey)),
-
-            // Vertical Divider between Scan and Wallet Money
-            Container(
-              height: 30,
-              width: 2,
-              color: Colors.grey.withOpacity(0.4),
-            ),
-            // Wallet Money Section
-            iconTextSection(
-              Icons.account_balance_wallet_outlined,
-              Colors.green,
-              "RM 100.00",
-              "GreenPay",
-            ),
-            // Vertical Divider between Wallet and Points
-            Container(
-              height: 30,
-              width: 2,
-              color: Colors.grey.withOpacity(0.4),
-            ),
-            // Points Section
-            iconTextSection(
-              Icons.stars,
-              // Color.fromRGBO(251, 209, 95, 1),
-              Colors.yellow,
-              "1,000 points",
-              "Redeem Goodies",
             ),
           ],
         ),

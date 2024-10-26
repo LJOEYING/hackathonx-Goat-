@@ -14,7 +14,6 @@ class Remarket extends StatefulWidget {
 class _RemarketState extends State<Remarket> {
   late PageController _pageController;
   late int _currentPage;
-  bool _isSelectedGoods = true;
   // List of image paths
   final List<String> _imagePaths = [
     'assets/advertisement1.jpg',
@@ -44,12 +43,6 @@ class _RemarketState extends State<Remarket> {
           });
         }
       });
-    });
-  }
-
-  void _toggleTab(bool isSelectedGoods) {
-    setState(() {
-      _isSelectedGoods = isSelectedGoods;
     });
   }
 
