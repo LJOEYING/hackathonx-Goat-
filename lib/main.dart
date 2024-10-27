@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackathonx/pages/carpool.dart';
 import 'package:hackathonx/pages/green_connect.dart';
+import 'package:hackathonx/pages/green_connect_tips.dart';
 import 'package:hackathonx/pages/login.dart';
 import 'package:hackathonx/pages/sign_up.dart';
 import 'package:hackathonx/pages/started_screen.dart';

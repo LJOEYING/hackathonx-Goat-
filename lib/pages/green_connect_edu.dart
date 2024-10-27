@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackathonx/pages/green_connect_tips.dart';
 import 'package:hackathonx/widgets/waste_container.dart';
 
 class GreenConnectEdu extends StatelessWidget {
@@ -74,7 +75,12 @@ class GreenConnectEdu extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => GreenConnectTips()));
+                },
                 child: Container(
                     padding: EdgeInsets.all(20),
                     width: double.infinity,
