@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackathonx/pages/green_connect_community.dart';
 import 'package:hackathonx/pages/green_connect_edu.dart';
 import 'package:hackathonx/pages/green_connect_events.dart';
 import 'package:hackathonx/widgets/custom_shapes/curved_edges.dart';
@@ -19,9 +20,11 @@ class _GreenConnectState extends State<GreenConnect> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       body: SafeArea(
+        bottom: true,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ClipPath(
               clipper: CurvedEdges(),
@@ -126,7 +129,12 @@ class _GreenConnectState extends State<GreenConnect> {
                 ),
               ),
             ),
-            currentButtonIndex == 0 ? GreenConnectEvents() : GreenConnectEdu()
+            currentButtonIndex == 0
+                ? GreenConnectEvents()
+                : currentButtonIndex == 1
+                    ? GreenConnectEdu()
+                    : GreenConnectCommunity(),
+            
           ],
         ),
       ),
