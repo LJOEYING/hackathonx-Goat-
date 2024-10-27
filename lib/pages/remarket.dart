@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hackathonx/pages/newItem.dart';
 
 class Remarket extends StatefulWidget {
   const Remarket({super.key});
@@ -343,8 +344,12 @@ class _RemarketState extends State<Remarket> {
             right: 0,
             bottom: 50,
             child: FloatingActionButton(
-              onPressed:
-                  () {}, // Handle adding products (e.g., trigger another action)
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddNewItemPage()),
+                );
+              }, // Handle adding products (e.g., trigger another action)
               backgroundColor: Colors.blue, // Button color
               child: Icon(Icons.add, color: Colors.white), // Plus icon
             ),
