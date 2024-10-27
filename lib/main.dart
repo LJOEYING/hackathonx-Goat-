@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackathonx/pages/carpool.dart';
+import 'package:hackathonx/pages/green_connect.dart';
+import 'package:hackathonx/pages/green_connect_tips.dart';
 import 'package:hackathonx/pages/login.dart';
 import 'package:hackathonx/pages/sign_up.dart';
 import 'package:hackathonx/pages/started_screen.dart';
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Waste Management & Car Pooling App',
       debugShowCheckedModeBanner: false,
       home: BottomNavPage(),

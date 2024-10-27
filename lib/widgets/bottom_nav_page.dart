@@ -15,7 +15,7 @@ class BottomNavPage extends StatefulWidget {
 
 class _BottomNavPageState extends State<BottomNavPage> {
   int myCurrentPage = 0;
-  List pages = const [
+  List pages = [
     Remarket(),
     GreenMap(),
     Scanner(),
