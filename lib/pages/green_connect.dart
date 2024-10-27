@@ -21,8 +21,24 @@ class _GreenConnectState extends State<GreenConnect> {
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.transparent,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: currentButtonIndex == 2
+          ? Padding(
+              padding: const EdgeInsets.only(bottom: 100),
+              child: FloatingActionButton(
+                onPressed: () {},
+                shape: CircleBorder(),
+                backgroundColor: Colors.black,
+                child: Icon(
+                  Icons.add,
+                  size: 35,
+                  color: Colors.white,
+                ),
+              ),
+            )
+          : null,
       body: SafeArea(
-        bottom: true,
+        bottom: false,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -134,7 +150,6 @@ class _GreenConnectState extends State<GreenConnect> {
                 : currentButtonIndex == 1
                     ? GreenConnectEdu()
                     : GreenConnectCommunity(),
-            
           ],
         ),
       ),

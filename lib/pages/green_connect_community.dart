@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathonx/widgets/post.dart';
 
 class GreenConnectCommunity extends StatefulWidget {
   const GreenConnectCommunity({super.key});
@@ -10,8 +11,9 @@ class GreenConnectCommunity extends StatefulWidget {
 class _GreenConnectCommunityState extends State<GreenConnectCommunity> {
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      SingleChildScrollView(
+    return Expanded(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: [
             Image.asset(
@@ -20,79 +22,23 @@ class _GreenConnectCommunityState extends State<GreenConnectCommunity> {
               width: double.infinity,
               height: MediaQuery.of(context).size.width * 0.62,
             ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(blurRadius: 2, offset: Offset(0, 1)),
-                        ]),
-                    child: Column(
-                      children: [
-                        Text('🗑️ Local Waste Disposal Guidelines 🗑️'),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Text(
-                              'Recycling Days: Every Tuesday and Thursday. Make sure bins are out by 7 AM!\n What\’s Accepted?: Recycle plastics (#1-2), paper, cardboard, aluminum, and glass. Please, no plastic bags or... '),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 15,
-                                  backgroundImage: AssetImage(
-                                    'assets/labubu.jpg',
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text('Labubu')
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.favorite_outline),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.comment)),
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            )
+            Post(
+              title: '🗑️ Local Waste Disposal Guidelines 🗑️',
+              content:
+                  'Recycling Days: Every Tuesday and Thursday. Make sure bins are out by 7 AM!\n What\’s Accepted?: Recycle plastics (#1-2), paper, cardboard, aluminum, and glass. Please, no plastic bags or... ',
+              profileName: 'Labubu',
+              profilePic: 'assets/labubu.jpg',
+            ),
+            Post(
+              title: '🌿 Plastic-Free Living Tips 🌿',
+              content:
+                  'Want to reduce your plastic use? Here are a few simple ways to get started: \nBring Your Own Bag: Always carry a reusable shopping bag to avoid single-use plastic bags...',
+              profileName: 'Angel',
+              profilePic: 'assets/angel.jpg',
+            ),
           ],
         ),
       ),
-      Positioned(
-        top: 30,
-        // bottom: 100,
-        right: 40,
-        child: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.black,
-          child: Icon(
-            Icons.add,
-            size: 30,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    ]);
+    );
   }
 }
