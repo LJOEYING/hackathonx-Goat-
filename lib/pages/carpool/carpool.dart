@@ -3,25 +3,15 @@ import 'package:hackathonx/pages/carpool/carpool_chat.dart';
 import 'package:hackathonx/pages/carpool/carpool_filter.dart';
 import 'package:hackathonx/pages/carpool/carpool_newpost.dart';
 
-class CarPooling extends StatelessWidget {
+
+class CarPooling extends StatefulWidget {
   const CarPooling({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const CarPoolingHome(),
-    );
-  }
+  _CarPoolingState createState() => _CarPoolingState();
 }
 
-class CarPoolingHome extends StatefulWidget {
-  const CarPoolingHome({super.key});
-
-  @override
-  _CarPoolingHomeState createState() => _CarPoolingHomeState();
-}
-
-class _CarPoolingHomeState extends State<CarPoolingHome> {
+class _CarPoolingState extends State<CarPooling> {
   bool isDriver = true;
 
   @override
@@ -252,6 +242,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
           MaterialPageRoute(builder: (context) => ChatScreen(name: name, age: age.toString())),
         );
       },
+       
     );
   }
 }
