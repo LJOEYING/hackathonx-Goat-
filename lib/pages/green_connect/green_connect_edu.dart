@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hackathonx/pages/green_connect_tips.dart';
+import 'package:hackathonx/pages/green_connect/green_connect_tips.dart';
 import 'package:hackathonx/widgets/waste_container.dart';
 
 class GreenConnectEdu extends StatelessWidget {

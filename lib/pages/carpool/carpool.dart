@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hackathonx/pages/carpool_chat.dart';
-import 'package:hackathonx/pages/carpool_filter.dart';
-import 'package:hackathonx/pages/carpool_newpost.dart';
+import 'package:hackathonx/pages/carpool/carpool_chat.dart';
+import 'package:hackathonx/pages/carpool/carpool_filter.dart';
+import 'package:hackathonx/pages/carpool/carpool_newpost.dart';
 
 class CarPooling extends StatelessWidget {
   const CarPooling({super.key});

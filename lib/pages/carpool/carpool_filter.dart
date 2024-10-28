@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackathonx/pages/carpool.dart';
+import 'package:hackathonx/pages/carpool/carpool.dart';
 
 class CarPoolFilter extends StatefulWidget {
   final double price;

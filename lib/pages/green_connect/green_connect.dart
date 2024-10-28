@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hackathonx/pages/green_connect_community.dart';
-import 'package:hackathonx/pages/green_connect_edu.dart';
-import 'package:hackathonx/pages/green_connect_events.dart';
+import 'package:hackathonx/pages/green_connect/green_connect_community.dart';
+import 'package:hackathonx/pages/green_connect/green_connect_edu.dart';
+import 'package:hackathonx/pages/green_connect/green_connect_events.dart';
 import 'package:hackathonx/widgets/custom_shapes/curved_edges.dart';
 import 'package:hackathonx/widgets/green_connect_top_button.dart';
 

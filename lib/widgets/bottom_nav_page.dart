@@ -1,8 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathonx/pages/carpool.dart';
+import 'package:hackathonx/pages/carpool/carpool.dart';
 import 'package:hackathonx/pages/green_map.dart';
-import 'package:hackathonx/pages/green_connect.dart';
+import 'package:hackathonx/pages/green_connect/green_connect.dart';
 import 'package:hackathonx/pages/remarket.dart';
 import 'package:hackathonx/pages/scanner.dart';
 

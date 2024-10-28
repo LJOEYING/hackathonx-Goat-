@@ -7,6 +7,7 @@ class GreenConnectTips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfffcfce2),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
