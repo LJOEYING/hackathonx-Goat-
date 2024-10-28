@@ -27,7 +27,7 @@ class _RemarketState extends State<Remarket> {
   final List<Map<String, dynamic>> _products = [
     {
       'image': 'assets/shoes1.png',
-      'name': 'Product 1balbaldbf',
+      'name': 'Product 1',
       'price': 'RM 99.99',
     },
     {
@@ -274,19 +274,21 @@ class _RemarketState extends State<Remarket> {
           // Recommend Section
           SectionHeader(title: 'Recommend'),
           Container(
-            height: 150,
+            height: 200,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
                 ProductCard(
-                    title: 'Shoe', price: 'RM XXX', image: 'assets/shoes1.png'),
+                    title: 'Shoe',
+                    price: 'RM 34.50',
+                    image: 'assets/shoes1.png'),
                 ProductCard(
                     title: 'Bottle',
-                    price: 'RM XXX',
+                    price: 'RM 34.99',
                     image: 'assets/shoes2.png'),
                 ProductCard(
                     title: 'Bottle',
-                    price: 'RM XXX',
+                    price: 'RM 57.99',
                     image: 'assets/shoes2.png'),
               ],
             ),
@@ -297,16 +299,22 @@ class _RemarketState extends State<Remarket> {
           // Daily Discover Section
           SectionHeader(title: 'Daily Discover'), //maybe need padding
           Container(
-            height: 150,
+            height: 200,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
                 ProductCard(
-                    title: 'Shoe', price: 'RM XXX', image: 'assets/shoes1.png'),
+                    title: 'Shoe',
+                    price: 'RM 89.90',
+                    image: 'assets/shoes2.png'),
                 ProductCard(
-                    title: 'Shoe', price: 'RM XXX', image: 'assets/shoes1.png'),
+                    title: 'Shoe',
+                    price: 'RM 69.90',
+                    image: 'assets/shoes1.png'),
                 ProductCard(
-                    title: 'Shoe', price: 'RM XXX', image: 'assets/shoes1.png'),
+                    title: 'Shoe',
+                    price: 'RM 48.90',
+                    image: 'assets/shoes1.png'),
               ],
             ),
           ),
@@ -366,6 +374,9 @@ class _RemarketState extends State<Remarket> {
 
 // Build each product card with image, name, and price
   Widget _buildProductCard(Map<String, dynamic> product) {
+    if (product == null) {
+      return SizedBox(); // Return an empty box if the product is null
+    }
     return Card(
       elevation: 5,
       shape: RoundedRectangleBorder(
@@ -374,9 +385,6 @@ class _RemarketState extends State<Remarket> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Product Image
-          // Expanded(
-          // child:
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
             child: Image.asset(
@@ -554,7 +562,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final containerWidth = screenWidth * 0.5;
-    final imageHeight = containerWidth * 0.5;
+    final imageHeight = containerWidth * 0.75;
 
     return Container(
       width: containerWidth,
@@ -602,52 +610,6 @@ class ProductCard extends StatelessWidget {
                 ],
               ),
             )
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       child: Text(
-            //         title,
-            //         style:
-            //             TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //         textDirection: TextDirection.ltr,
-            //         overflow: TextOverflow.visible,
-            //         softWrap: true,
-            //       ),
-            //     ),
-            //     Expanded(
-            //       child: Text(
-            //         price,
-            //         style: TextStyle(
-            //           color: Colors.red,
-            //           fontSize: 16,
-            //         ),
-            //         textDirection: TextDirection.rtl,
-            //         overflow: TextOverflow.visible,
-            //         softWrap: true,
-            //       ),
-            //     ),
-            //   ],
-            // ),
-
-            // Container(
-            //   height: 80,
-            //   decoration: BoxDecoration(
-            //     image: DecorationImage(
-            //       image: AssetImage(image),
-            //       fit: BoxFit.cover,
-            //     ),
-            //     borderRadius: BorderRadius.circular(10),
-            //   ),
-            // ),
-            // SizedBox(height: 8),
-            // Text(
-            //   title,
-            //   style: TextStyle(fontSize: 16),
-            // ),
-            // Text(
-            //   price,
-            //   style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-            // ),
           ],
         ),
       ),
