@@ -194,8 +194,9 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
 
                     ElevatedButton(
                       child: Text(
-                        'Add Item',
-                        style: TextStyle(fontSize: 18),
+                        'Done',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -203,7 +204,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                       style: ElevatedButton.styleFrom(
                         minimumSize: Size(double.infinity, 50),
                         foregroundColor: Colors.white,
-                        backgroundColor: Colors.green,
+                        backgroundColor: Color(0xff3F6245),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),

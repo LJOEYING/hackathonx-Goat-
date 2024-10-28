@@ -7,6 +7,13 @@ import 'package:hackathonx/widgets/quiz_button.dart';
 class GreenConnectQuiz extends StatefulWidget {
   GreenConnectQuiz({super.key});
   int currentQuiz = 1;
+  int score = 0;
+
+  void checkAns(int correctAns, int selectAns) {
+    if (selectAns == correctAns) {
+      score += 1;
+    }
+  }
 
   @override
   State<GreenConnectQuiz> createState() => _GreenConnectQuizState();
@@ -60,6 +67,7 @@ class _GreenConnectQuizState extends State<GreenConnectQuiz> {
                             quizOpt2: "B) Saving Energy",
                             quizOpt3: "C) Reducing Pollution",
                             quizOpt4: "D) All of the above",
+                            correctAns: 4,
                             onPressed: () {
                               setState(() {
                                 widget.currentQuiz = 2;
@@ -75,6 +83,7 @@ class _GreenConnectQuizState extends State<GreenConnectQuiz> {
                                 quizOpt2: "B) 50%",
                                 quizOpt3: "C) 75%",
                                 quizOpt4: "D) 100%",
+                                correctAns: 3,
                                 onPressed: () {
                                   setState(() {
                                     widget.currentQuiz = 3;
@@ -89,6 +98,7 @@ class _GreenConnectQuizState extends State<GreenConnectQuiz> {
                                 quizOpt2: "B) Styrofoam",
                                 quizOpt3: "C) Food scraps",
                                 quizOpt4: "D) Tissues and paper towels",
+                                correctAns: 2,
                                 onPressed: () {
                                   print(widget.currentQuiz);
                                 },

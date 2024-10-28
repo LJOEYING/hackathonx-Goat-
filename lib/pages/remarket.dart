@@ -350,8 +350,13 @@ class _RemarketState extends State<Remarket> {
                   MaterialPageRoute(builder: (context) => AddNewItemPage()),
                 );
               }, // Handle adding products (e.g., trigger another action)
-              backgroundColor: Colors.blue, // Button color
-              child: Icon(Icons.add, color: Colors.white), // Plus icon
+              shape: CircleBorder(),
+              backgroundColor: Colors.black, // Button color
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 35,
+              ), // Plus icon
             ),
           ),
         ],
