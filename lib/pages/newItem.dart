@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddNewItemPage extends StatefulWidget {
   @override
@@ -6,9 +9,21 @@ class AddNewItemPage extends StatefulWidget {
 }
 
 class _AddNewItemPageState extends State<AddNewItemPage> {
-  bool _isDescriptionSelected = false; // To toggle the description button
   bool _isNeverWornSelected = false; // For "Never Worn"
-  bool _isFullyNewSelected = false; // For "Fully New"
+  File? _selectedImage; // Variable to hold the selected image
+
+  final ImagePicker _picker = ImagePicker(); // Image picker instance
+
+  // Method to pick an image from the gallery
+  Future<void> _pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      setState(() {
+        _selectedImage = File(image.path); // Save the selected image
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,26 +43,20 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
             ),
           ),
 
-          // Back Button (Top Left Overlapping Background Image)
+          // Back Button
           Positioned(
             top: 30, // Adjust padding from top
-            left: 16, // Adjust padding from left
+            left: 5, // Adjust padding from left
             child: GestureDetector(
               onTap: () {
                 Navigator.pop(context); // Handle back navigation
               },
               child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(
-                      0.5), // Optional background color for visibility
-                ),
                 padding: EdgeInsets.all(8),
-                child: Icon(Icons.arrow_back, color: Colors.white, size: 24),
+                child: Icon(Icons.arrow_back, color: Colors.black, size: 40),
               ),
             ),
           ),
-
           // "Add New Item" Text (Center of First Picture)
           Positioned(
             top:
@@ -60,7 +69,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Color.fromRGBO(241, 241, 205, 1),
                 ),
               ),
             ),
@@ -73,11 +82,24 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
             left: 0,
             right: 0,
             child: Center(
-              child: Image.asset(
-                'assets/addPhoto.png',
-                height: 200, // Adjust size as needed
-                width: 250, // Adjust size as needed
-                fit: BoxFit.cover,
+              child: GestureDetector(
+                onTap: _pickImage, // On tap, open gallery
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: _selectedImage != null
+                      ? Image.file(
+                          _selectedImage!,
+                          height: 200,
+                          width: 250,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.asset(
+                          'assets/addPhoto.png',
+                          height: 200, // Adjust size as needed
+                          width: 250, // Adjust size as needed
+                          fit: BoxFit.cover,
+                        ),
+                ),
               ),
             ),
           ),
@@ -92,175 +114,98 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Product Name Field
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Product Name',
-                        border: OutlineInputBorder(),
+                    _buildTextField('Product Name', 'Enter product name'),
+                    SizedBox(height: 16),
+
+                    // Original Price Field
+                    _buildTextField('Original Price', 'Enter original price'),
+                    SizedBox(height: 16),
+
+                    // Selling Price Field
+                    _buildTextField('Selling Price', 'Enter selling price'),
+                    SizedBox(height: 16),
+
+                    // Product Condition Section
+                    Text(
+                      'Product Condition',
+                      style: TextStyle(
+                        fontSize: 20, // Smaller font size
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
                       ),
                     ),
-                    SizedBox(height: 16), // Spacing between fields
-
-                    // Price Field
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Price',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                    SizedBox(height: 16), // Spacing between fields
-
-                    // Description Button (Selectable)
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _isDescriptionSelected = !_isDescriptionSelected;
-                        });
-                      },
-                      child: Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                        decoration: BoxDecoration(
-                          color: _isDescriptionSelected
-                              ? Colors.blue
-                              : Colors.grey[300],
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            color: _isDescriptionSelected
-                                ? Colors.blue
-                                : Colors.grey,
-                            width: 2,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Product Description',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: _isDescriptionSelected
-                                    ? Colors.white
-                                    : Colors.black,
-                              ),
-                            ),
-                            Icon(
-                              _isDescriptionSelected
-                                  ? Icons.check_circle
-                                  : Icons.radio_button_unchecked,
-                              color: _isDescriptionSelected
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 16), // Spacing between fields
-
-                    // Selectable Description Options (Never Worn, Fully New)
-                    Row(
+                    SizedBox(height: 8),
+                    Wrap(
+                      spacing: 10,
                       children: [
-                        // Never Worn Button
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _isNeverWornSelected = !_isNeverWornSelected;
-                            });
+                        ChoiceChip(
+                          label: Text('Never Worn',
+                              style:
+                                  TextStyle(fontSize: 12)), // Font size reduced
+                          selected: false,
+                          onSelected: (bool selected) {
+                            _isNeverWornSelected = selected; //??
                           },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 8, horizontal: 16),
-                            decoration: BoxDecoration(
-                              color: _isNeverWornSelected
-                                  ? Colors.blue
-                                  : Colors.grey[300],
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: _isNeverWornSelected
-                                    ? Colors.blue
-                                    : Colors.grey,
-                                width: 2,
-                              ),
-                            ),
-                            child: Text(
-                              'Never Worn',
-                              style: TextStyle(
-                                color: _isNeverWornSelected
-                                    ? Colors.white
-                                    : Colors.black,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
                         ),
-                        SizedBox(width: 16), // Spacing between buttons
-
-                        // Fully New Button
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _isFullyNewSelected = !_isFullyNewSelected;
-                            });
+                        ChoiceChip(
+                          label: Text('Very Good Condition',
+                              style:
+                                  TextStyle(fontSize: 12)), // Font size reduced
+                          selected: false,
+                          onSelected: (bool selected) {
+                            // Handle selection
                           },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 8, horizontal: 16),
-                            decoration: BoxDecoration(
-                              color: _isFullyNewSelected
-                                  ? Colors.blue
-                                  : Colors.grey[300],
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: _isFullyNewSelected
-                                    ? Colors.blue
-                                    : Colors.grey,
-                                width: 2,
-                              ),
-                            ),
-                            child: Text(
-                              'Fully New',
-                              style: TextStyle(
-                                color: _isFullyNewSelected
-                                    ? Colors.white
-                                    : Colors.black,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
+                        ),
+                        ChoiceChip(
+                          label: Text('Good Condition',
+                              style:
+                                  TextStyle(fontSize: 12)), // Font size reduced
+                          selected: false,
+                          onSelected: (bool selected) {
+                            // Handle selection
+                          },
+                        ),
+                        ChoiceChip(
+                          label: Text('Fair Condition',
+                              style:
+                                  TextStyle(fontSize: 12)), // Font size reduced
+                          selected: false,
+                          onSelected: (bool selected) {
+                            // Handle selection
+                          },
+                        ),
+                        ChoiceChip(
+                          label: Text('Others',
+                              style:
+                                  TextStyle(fontSize: 12)), // Font size reduced
+                          selected: false,
+                          onSelected: (bool selected) {
+                            // Handle selection
+                          },
                         ),
                       ],
                     ),
-                    SizedBox(height: 16), // Spacing between fields
+                    SizedBox(height: 16),
 
-                    // Description Field (Multiline)
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Description',
-                        border: OutlineInputBorder(),
-                      ),
-                      maxLines: 3, // Allow multiline input
-                    ),
+                    // Product Description
+                    _buildTextField('Description', 'Enter product description',
+                        maxLines: 3),
+                    SizedBox(height: 16),
 
-                    // Add More Fields as necessary...
-
-                    SizedBox(height: 16), // Extra spacing for scroll
-
-                    // Submit Button (At the bottom)
                     ElevatedButton(
+                      child: Text(
+                        'Add Item',
+                        style: TextStyle(fontSize: 18),
+                      ),
                       onPressed: () {
-                        // Handle Add Item action
+                        Navigator.of(context).pop();
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: 16),
+                        minimumSize: Size(double.infinity, 50),
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.green,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Add Item',
-                          style: TextStyle(fontSize: 18),
+                          borderRadius: BorderRadius.circular(15),
                         ),
                       ),
                     ),
@@ -271,6 +216,36 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
           ),
         ],
       ),
+    );
+  }
+
+  // Method to build TextFields with a uniform style
+  Widget _buildTextField(String labelText, String hintText,
+      {int maxLines = 1}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          labelText,
+          style: TextStyle(
+            fontSize: 20, // Set label text size to match your design
+            fontWeight: FontWeight.w600, // Bold font for the label
+          ),
+        ),
+        SizedBox(height: 8),
+        TextField(
+          maxLines: maxLines,
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+            hintText: hintText,
+            hintStyle: TextStyle(fontSize: 12), // Smaller hint text size
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: Colors.grey),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

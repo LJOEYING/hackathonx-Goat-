@@ -345,7 +345,7 @@ class _RemarketState extends State<Remarket> {
             bottom: 50,
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => AddNewItemPage()),
                 );

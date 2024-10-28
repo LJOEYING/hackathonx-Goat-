@@ -189,6 +189,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
       carPoolTile(
         context,
         'Justin Bieber',
+        '28',
         'FSKTM, UPM',
         '17:00',
         'RM0.00',
@@ -198,6 +199,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
       carPoolTile(
         context,
         'Ariana Grande',
+        '23',
         'IOI City Mall',
         '18:00',
         'RM5.00',
@@ -212,6 +214,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
       carPoolTile(
         context,
         'Jackie Chan',
+        '65',
         'Cheras Traders Square',
         '08:30',
         'RM5.00',
@@ -221,6 +224,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
       carPoolTile(
         context,
         'Nicol David',
+        '20',
         'TBS',
         '14:45',
         'RM7.50',
@@ -230,7 +234,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
     ];
   }
 
-  Widget carPoolTile(BuildContext context, String name, String location,
+  Widget carPoolTile(BuildContext context, String name, String age, String location,
       String time, String price, String seats, String type) {
     return ListTile(
       leading: CircleAvatar(child: Text(name[0])),
@@ -245,7 +249,7 @@ class _CarPoolingHomeState extends State<CarPoolingHome> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ChatScreen(name: name)),
+          MaterialPageRoute(builder: (context) => ChatScreen(name: name, age: age.toString())),
         );
       },
     );
