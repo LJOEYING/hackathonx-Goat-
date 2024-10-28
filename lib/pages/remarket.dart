@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hackathonx/pages/newItem.dart';
 
 class Remarket extends StatefulWidget {
   const Remarket({super.key});
@@ -22,6 +23,29 @@ class _RemarketState extends State<Remarket> {
     'assets/advertisement1.jpg',
   ];
 
+// Sample data for products
+  final List<Map<String, dynamic>> _products = [
+    {
+      'image': 'assets/shoes1.png',
+      'name': 'Product 1balbaldbf',
+      'price': 'RM 99.99',
+    },
+    {
+      'image': 'assets/shoes2.png',
+      'name': 'Product 2',
+      'price': 'RM 79.99',
+    },
+    {
+      'image': 'assets/shoes1.png',
+      'name': 'Product 3',
+      'price': 'RM 59.99',
+    },
+    {
+      'image': 'assets/shoes2.png',
+      'name': 'Product 4',
+      'price': 'RM 49.99',
+    },
+  ];
   @override
   void initState() {
     super.initState();
@@ -91,9 +115,6 @@ class _RemarketState extends State<Remarket> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // SizedBox(
-            //   height: 20,
-            // ),
             // E-waste Awareness Banner with Slider
             Container(
               height: screenWidth * 0.55 + pointsBarHeight / 2,
@@ -113,7 +134,6 @@ class _RemarketState extends State<Remarket> {
                         });
                       },
                       itemBuilder: (context, index) {
-                        // Use local images from assets
                         final imagePath = _imagePaths[index];
                         return Container(
                           // margin: EdgeInsets.symmetric(horizontal: 20.0),
@@ -164,66 +184,241 @@ class _RemarketState extends State<Remarket> {
                 ],
               ),
             ),
-
-            // Selected Goods Section (Recommended & Daily Discover)
-            Padding(
-              // padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Recommend Section
-                  SectionHeader(title: 'Recommend'),
-                  Container(
-                    height: 150,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        ProductCard(
-                            title: 'Shoe',
-                            price: 'RM XXX',
-                            image: 'assets/shoes1.png'),
-                        ProductCard(
-                            title: 'Bottle',
-                            price: 'RM XXX',
-                            image: 'assets/shoes2.png'),
-                        ProductCard(
-                            title: 'Bottle',
-                            price: 'RM XXX',
-                            image: 'assets/shoes2.png'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  // Daily Discover Section
-                  SectionHeader(title: 'Daily Discover'), //maybe need padding
-                  Container(
-                    height: 150,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        ProductCard(
-                            title: 'Shoe',
-                            price: 'RM XXX',
-                            image: 'assets/shoes1.png'),
-                        ProductCard(
-                            title: 'Shoe',
-                            price: 'RM XXX',
-                            image: 'assets/shoes1.png'),
-                        ProductCard(
-                            title: 'Shoe',
-                            price: 'RM XXX',
-                            image: 'assets/shoes1.png'),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            _buildTabSection(),
           ],
         ),
+      ),
+    );
+  }
+
+// Reusable Tab Button Widget
+  Widget _buildTabButton(String label, bool isSelected, Function onTap) {
+    return GestureDetector(
+      onTap: () => onTap(),
+      child: Column(
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              color: isSelected ? Colors.blue : Colors.black,
+            ),
+          ),
+          if (isSelected)
+            Container(
+              margin: EdgeInsets.only(top: 5),
+              height: 3,
+              width: 50,
+              color: Colors.blue,
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTabSection() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      child: Container(
+        padding: EdgeInsets.only(top: 20.0), // Padding inside the container
+        // margin: EdgeInsets.symmetric(
+        //     horizontal: 8.0), // Margin around the container
+        decoration: BoxDecoration(
+          color: Colors.white, // Background color of the container
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(44),
+            topRight: Radius.circular(44),
+            bottomLeft: Radius.circular(0),
+            bottomRight: Radius.circular(0),
+          ),
+          border: Border.all(
+            color: Color.fromRGBO(227, 227, 130, 1),
+            width: 2, // Yellow border outline
+          ),
+        ),
+        child: Column(
+          children: [
+            // Tab buttons for "Selected Goods" and "Sell"
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildTabButton(
+                    'Selected Goods', _isSelectedGoods, () => _toggleTab(true)),
+                SizedBox(width: 60),
+                _buildTabButton(
+                    'Sell', !_isSelectedGoods, () => _toggleTab(false)),
+              ],
+            ),
+            SizedBox(height: 10), // Spacing between the tabs and the content
+
+            // Tab content (Selected Goods or Sell)
+            _isSelectedGoods
+                ? _buildSelectedGoodsSection()
+                : _buildSellSection(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  //Build Selected Goods section
+  Widget _buildSelectedGoodsSection() {
+    return Padding(
+      // padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Recommend Section
+          SectionHeader(title: 'Recommend'),
+          Container(
+            height: 150,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                ProductCard(
+                    title: 'Shoe', price: 'RM XXX', image: 'assets/shoes1.png'),
+                ProductCard(
+                    title: 'Bottle',
+                    price: 'RM XXX',
+                    image: 'assets/shoes2.png'),
+                ProductCard(
+                    title: 'Bottle',
+                    price: 'RM XXX',
+                    image: 'assets/shoes2.png'),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          // Daily Discover Section
+          SectionHeader(title: 'Daily Discover'), //maybe need padding
+          Container(
+            height: 150,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                ProductCard(
+                    title: 'Shoe', price: 'RM XXX', image: 'assets/shoes1.png'),
+                ProductCard(
+                    title: 'Shoe', price: 'RM XXX', image: 'assets/shoes1.png'),
+                ProductCard(
+                    title: 'Shoe', price: 'RM XXX', image: 'assets/shoes1.png'),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+// Sell Section Content (Product Layout with Image, Name, Price, and Floating Button)
+  Widget _buildSellSection() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Stack(
+        children: [
+          // Product Grid
+          GridView.builder(
+            shrinkWrap: true,
+            physics:
+                NeverScrollableScrollPhysics(), // Disable scrolling for GridView
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, // 2 columns
+              crossAxisSpacing: 12, // Spacing between columns
+              mainAxisSpacing: 12, // Spacing between rows
+              childAspectRatio:
+                  0.9, // Adjust this to control the card aspect ratio
+            ),
+            itemCount: _products.length,
+            itemBuilder: (context, index) {
+              return _buildProductCard(_products[index]);
+            },
+          ),
+
+          // Positioned Floating Button (at the bottom right after the last product)
+          Positioned(
+            right: 0,
+            bottom: 50,
+            child: FloatingActionButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddNewItemPage()),
+                );
+              }, // Handle adding products (e.g., trigger another action)
+              backgroundColor: Colors.blue, // Button color
+              child: Icon(Icons.add, color: Colors.white), // Plus icon
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+// Build each product card with image, name, and price
+  Widget _buildProductCard(Map<String, dynamic> product) {
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Product Image
+          // Expanded(
+          // child:
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            child: Image.asset(
+              product['image'],
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: 140,
+            ),
+            // ),
+          ),
+
+          // Product Name and Price Row
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Product Name with flexible size and ellipsis
+                Expanded(
+                  child: Text(
+                    product['name'],
+                    maxLines: 1,
+                    overflow:
+                        TextOverflow.ellipsis, // Show ellipsis for overflow
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 4), // Spacing between name and price
+
+                // Product Price
+                Text(
+                  product['price'],
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -373,26 +568,33 @@ class ProductCard extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 8.0),
-              child: Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
+                  // const EdgeInsets.symmetric(vertical: 10, horizontal: 8.0),
+                  const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
                       title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      overflow: TextOverflow.visible,
-                      softWrap: true,
                     ),
-                    Text(
-                      price,
-                      style: TextStyle(color: Colors.red, fontSize: 16),
-                      overflow: TextOverflow.visible,
-                      softWrap: true,
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    price,
+                    maxLines: 2,
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
             )
             // Row(
