@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathonx/pages/Item_desc.dart';
 import 'package:hackathonx/pages/carpool/carpool.dart';
 import 'package:hackathonx/pages/green_connect/green_connect.dart';
 import 'package:hackathonx/pages/green_connect/green_connect_quiz.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Waste Management & Car Pooling App',
       debugShowCheckedModeBanner: false,
-      home: BottomNavPage(),
+      home: ItemDescPage(),
     );
   }
 }

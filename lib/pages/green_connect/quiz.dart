@@ -11,6 +11,8 @@ class Quiz extends StatefulWidget {
       required this.quizOpt3,
       required this.quizOpt4,
       required this.onPressed,
+      required this.correctAns,
+      // required this.checkAns,
       super.key});
   int currentIndexSelection = 1;
   String quizTitle;
@@ -18,7 +20,9 @@ class Quiz extends StatefulWidget {
   String quizOpt2;
   String quizOpt3;
   String quizOpt4;
+  int correctAns;
   VoidCallback onPressed;
+  // void Function(int, int) checkAns;
 
   @override
   State<Quiz> createState() => _QuizState();
@@ -77,7 +81,9 @@ class _QuizState extends State<Quiz> {
           currentIndex: 4,
           quizOpt: widget.quizOpt4,
         ),
-        NextButton(onPressed: widget.onPressed),
+        NextButton(
+          onPressed: widget.onPressed,
+        ),
       ],
     );
   }
