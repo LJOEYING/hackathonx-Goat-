@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Waste Management & Car Pooling App',
       debugShowCheckedModeBanner: false,
-      home: ItemDescPage(),
+      home: BottomNavPage(),
     );
   }
 }
