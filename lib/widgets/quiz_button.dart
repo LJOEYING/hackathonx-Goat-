@@ -24,15 +24,17 @@ class QuizButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                quizOpt,
-                style: GoogleFonts.workSans(
-                  textStyle: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                    color: currentSelectionIndex == currentIndex
-                        ? Color(0xff426d48)
-                        : Color(0xff7a6f6f),
+              Expanded(
+                child: Text(
+                  quizOpt,
+                  style: GoogleFonts.workSans(
+                    textStyle: TextStyle(
+                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                      fontWeight: FontWeight.w400,
+                      color: currentSelectionIndex == currentIndex
+                          ? Color(0xff426d48)
+                          : Color(0xff7a6f6f),
+                    ),
                   ),
                 ),
               ),
@@ -42,11 +44,11 @@ class QuizButton extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               side: BorderSide(
                   color: currentSelectionIndex == currentIndex
-                      ? Color(0xff66a66f)
-                      : Color(0xff7a6f6f)),
+                      ? const Color(0xff66a66f)
+                      : const Color(0xff7a6f6f)),
               backgroundColor: currentSelectionIndex == currentIndex
-                  ? Color(0xffb9dbbf)
-                  : Color(0xffd1cece)),
+                  ? const Color(0xffb9dbbf)
+                  : const Color(0xffd1cece)),
         ),
       ),
     );

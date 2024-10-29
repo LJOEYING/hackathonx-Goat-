@@ -7,14 +7,14 @@ import 'package:hackathonx/pages/remarket.dart';
 import 'package:hackathonx/pages/scanner.dart';
 
 class BottomNavPage extends StatefulWidget {
-  const BottomNavPage({super.key});
+  BottomNavPage({required this.myCurrentPage, super.key});
+  int myCurrentPage;
 
   @override
   State<BottomNavPage> createState() => _BottomNavPageState();
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
-  int myCurrentPage = 0;
   List pages = [
     Remarket(),
     GreenMap(),
@@ -28,14 +28,14 @@ class _BottomNavPageState extends State<BottomNavPage> {
     return Scaffold(
       extendBody: true,
       // backgroundColor: Colors.transparent,
-      body: pages[myCurrentPage],
+      body: pages[widget.myCurrentPage],
       bottomNavigationBar: CurvedNavigationBar(
         color: Colors.black,
         backgroundColor: Colors.transparent,
-        index: myCurrentPage,
+        index: widget.myCurrentPage,
         onTap: (index) {
           setState(() {
-            myCurrentPage = index;
+            widget.myCurrentPage = index;
           });
         },
         items: [

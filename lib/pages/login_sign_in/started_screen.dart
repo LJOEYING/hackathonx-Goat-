@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hackathonx/pages/login.dart';
+import 'package:hackathonx/pages/login_sign_in/login.dart';
 import 'package:hackathonx/widgets/long_button.dart';
 
 class StartedScreen extends StatelessWidget {

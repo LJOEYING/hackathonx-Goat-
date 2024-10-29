@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackathonx/pages/green_connect/green_connect_quiz.dart';
 
 class GreenConnectTips extends StatelessWidget {
   const GreenConnectTips({super.key});
@@ -7,14 +8,14 @@ class GreenConnectTips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfffcfce2),
+      backgroundColor: const Color(0xfffcfce2),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               size: 40,
               color: Colors.black,
@@ -23,13 +24,19 @@ class GreenConnectTips extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.quiz_rounded,
-                  size: 40,
-                  color: Colors.black,
-                )),
-          )
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => GreenConnectQuiz()));
+              },
+              icon: const Icon(
+                Icons.quiz_rounded,
+                size: 40,
+                color: Colors.black,
+              ),
+            ),
+          ),
         ],
         backgroundColor: Colors.transparent,
       ),
