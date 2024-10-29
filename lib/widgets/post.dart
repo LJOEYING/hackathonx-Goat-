@@ -12,6 +12,7 @@ class Post extends StatefulWidget {
   String content;
   String profilePic;
   String profileName;
+  bool isLike = false;
 
   @override
   State<Post> createState() => _PostState();
@@ -60,8 +61,14 @@ class _PostState extends State<Post> {
                 Row(
                   children: [
                     IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.favorite_outline),
+                      onPressed: () {
+                        setState(() {
+                          widget.isLike = !widget.isLike;
+                        });
+                      },
+                      icon: widget.isLike
+                          ? Icon(Icons.favorite)
+                          : Icon(Icons.favorite_outline),
                     ),
                     IconButton(onPressed: () {}, icon: Icon(Icons.comment)),
                   ],

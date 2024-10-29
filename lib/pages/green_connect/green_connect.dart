@@ -19,6 +19,7 @@ class _GreenConnectState extends State<GreenConnect> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBody: true,
       backgroundColor: Colors.transparent,
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
@@ -26,8 +27,117 @@ class _GreenConnectState extends State<GreenConnect> {
           ? Padding(
               padding: const EdgeInsets.only(bottom: 100),
               child: FloatingActionButton(
-                onPressed: () {},
-                shape: CircleBorder(),
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext) {
+                        return AlertDialog(
+                          title: Center(
+                            child: Text(
+                              'Create New Post',
+                              style: GoogleFonts.workSans(
+                                  textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30)),
+                            ),
+                          ),
+                          content: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Divider(
+                                  color: Colors.black,
+                                  thickness: 3,
+                                ),
+                                Image.asset(
+                                  'assets/addPhoto.png',
+                                  width: MediaQuery.of(context).size.width,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.50,
+                                ),
+                                const TextField(
+                                  decoration: InputDecoration(
+                                    hintText: 'Title',
+                                    hintStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25),
+                                  ),
+                                ),
+                                const TextField(
+                                  maxLines: 5,
+                                  decoration: InputDecoration(
+                                      hintText:
+                                          'Write something that you want to share with the community',
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 15),
+                                      border: InputBorder.none),
+                                ),
+                              ],
+                            ),
+                          ),
+                          actions: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.30,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Color(0xff304b34),
+                                      shape: BeveledRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'DONE',
+                                      style: GoogleFonts.inter(
+                                          textStyle: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w800)),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.30,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Color(0xffbdbdbd),
+                                      shape: BeveledRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'CANCEL',
+                                      style: GoogleFonts.inter(
+                                          textStyle: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w800)),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      });
+                },
+                shape: const CircleBorder(),
                 backgroundColor: Colors.black,
                 child: Icon(
                   Icons.add,
