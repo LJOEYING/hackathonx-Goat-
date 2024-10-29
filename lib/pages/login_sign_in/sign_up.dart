@@ -9,27 +9,32 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignInState extends State<SignUp> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final editPasswordController = TextEditingController();
+  final emailController = TextEditingController(); // Controller for the email/username input field.
+  final passwordController = TextEditingController(); // Controller for the password input field.
+  final editPasswordController = TextEditingController(); // Controller for the confirm password input field.
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Email/Username Input Field
         CustomTextfield(
-            textEditingController: emailController, labelText: 'Username'),
+            textEditingController: emailController, // Assign the email controller.
+            labelText: 'Username'), // Label for the username input.
         const SizedBox(
           height: 30,
         ),
+        // Password Input Field
         CustomTextfield(
-            textEditingController: emailController, labelText: 'Password'),
+            textEditingController: passwordController, // Assign the password controller.
+            labelText: 'Password'), // Label for the password input.
         const SizedBox(
           height: 30,
         ),
+        // Confirm Password Input Field
         CustomTextfield(
-            textEditingController: emailController,
-            labelText: 'Confirm Password'),
+            textEditingController: editPasswordController, // Assign the confirm password controller.
+            labelText: 'Confirm Password'), // Label for the confirm password input.
       ],
     );
   }
