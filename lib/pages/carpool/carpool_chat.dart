@@ -361,7 +361,7 @@ class VoiceCallMessage extends StatelessWidget {
                     Icons.phone_forwarded,
                     color: Colors.black,
                     size: 32,
-                  ), // Phone icon
+                  ), 
                 ],
               ),
               SizedBox(

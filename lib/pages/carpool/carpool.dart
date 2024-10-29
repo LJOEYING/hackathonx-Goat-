@@ -194,17 +194,16 @@ class _CarPoolingState extends State<CarPooling> {
   }
 
   Widget carPoolList(
-    BuildContext context,
-    String name,
-    String age,
-    String location,
-    String time,
-    String price,
-    String person,
-    String gender,
-    String imageUrl,
-    String userType
-  ) {
+      BuildContext context,
+      String name,
+      String age,
+      String location,
+      String time,
+      String price,
+      String person,
+      String gender,
+      String imageUrl,
+      String userType) {
     int totalPerson = 4;
 
     return GestureDetector(
@@ -213,12 +212,11 @@ class _CarPoolingState extends State<CarPooling> {
           context,
           MaterialPageRoute(
             builder: (context) => ChatScreen(
-              name: name,
-              age: age,
-              gender: gender,
-              imageUrl: imageUrl,
-              userType: userType
-            ),
+                name: name,
+                age: age,
+                gender: gender,
+                imageUrl: imageUrl,
+                userType: userType),
           ),
         );
       },
@@ -250,11 +248,28 @@ class _CarPoolingState extends State<CarPooling> {
                 const Icon(Icons.circle, size: 11, color: Colors.red),
                 const SizedBox(width: 7),
                 Expanded(
-                  child: Text(
-                    location,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'to ',
+                          style: const TextStyle(
+                           
+                            fontSize: 16,
+                            color: Colors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text:
+                              location, 
+                          style: const TextStyle(
+                            fontWeight:
+                                FontWeight.bold, 
+                            fontSize: 18,
+                            color: Colors.black, 
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -425,7 +440,6 @@ class _CarPoolingState extends State<CarPooling> {
                 ],
               ),
             ],
-            
           ],
         ),
       ),
