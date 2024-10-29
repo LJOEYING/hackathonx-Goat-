@@ -11,7 +11,7 @@ class CarPooling extends StatefulWidget {
 }
 
 class _CarPoolingState extends State<CarPooling> {
-  bool isDriver = true;
+  bool isDriver = true; // Flag to check if the user is a driver or passenger
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +45,7 @@ class _CarPoolingState extends State<CarPooling> {
                     backgroundColor: Colors.transparent,
                     elevation: 0,
                     actions: [
+                      // Filter button
                       Container(
                         width: 40,
                         height: 40,
@@ -66,6 +67,7 @@ class _CarPoolingState extends State<CarPooling> {
                               color: Colors.black,
                             ),
                             onPressed: () {
+                               // Show the filter dialog when pressed
                               showDialog(
                                 context: context,
                                 builder: (context) => Dialog(
@@ -84,6 +86,7 @@ class _CarPoolingState extends State<CarPooling> {
                         ),
                       ),
                       const SizedBox(width: 12),
+                      // New post button
                       Container(
                         width: 40,
                         height: 40,
@@ -105,6 +108,7 @@ class _CarPoolingState extends State<CarPooling> {
                               color: Colors.black,
                             ),
                             onPressed: () {
+                              // Show the new post dialog when pressed
                               showDialog(
                                 context: context,
                                 builder: (context) =>
@@ -120,6 +124,7 @@ class _CarPoolingState extends State<CarPooling> {
               ),
             ],
           ),
+          // Display user location
           Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
@@ -143,7 +148,7 @@ class _CarPoolingState extends State<CarPooling> {
                   ),
                 ),
                 Text(
-                  'Kolej Canselor, UPM',
+                  'Kolej Canselor, UPM', // Example current location
                   maxLines: 1,
                     overflow:
                         TextOverflow.ellipsis,
@@ -155,20 +160,24 @@ class _CarPoolingState extends State<CarPooling> {
               ],
             ),
           ),
+          // Toggle button for Driver/Passenger selection
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 0.0),
             child: DividedButton(
               leftText: 'Driver',
               rightText: 'Passenger',
               onPressed: () {
+                // Toggle between Driver and Passenger
                 setState(() {
-                  isDriver = !isDriver;
+                  isDriver = !isDriver; // Change the state
                 });
               },
+              // Change color based on selection
               leftColor: isDriver ? Colors.black : Colors.grey,
               rightColor: isDriver ? Colors.grey : Colors.black,
             ),
           ),
+          // Section title for nearby people
           Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
@@ -185,6 +194,7 @@ class _CarPoolingState extends State<CarPooling> {
               ],
             ),
           ),
+          // Display the list of posts based on Driver/Passenger selection
           Expanded(
             child: ListView(
               children:
@@ -196,8 +206,10 @@ class _CarPoolingState extends State<CarPooling> {
     );
   }
 
+  // Returns a list of driver posts
   List<Widget> driverPosts(BuildContext context) {
     return [
+      // Sample driver posts with details
       carPoolList(context, 'Justin Bieber', '31', 'FSKTM, UPM', '17:00',
           'RM2.00', '2', 'male', 'assets/propic_1.jpg', 'driver'),
       carPoolList(context, 'Ariana Grande', '27', 'IOI City Mall', '18:00',
@@ -207,8 +219,10 @@ class _CarPoolingState extends State<CarPooling> {
     ];
   }
 
+  // Returns a list of passenger posts
   List<Widget> passengerPosts(BuildContext context) {
     return [
+      // Sample passenger posts with details
       carPoolList(context, 'Jackie Chan', '65', 'Cheras Traders Square',
           '08:30', 'RM5.00', '1', 'male', 'assets/propic_4.jpg', 'passenger'),
       carPoolList(context, 'Pham Hanni', '20', 'Mid Valley Megamall', '14:45',
@@ -216,20 +230,23 @@ class _CarPoolingState extends State<CarPooling> {
     ];
   }
 
+  // Widget that displays a car pool listing
   Widget carPoolList(
       BuildContext context,
-      String name,
-      String age,
-      String location,
-      String time,
-      String price,
-      String person,
-      String gender,
-      String imageUrl,
-      String userType) {
-    int totalPerson = 4;
+      String name, // Name of the driver/passenger
+      String age, // Age of the driver/passenger
+      String location, // Destination location
+      String time, // Departure time
+      String price, // Price per person
+      String person, // Number of persons
+      String gender, // Gender of the driver/passenger
+      String imageUrl, // URL for the profile image
+      String userType // Type of user (driver or passenger)
+      ) {
+    int totalPerson = 4; // Total number of seats in the car
 
     return GestureDetector(
+      // Navigate to ChatScreen when tapped
       onTap: () {
         Navigator.push(
           context,
@@ -264,7 +281,7 @@ class _CarPoolingState extends State<CarPooling> {
             Row(
               children: [
                 Text(
-                  time,
+                  time, // Display the departure time
                   style: const TextStyle(fontSize: 17),
                 ),
                 const SizedBox(width: 7),
@@ -282,7 +299,7 @@ class _CarPoolingState extends State<CarPooling> {
                           ),
                         ),
                         TextSpan(
-                          text: location,
+                          text: location, // Display the destination
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
@@ -293,6 +310,7 @@ class _CarPoolingState extends State<CarPooling> {
                     ),
                   ),
                 ),
+
                 if (isDriver) ...[
                   Row(
                     children: List.generate(
@@ -301,8 +319,8 @@ class _CarPoolingState extends State<CarPooling> {
                         return Icon(
                           Icons.airline_seat_recline_normal_sharp,
                           color: index < int.parse(person)
-                              ? Colors.green
-                              : Colors.red,
+                              ? Colors.green // Seat available
+                              : Colors.red, // Seat taken
                           size: 25,
                         );
                       },
@@ -312,12 +330,13 @@ class _CarPoolingState extends State<CarPooling> {
               ],
             ),
             const SizedBox(height: 2),
+            // Display additional details if the user is a driver
             if (isDriver) ...[
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    '$person Seats available',
+                    '$person Seats available', // Number of seats available
                     style: const TextStyle(
                       color: Colors.blueGrey,
                       fontSize: 13,
@@ -328,6 +347,7 @@ class _CarPoolingState extends State<CarPooling> {
               const SizedBox(height: 2),
               Row(
                 children: [
+                  // Profile image of the driver
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -351,7 +371,7 @@ class _CarPoolingState extends State<CarPooling> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          name,
+                          name, // Driver's name
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
@@ -359,6 +379,7 @@ class _CarPoolingState extends State<CarPooling> {
                         ),
                         Row(
                           children: [
+                            // Driver's gender
                             Icon(
                               gender == 'male' ? Icons.male : Icons.female,
                               color:
@@ -367,7 +388,7 @@ class _CarPoolingState extends State<CarPooling> {
                             ),
                             const SizedBox(width: 5),
                             Text(
-                              'AGE $age',
+                              'AGE $age', // Display age (driver or passenger)
                               style: const TextStyle(fontSize: 15),
                             ),
                           ],
@@ -393,12 +414,14 @@ class _CarPoolingState extends State<CarPooling> {
                 ],
               ),
             ] else ...[
+              // Render details if the user is a passenger
               const SizedBox(height: 15),
               Row(
                 children: [
                   Expanded(
                     child: Row(
                       children: [
+                        // Profile image of the passenger
                         Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -422,7 +445,7 @@ class _CarPoolingState extends State<CarPooling> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                name,
+                                name, // Passenger's name
                                 style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
@@ -430,6 +453,7 @@ class _CarPoolingState extends State<CarPooling> {
                               ),
                               Row(
                                 children: [
+                                  // Passenger's gender
                                   Icon(
                                     gender == 'male'
                                         ? Icons.male
@@ -441,7 +465,7 @@ class _CarPoolingState extends State<CarPooling> {
                                   ),
                                   const SizedBox(width: 5),
                                   Text(
-                                    'AGE $age',
+                                    'AGE $age', // Display age
                                     style: const TextStyle(fontSize: 15),
                                   ),
                                 ],
@@ -453,7 +477,7 @@ class _CarPoolingState extends State<CarPooling> {
                     ),
                   ),
                   Text(
-                    person,
+                    person, // Display the number of persons for the ride
                     style: const TextStyle(fontSize: 17),
                   ),
                   Icon(Icons.person, size: 35, color: Colors.black),
