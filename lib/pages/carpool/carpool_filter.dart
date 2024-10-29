@@ -63,9 +63,9 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      contentPadding: EdgeInsets.all(10.0),
-      insetPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-      title: Text(
+      contentPadding: const EdgeInsets.all(10.0),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      title: const Text(
         'Car Pool Filters',
         style: TextStyle(
           fontSize: 28.0,
@@ -76,8 +76,8 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 0.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, bottom: 0.0),
               child: Divider(
                 thickness: 3.0,
                 color: Colors.black,
@@ -97,14 +97,14 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 rightColor: isDriver ? Colors.grey : Colors.black,
               ),
             ),
-            Text(
+            const Text(
               'Location',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 19.0,
               ),
             ),
-            SizedBox(height: 13.0),
+            const SizedBox(height: 13.0),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
@@ -115,11 +115,11 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
               ),
               child: DropdownButtonFormField<String>(
                 value: _location,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 6.0),
                   border: InputBorder.none,
                 ),
-                hint: Text('Select a location to go'),
+                hint: const Text('Select a location to go'),
                 items: [
                   'IOI City Mall',
                   'Olive Hill',
@@ -162,7 +162,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 _date != null
                     ? '${_date!.toLocal().toString().split(' ')[0]}'
                     : 'Select date',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.blue,
                   fontSize: 17.0,
                 ),
