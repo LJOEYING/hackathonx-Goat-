@@ -12,7 +12,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
   bool _isNeverWornSelected = false; // For "Never Worn"
   File? _selectedImage; // Variable to hold the selected image
 
-  final ImagePicker _picker = ImagePicker(); // Image picker instance
+  final ImagePicker _picker = ImagePicker();
 
   // Method to pick an image from the gallery
   Future<void> _pickImage() async {
@@ -20,7 +20,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
 
     if (image != null) {
       setState(() {
-        _selectedImage = File(image.path); // Save the selected image
+        _selectedImage = File(image.path);
       });
     }
   }
@@ -30,7 +30,6 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
     return Scaffold(
       body: Stack(
         children: [
-          // First Picture: Background Image (background3.png)
           Positioned(
             top: 0,
             left: 0,
@@ -38,18 +37,16 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
             child: Image.asset(
               'assets/background3.png',
               fit: BoxFit.cover,
-              height: 230, // Adjust this height as needed
+              height: 230,
               width: double.infinity,
             ),
           ),
-
-          // Back Button
           Positioned(
-            top: 30, // Adjust padding from top
-            left: 5, // Adjust padding from left
+            top: 30,
+            left: 5,
             child: GestureDetector(
               onTap: () {
-                Navigator.pop(context); // Handle back navigation
+                Navigator.pop(context);
               },
               child: Container(
                 padding: EdgeInsets.all(8),
@@ -57,10 +54,8 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
               ),
             ),
           ),
-          // "Add New Item" Text (Center of First Picture)
           Positioned(
-            top:
-                100, // Adjust this to vertically center the text over the image
+            top: 90,
             left: 0,
             right: 0,
             child: Center(
@@ -74,16 +69,14 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
               ),
             ),
           ),
-
-          // Second Picture (addPhoto.png) overlapping the bottom part of the first image
           Positioned(
             top:
-                180, // Adjust this to overlap the bottom part of background3.png
+                150, // Adjust this to overlap the bottom part of background3.png
             left: 0,
             right: 0,
             child: Center(
               child: GestureDetector(
-                onTap: _pickImage, // On tap, open gallery
+                onTap: _pickImage,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: _selectedImage != null
@@ -95,41 +88,32 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                         )
                       : Image.asset(
                           'assets/addPhoto.png',
-                          height: 200, // Adjust size as needed
-                          width: 250, // Adjust size as needed
+                          height: 200,
+                          width: 250,
                           fit: BoxFit.cover,
                         ),
                 ),
               ),
             ),
           ),
-
-          // Content Section (Product Name, Price, Description Button, etc.)
           Positioned.fill(
-            top: 370, // Adjust this to make space for the overlapping images
+            top: 370,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Product Name Field
                     _buildTextField('Product Name', 'Enter product name'),
                     SizedBox(height: 16),
-
-                    // Original Price Field
                     _buildTextField('Original Price', 'Enter original price'),
                     SizedBox(height: 16),
-
-                    // Selling Price Field
                     _buildTextField('Selling Price', 'Enter selling price'),
                     SizedBox(height: 16),
-
-                    // Product Condition Section
                     Text(
                       'Product Condition',
                       style: TextStyle(
-                        fontSize: 20, // Smaller font size
+                        fontSize: 20,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
                       ),
@@ -140,17 +124,15 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                       children: [
                         ChoiceChip(
                           label: Text('Never Worn',
-                              style:
-                                  TextStyle(fontSize: 12)), // Font size reduced
+                              style: TextStyle(fontSize: 12)),
                           selected: false,
                           onSelected: (bool selected) {
-                            _isNeverWornSelected = selected; //??
+                            // _isNeverWornSelected = selected; // Handle selection
                           },
                         ),
                         ChoiceChip(
                           label: Text('Very Good Condition',
-                              style:
-                                  TextStyle(fontSize: 12)), // Font size reduced
+                              style: TextStyle(fontSize: 12)),
                           selected: false,
                           onSelected: (bool selected) {
                             // Handle selection
@@ -158,8 +140,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                         ),
                         ChoiceChip(
                           label: Text('Good Condition',
-                              style:
-                                  TextStyle(fontSize: 12)), // Font size reduced
+                              style: TextStyle(fontSize: 12)),
                           selected: false,
                           onSelected: (bool selected) {
                             // Handle selection
@@ -167,17 +148,14 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                         ),
                         ChoiceChip(
                           label: Text('Fair Condition',
-                              style:
-                                  TextStyle(fontSize: 12)), // Font size reduced
+                              style: TextStyle(fontSize: 12)),
                           selected: false,
                           onSelected: (bool selected) {
                             // Handle selection
                           },
                         ),
                         ChoiceChip(
-                          label: Text('Others',
-                              style:
-                                  TextStyle(fontSize: 12)), // Font size reduced
+                          label: Text('Others', style: TextStyle(fontSize: 12)),
                           selected: false,
                           onSelected: (bool selected) {
                             // Handle selection
@@ -220,7 +198,6 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
     );
   }
 
-  // Method to build TextFields with a uniform style
   Widget _buildTextField(String labelText, String hintText,
       {int maxLines = 1}) {
     return Column(
@@ -229,8 +206,8 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
         Text(
           labelText,
           style: TextStyle(
-            fontSize: 20, // Set label text size to match your design
-            fontWeight: FontWeight.w600, // Bold font for the label
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
           ),
         ),
         SizedBox(height: 8),
@@ -239,7 +216,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
             hintText: hintText,
-            hintStyle: TextStyle(fontSize: 12), // Smaller hint text size
+            hintStyle: TextStyle(fontSize: 12),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: Colors.grey),

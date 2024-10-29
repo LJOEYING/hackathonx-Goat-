@@ -1,14 +1,33 @@
 import 'package:flutter/material.dart';
 
 class ItemDescPage extends StatefulWidget {
-  const ItemDescPage({super.key}); //required itemName, required itemPhoto
+  const ItemDescPage({super.key});
 
   @override
   State<ItemDescPage> createState() => _ItemDescPageState();
 }
 
-class _ItemDescPageState extends State<ItemDescPage> {
+class _ItemDescPageState extends State<ItemDescPage>
+    with SingleTickerProviderStateMixin {
   bool isHovering = false;
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.1).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +35,6 @@ class _ItemDescPageState extends State<ItemDescPage> {
       backgroundColor: Color.fromRGBO(252, 252, 226, 1),
       body: Stack(
         children: [
-          // First Picture: Background Image (background3.png)
           Positioned(
             top: 0,
             left: 0,
@@ -24,18 +42,18 @@ class _ItemDescPageState extends State<ItemDescPage> {
             child: Image.asset(
               'assets/background4.png',
               fit: BoxFit.fill,
-              height: 230, // Adjust this height as needed
+              height: 230,
               width: double.infinity,
             ),
           ),
 
           // Back Button
           Positioned(
-            top: 30, // Adjust padding from top
-            left: 5, // Adjust padding from left
+            top: 30,
+            left: 5,
             child: GestureDetector(
               onTap: () {
-                Navigator.pop(context); // Handle back navigation
+                Navigator.pop(context);
               },
               child: Container(
                 padding: EdgeInsets.all(8),
@@ -45,12 +63,12 @@ class _ItemDescPageState extends State<ItemDescPage> {
           ),
           // Item Name
           Positioned(
-            top: 90, // Adjust this to vertically center the text over the image
+            top: 90,
             left: 0,
             right: 0,
             child: Center(
               child: Text(
-                'Add New Item', // itemName
+                'Nike Air Force ',
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -62,8 +80,7 @@ class _ItemDescPageState extends State<ItemDescPage> {
 
           // Item Photo
           Positioned(
-            top:
-                150, // Adjust this to overlap the bottom part of background3.png
+            top: 150,
             left: 0,
             right: 0,
             child: Center(
@@ -71,15 +88,14 @@ class _ItemDescPageState extends State<ItemDescPage> {
                 borderRadius: BorderRadius.circular(30),
                 child: Image.asset(
                   'assets/shoes1.png',
-                  height: 200, // Adjust size as needed
-                  width: 250, // Adjust size as needed
+                  height: 200,
+                  width: 250,
                   fit: BoxFit.fill,
                 ),
               ),
             ),
           ),
 
-          // Content Area
           Positioned.fill(
             top: 380,
             left: 16,
@@ -91,31 +107,41 @@ class _ItemDescPageState extends State<ItemDescPage> {
                   // Points Section
                   Center(
                     child: MouseRegion(
-                      onEnter: (_) {
+                      onHover: (_) {
                         setState(() {
                           isHovering = true;
+                          isHovering
+                              ? _controller.forward()
+                              : _controller.reverse();
                         });
                       },
-                      onExit: (_) {
-                        setState(() {
-                          isHovering = false;
-                        });
-                      },
-                      child: Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(252, 252, 226, 1),
-                          border: Border.all(
-                              color: Color.fromRGBO(90, 138, 98, 1), width: 2),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          isHovering ? 'Redeem' : '3500 points',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                      // onExit: (_) {
+                      //   setState(() {
+                      //     isHovering = false;
+                      //     _controller.reverse();
+                      //   });
+                      // },
+                      child: ScaleTransition(
+                        scale: _scaleAnimation,
+                        child: Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: isHovering
+                                ? Colors.green[400]
+                                : Color.fromRGBO(252, 252, 226, 1),
+                            border: Border.all(
+                                color: Color.fromRGBO(90, 138, 98, 1),
+                                width: 2),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            isHovering ? 'Redeem' : '3500 points',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -123,7 +149,6 @@ class _ItemDescPageState extends State<ItemDescPage> {
                   ),
                   SizedBox(height: 20),
 
-                  // Curved Background for Content Area
                   ClipPath(
                     child: Container(
                       padding:
@@ -150,7 +175,6 @@ class _ItemDescPageState extends State<ItemDescPage> {
                                       fontSize: 12,
                                     ),
                                   ),
-                                  SizedBox(width: 2),
                                   Row(
                                     children: [
                                       Text(
@@ -176,8 +200,6 @@ class _ItemDescPageState extends State<ItemDescPage> {
                                   ),
                                 ],
                               ),
-
-                              // Cart Icon and Add to Cart Text
                               Column(
                                 children: [
                                   Icon(Icons.shopping_cart_outlined,
@@ -191,9 +213,8 @@ class _ItemDescPageState extends State<ItemDescPage> {
                               ),
                             ],
                           ),
-                          Divider(color: Colors.grey, thickness: 1),
-
-                          // Product Condition
+                          Divider(color: Colors.grey, thickness: 2),
+                          SizedBox(height: 10),
                           Row(
                             children: [
                               Text(
@@ -219,9 +240,8 @@ class _ItemDescPageState extends State<ItemDescPage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 16),
+                          SizedBox(height: 10),
 
-                          // Description
                           Text(
                             'Description:',
                             style: TextStyle(
