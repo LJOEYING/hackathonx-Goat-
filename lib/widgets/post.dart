@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+// Stateful widget `Post` represents a social media post with title, content, profile picture, 
+// profile name, and interactive like and comment buttons.
 class Post extends StatefulWidget {
+  // Post properties: title, content, profile picture path, and profile name.
   Post(
       {required this.title,
       required this.content,
@@ -22,6 +25,7 @@ class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
     return Padding(
+      // Padding around the entire post widget for spacing
       padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
       child: Container(
         padding: EdgeInsets.all(15),
@@ -31,6 +35,7 @@ class _PostState extends State<Post> {
             boxShadow: [
               BoxShadow(blurRadius: 2, offset: Offset(0, 1)),
             ]),
+            // Column to structure the post's content in vertical layout
         child: Column(
           children: [
             Text(
@@ -58,18 +63,20 @@ class _PostState extends State<Post> {
                     Text(widget.profileName)
                   ],
                 ),
+                // Row for like and comment icons
                 Row(
                   children: [
                     IconButton(
                       onPressed: () {
                         setState(() {
-                          widget.isLike = !widget.isLike;
+                          widget.isLike = !widget.isLike; // Toggle like status and update UI
                         });
                       },
                       icon: widget.isLike
                           ? Icon(Icons.favorite)
                           : Icon(Icons.favorite_outline),
                     ),
+                    // Comment button with IconButton widget
                     IconButton(onPressed: () {}, icon: Icon(Icons.comment)),
                   ],
                 ),

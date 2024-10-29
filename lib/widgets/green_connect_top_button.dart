@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+// Custom button widget styled specifically for the GreenConnect application.
+// Takes in customizable properties for text, colors, and action handling.
 class GreenConnectTopButton extends StatelessWidget {
   GreenConnectTopButton(
-      {required this.buttonName,
-      required this.fontColor,
-      required this.backgroundColor,
-      required this.onPressed,
-      required this.borderColor,
+      {required this.buttonName, // Button label text
+      required this.fontColor, // Font color of the button label
+      required this.backgroundColor, // Background color of the button
+      required this.onPressed, // Callback function when button is pressed
+      required this.borderColor, // Border color of the button
       super.key});
 
   String buttonName;
