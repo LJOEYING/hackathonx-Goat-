@@ -3,7 +3,6 @@ import 'package:hackathonx/pages/carpool/carpool_chat.dart';
 import 'package:hackathonx/pages/carpool/carpool_filter.dart';
 import 'package:hackathonx/pages/carpool/carpool_newpost.dart';
 
-
 class CarPooling extends StatefulWidget {
   const CarPooling({super.key});
 
@@ -135,14 +134,14 @@ class _CarPoolingState extends State<CarPooling> {
                 Text(
                   ' Your Location : ',
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 Text(
                   'Kolej Canselor, UPM',
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -176,7 +175,7 @@ class _CarPoolingState extends State<CarPooling> {
 
   List<Widget> driverPosts(BuildContext context) {
     return [
-      carPoolTile(
+      carPoolList(
         context,
         'Justin Bieber',
         '28',
@@ -186,7 +185,7 @@ class _CarPoolingState extends State<CarPooling> {
         '2',
         'Driver',
       ),
-      carPoolTile(
+      carPoolList(
         context,
         'Ariana Grande',
         '23',
@@ -201,7 +200,7 @@ class _CarPoolingState extends State<CarPooling> {
 
   List<Widget> passengerPosts(BuildContext context) {
     return [
-      carPoolTile(
+      carPoolList(
         context,
         'Jackie Chan',
         '65',
@@ -211,7 +210,7 @@ class _CarPoolingState extends State<CarPooling> {
         '1',
         'Passenger',
       ),
-      carPoolTile(
+      carPoolList(
         context,
         'Nicol David',
         '20',
@@ -224,27 +223,61 @@ class _CarPoolingState extends State<CarPooling> {
     ];
   }
 
-  Widget carPoolTile(BuildContext context, String name, String age, String location,
-      String time, String price, String seats, String type) {
-    return ListTile(
-      leading: CircleAvatar(child: Text(name[0])),
-      title: Text(name),
-      subtitle: Text('$location | $time | $price'),
-      trailing: Column(
-        children: [
-          Text('$seats seats'),
-          Text(type),
-        ],
-      ),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ChatScreen(name: name, age: age.toString())),
-        );
-      },
-       
-    );
-  }
+  Widget carPoolList(BuildContext context, String name, String age,
+    String location, String time, String price, String seats, String type) {
+  return Container(
+    margin: const EdgeInsets.symmetric(vertical: 8.0), // Add some margin
+    padding: const EdgeInsets.all(18.0), // Add some padding
+    decoration: BoxDecoration(
+      color: Color.fromRGBO(241, 241, 205, 1),
+      borderRadius: BorderRadius.circular(10),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 1,
+          blurRadius: 5,
+          offset: const Offset(0, 3), // changes position of shadow
+        ),
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              time,
+              style: const TextStyle(fontSize: 17),
+            ),
+            const SizedBox(width: 7),
+            const Icon(Icons.circle, size: 11, color: Colors.red),
+            const SizedBox(width: 7),
+            Expanded(
+              child: Text(
+                location,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 5),
+        Text('$location | $time | $price'),
+        const SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('$seats seats'),
+            Text(type),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
 }
 
 class DividedButton extends StatelessWidget {
