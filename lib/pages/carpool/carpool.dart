@@ -162,6 +162,22 @@ class _CarPoolingState extends State<CarPooling> {
               rightColor: isDriver ? Colors.grey : Colors.black,
             ),
           ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'People Nearby You',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.blueGrey,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: ListView(
               children:
@@ -221,7 +237,7 @@ class _CarPoolingState extends State<CarPooling> {
         );
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+        margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
           color: const Color.fromRGBO(241, 241, 205, 1),
@@ -254,19 +270,16 @@ class _CarPoolingState extends State<CarPooling> {
                         TextSpan(
                           text: 'to ',
                           style: const TextStyle(
-                           
                             fontSize: 16,
                             color: Colors.black,
                           ),
                         ),
                         TextSpan(
-                          text:
-                              location, 
+                          text: location,
                           style: const TextStyle(
-                            fontWeight:
-                                FontWeight.bold, 
+                            fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: Colors.black, 
+                            color: Colors.black,
                           ),
                         ),
                       ],
