@@ -133,13 +133,20 @@ class _CarPoolingState extends State<CarPooling> {
                 ),
                 Text(
                   ' Your Location : ',
+                  maxLines: 1,
+                    overflow:
+                        TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
+                     
                   ),
                 ),
                 Text(
                   'Kolej Canselor, UPM',
+                  maxLines: 1,
+                    overflow:
+                        TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
