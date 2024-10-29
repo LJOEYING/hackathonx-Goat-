@@ -149,136 +149,133 @@ class _ItemDescPageState extends State<ItemDescPage>
                   ),
                   SizedBox(height: 20),
 
-                  ClipPath(
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(255, 255, 245, 1),
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(60))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(width: 5),
-                          // Price Section
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Original Price:',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'RM 209.00',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 19,
-                                          fontWeight: FontWeight.bold,
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
-                                      ),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        'RM 89.00',
-                                        style: TextStyle(
-                                          color: Colors.red,
-                                          fontSize: 35,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Icon(Icons.shopping_cart_outlined,
-                                      size: 30, color: Colors.black),
-                                  Text(
-                                    'Add to cart',
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 12),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Divider(color: Colors.grey, thickness: 2),
-                          SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Text(
-                                'Product Condition:',
-                                style: TextStyle(
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(255, 255, 245, 1),
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(60))),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 5),
+                        // Price Section
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Original Price:',
+                                  style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(width: 8),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 8, vertical: 4),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(4),
+                                    fontSize: 12,
+                                  ),
                                 ),
-                                child: Text(
-                                  'Never Worn',
+                                Row(
+                                  children: [
+                                    Text(
+                                      'RM 209.00',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 19,
+                                        fontWeight: FontWeight.bold,
+                                        decoration: TextDecoration.lineThrough,
+                                      ),
+                                    ),
+                                    SizedBox(width: 8),
+                                    Text(
+                                      'RM 89.00',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Icon(Icons.shopping_cart_outlined,
+                                    size: 30, color: Colors.black),
+                                Text(
+                                  'Add to cart',
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 12),
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 10),
-
-                          Text(
-                            'Description:',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                              ],
                             ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            'It is a size of EU 40. Comfortable and supportive, perfect for daily wear or workouts. Iconic design that pairs well with any outfit. Well-maintained and cleaned, ready for a new home!',
-                            style: TextStyle(color: Colors.black, fontSize: 16),
-                          ),
-                          SizedBox(height: 32),
-
-                          // Purchase Button
-                          Center(
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                                minimumSize: Size(double.infinity, 50),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
+                          ],
+                        ),
+                        Divider(color: Colors.grey, thickness: 2),
+                        SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Text(
+                              'Product Condition:',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(width: 8),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(4),
                               ),
-                              onPressed: () {
-                                // Handle purchase action
-                              },
                               child: Text(
-                                'PURCHASE',
+                                'Never Worn',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
+                                    color: Colors.black, fontSize: 12),
                               ),
                             ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+
+                        Text(
+                          'Description:',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
                           ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'It is a size of EU 40. Comfortable and supportive, perfect for daily wear or workouts. Iconic design that pairs well with any outfit. Well-maintained and cleaned, ready for a new home!',
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        ),
+                        SizedBox(height: 32),
+
+                        // Purchase Button
+                        Center(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green,
+                              minimumSize: Size(double.infinity, 50),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            onPressed: () {
+                              // Handle purchase action
+                            },
+                            child: Text(
+                              'PURCHASE',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
