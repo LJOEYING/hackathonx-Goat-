@@ -22,6 +22,36 @@ class _RemarketState extends State<Remarket> {
     'assets/advertisement1.jpg',
     'assets/advertisement1.jpg',
   ];
+  final List<Map<String, dynamic>> _recommendProduct = [
+    {
+      'name': 'Nike bal balbal ',
+      'original_price': 'RM 100',
+      'selling_price': 'RM 50',
+      'photo': 'assets/shoes1.png',
+      'condition': 'Never Worn',
+      'description':
+          'It is a size of EU 40. Comfortable and supportive, perfect for daily wear or workouts. Iconic design that pairs well with any outfit. Well-maintained and cleaned, ready for a new home',
+    },
+    {
+      'name': 'Adidas hahadhdsh',
+      'original_price': 'RM 500',
+      'selling_price': 'RM 65',
+      'photo': 'assets/shoes2.png',
+      'condition': 'Fair Condition',
+      'description':
+          'It is a size of EU 40. Comfortable and supportive, perfect for daily wear or workouts. Iconic design that pairs well with any outfit. Well-maintained and cleaned, ready for a new home',
+    },
+    {
+      'name': 'New Brella ahhaahds',
+      'original_price': 'RM 1000',
+      'selling_price': 'RM 75',
+      'photo': 'assets/shoes2.png',
+      'condition': 'Very Good Condition',
+      'description':
+          'It is a size of EU 40. Comfortable and supportive, perfect for daily wear or workouts. Iconic design that pairs well with any outfit. Well-maintained and cleaned, ready for a new home',
+    },
+    // Add more products as needed
+  ];
 
 // Sample data for products
   final List<Map<String, dynamic>> _products = [

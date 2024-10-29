@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class ChatScreen extends StatefulWidget {
   final String name;
   final String age;
+  final String gender;
+  final String imageUrl;
 
-  const ChatScreen({super.key, required this.name, required this.age});
+  const ChatScreen({super.key, required this.name, required this.age, required this.gender, required this.imageUrl});
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -14,19 +16,23 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   List<ChatMessage> _messages = [
     ChatMessage(
-      message: "Hi Justin ! 👋 I'm interested in carpooling with you to FSKTM, UPM at 10:50 AM.",
+      message:
+          "Hi Justin ! 👋 I'm interested in carpooling with you to FSKTM, UPM at 10:50 AM.",
       isSentByMe: true,
     ),
     ChatMessage(
-      message: "Hihi 😄 ~ So, will you be picking me up in my area, or should I meet you at a nearby place for pickup?",
+      message:
+          "Hihi 😄 ~ So, will you be picking me up in my area, or should I meet you at a nearby place for pickup?",
       isSentByMe: true,
     ),
     ChatMessage(
-      message: "Hey yo~!✌️ how should I address you? Maybe you can give me the name of your Taman, and I can pick you up there—it will be easier. 😉",
+      message:
+          "Hey yo~!✌️ how should I address you? Maybe you can give me the name of your Taman, and I can pick you up there—it will be easier. 😉",
       isSentByMe: false,
     ),
     ChatMessage(
-      message: "Is it okay to call you now? I can tell you where I live nearby. 😉",
+      message:
+          "Is it okay to call you now? I can tell you where I live nearby. 😉",
       isSentByMe: true,
     ),
     ChatMessage(
@@ -47,7 +53,7 @@ class _ChatScreenState extends State<ChatScreen> {
     if (_controller.text.isNotEmpty) {
       setState(() {
         _messages.add(ChatMessage(message: _controller.text, isSentByMe: true));
-        _controller.clear(); // Clear the text field after sending
+        _controller.clear();
       });
     }
   }
@@ -183,10 +189,10 @@ class _ChatScreenState extends State<ChatScreen> {
             color: Color.fromRGBO(209, 206, 206, 1),
             child: Padding(
               padding: const EdgeInsets.only(
-                left: 5.0, // Left padding
-                right: 5.0, // Right padding
-                top: 12.0, // Top padding
-                bottom: 12.0, // Bottom padding
+                left: 5.0,
+                right: 5.0,
+                top: 12.0,
+                bottom: 12.0,
               ),
               child: Row(
                 children: [
@@ -213,16 +219,15 @@ class _ChatScreenState extends State<ChatScreen> {
                           borderSide: BorderSide.none,
                         ),
                         contentPadding: EdgeInsets.symmetric(
-                          vertical: 15.0, // Adjust vertical padding
-                          horizontal:
-                              20.0, // Adjust horizontal padding for text
+                          vertical: 15.0,
+                          horizontal: 20.0,
                         ),
                         suffixIcon: Padding(
                           padding: EdgeInsets.only(right: 10.0),
                           child: Icon(
-                            Icons.mic, // Choose your desired icon
+                            Icons.mic,
                             color: Colors.black,
-                            size: 33, // Icon color
+                            size: 33,
                           ),
                         ),
                       ),
@@ -354,14 +359,12 @@ class VoiceCallMessage extends StatelessWidget {
                 children: [
                   Text(
                     'Voice Call',
-                    style: TextStyle(color: Colors.black), // Voice call text
+                    style: TextStyle(color: Colors.black),
                   ),
                   Text(
                     '2 sec · You joined',
-                    style: TextStyle(
-                        color: Colors.blueGrey, fontSize: 13), // Duration text
+                    style: TextStyle(color: Colors.blueGrey, fontSize: 13),
                   ),
-                  // Space between texts
                 ],
               ),
             ],
