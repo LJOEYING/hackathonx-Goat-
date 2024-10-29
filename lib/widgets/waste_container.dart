@@ -6,17 +6,19 @@ class WasteContainer extends StatelessWidget {
       required this.wasteType,
       required this.wasteHeight,
       required this.wasteWidth,
+      required this.onTap,
       super.key});
 
   String wasteIcon;
   String wasteType;
   double wasteWidth;
   double wasteHeight;
+  VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Container(

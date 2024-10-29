@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hackathonx/widgets/next_button.dart';
 import 'package:hackathonx/widgets/quiz_button.dart';
 
 class Quiz extends StatefulWidget {
@@ -10,9 +9,9 @@ class Quiz extends StatefulWidget {
       required this.quizOpt2,
       required this.quizOpt3,
       required this.quizOpt4,
-      required this.onPressed,
+      // required this.onPressed,
       required this.correctAns,
-      // required this.checkAns,
+      required this.handleNextPage,
       super.key});
   int currentIndexSelection = 1;
   String quizTitle;
@@ -21,8 +20,8 @@ class Quiz extends StatefulWidget {
   String quizOpt3;
   String quizOpt4;
   int correctAns;
-  VoidCallback onPressed;
-  // void Function(int, int) checkAns;
+  // VoidCallback onPressed;
+  void Function(int, int) handleNextPage;
 
   @override
   State<Quiz> createState() => _QuizState();
@@ -34,13 +33,13 @@ class _QuizState extends State<Quiz> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 50),
+        const SizedBox(height: 50),
         Text(
           widget.quizTitle,
           style: GoogleFonts.workSans(
-              textStyle: TextStyle(fontSize: 21, fontWeight: FontWeight.w700)),
+              textStyle: const TextStyle(fontSize: 21, fontWeight: FontWeight.w700)),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         QuizButton(
           currentSelectionIndex: widget.currentIndexSelection,
           onPressed: () {
@@ -81,8 +80,25 @@ class _QuizState extends State<Quiz> {
           currentIndex: 4,
           quizOpt: widget.quizOpt4,
         ),
-        NextButton(
-          onPressed: widget.onPressed,
+        Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            child: ElevatedButton(
+              onPressed: () {
+                widget.handleNextPage(
+                    widget.currentIndexSelection, widget.correctAns);
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                backgroundColor: const Color(0xff48794f),
+              ),
+              child: const Text(
+                'NEXT',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ),
+          ),
         ),
       ],
     );

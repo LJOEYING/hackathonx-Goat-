@@ -140,22 +140,22 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 isExpanded: true,
               ),
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding:  EdgeInsets.only(top: 0, bottom: 20.0),
               child: Divider(
                 thickness: 1.0,
                 color: Colors.grey,
               ),
             ),
-            Text(
+            const Text(
               'Date',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 19.0,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextButton(
               onPressed: _selectDate,
               child: Text(
@@ -285,9 +285,9 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, bottom: 20.0),
               child: Divider(
                 thickness: 1.0,
                 color: Colors.grey,

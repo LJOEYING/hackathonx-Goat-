@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hackathonx/pages/sign_up.dart';
+import 'package:hackathonx/pages/login_sign_in/sign_up.dart';
 import 'package:hackathonx/widgets/custom_textfield.dart';
 import 'package:hackathonx/widgets/long_button.dart';
 

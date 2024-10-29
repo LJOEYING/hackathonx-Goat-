@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hackathonx/pages/green_connect/green_connect_tips.dart';
+import 'package:hackathonx/pages/green_connect/green_connect_waste.dart';
 import 'package:hackathonx/widgets/waste_container.dart';
 
 class GreenConnectEdu extends StatelessWidget {
@@ -15,8 +16,8 @@ class GreenConnectEdu extends StatelessWidget {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10, top: 15, bottom: 1),
+              const Padding(
+                padding: EdgeInsets.only(left: 10, top: 15, bottom: 1),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -38,24 +39,48 @@ class GreenConnectEdu extends StatelessWidget {
                       wasteType: 'Recyclable',
                       wasteWidth: 60,
                       wasteHeight: 60,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GreenConnectWaste()));
+                      },
                     ),
                     WasteContainer(
                       wasteIcon: 'assets/icon2.png',
                       wasteType: 'Non\nRecyclable',
                       wasteWidth: 60,
                       wasteHeight: 60,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GreenConnectWaste()));
+                      },
                     ),
                     WasteContainer(
                       wasteIcon: 'assets/icon3.png',
                       wasteType: 'Organic',
                       wasteWidth: 55,
                       wasteHeight: 55,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GreenConnectWaste()));
+                      },
                     ),
                     WasteContainer(
                       wasteIcon: 'assets/icon4.png',
                       wasteType: 'Chemical',
                       wasteWidth: 70,
                       wasteHeight: 70,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GreenConnectWaste()));
+                      },
                     ),
                   ],
                 ),
@@ -77,9 +102,9 @@ class GreenConnectEdu extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => GreenConnectTips()));
+                    context,
+                    MaterialPageRoute(builder: (context) => GreenConnectTips()),
+                  );
                 },
                 child: Container(
                     padding: EdgeInsets.all(20),
@@ -118,7 +143,13 @@ class GreenConnectEdu extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GreenConnectTips()),
+                      );
+                    },
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.40,
                       height: MediaQuery.of(context).size.width * 0.70,
@@ -155,7 +186,13 @@ class GreenConnectEdu extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GreenConnectTips()),
+                            );
+                          },
                           child: Container(
                             padding: EdgeInsets.all(10),
                             width: MediaQuery.of(context).size.width * 0.50,
@@ -191,14 +228,20 @@ class GreenConnectEdu extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GreenConnectTips()),
+                            );
+                          },
                           child: Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             width: MediaQuery.of(context).size.width * 0.50,
                             height: MediaQuery.of(context).size.width * 0.34,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Color(0xffaaaa6b),
+                              color: const Color(0xffaaaa6b),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -207,7 +250,7 @@ class GreenConnectEdu extends StatelessWidget {
                                 Text(
                                   'Smart',
                                   style: GoogleFonts.workSans(
-                                    textStyle: TextStyle(
+                                    textStyle: const TextStyle(
                                         fontSize: 18,
                                         color: Color(0xff373434),
                                         fontWeight: FontWeight.bold),
@@ -218,7 +261,7 @@ class GreenConnectEdu extends StatelessWidget {
                                   style: GoogleFonts.workSans(
                                       textStyle: TextStyle(
                                           fontSize: 13,
-                                          color: Color(0XFF373434)
+                                          color: const Color(0XFF373434)
                                               .withOpacity(0.60),
                                           fontWeight: FontWeight.w600)),
                                 ),
