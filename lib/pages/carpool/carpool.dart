@@ -176,20 +176,20 @@ class _CarPoolingState extends State<CarPooling> {
   List<Widget> driverPosts(BuildContext context) {
     return [
       carPoolList(context, 'Justin Bieber', '31', 'FSKTM, UPM', '17:00',
-          'RM2.00', '2', 'male', 'assets/propic_1.jpg'),
+          'RM2.00', '2', 'male', 'assets/propic_1.jpg', 'driver'),
       carPoolList(context, 'Ariana Grande', '27', 'IOI City Mall', '18:00',
-          'RM5.50', '4', 'female', 'assets/propic_2.png'),
+          'RM5.50', '4', 'female', 'assets/propic_2.png', 'driver'),
       carPoolList(context, 'Firdhaus Farmizi ', '23', 'Pavillion KL', '20:30',
-          'RM13.00', '3', 'male', 'assets/propic_3.jpg'),
+          'RM13.00', '3', 'male', 'assets/propic_3.jpg', 'driver'),
     ];
   }
 
   List<Widget> passengerPosts(BuildContext context) {
     return [
       carPoolList(context, 'Jackie Chan', '65', 'Cheras Traders Square',
-          '08:30', 'RM5.00', '1', 'male', 'assets/propic_4.jpg'),
+          '08:30', 'RM5.00', '1', 'male', 'assets/propic_4.jpg', 'passenger'),
       carPoolList(context, 'Pham Hanni', '20', 'Mid Valley Megamall', '14:45',
-          'RM7.50', '2', 'female', 'assets/propic_5.jpg'),
+          'RM7.50', '2', 'female', 'assets/propic_5.jpg', 'passenger'),
     ];
   }
 
@@ -203,6 +203,7 @@ class _CarPoolingState extends State<CarPooling> {
     String person,
     String gender,
     String imageUrl,
+    String userType
   ) {
     int totalPerson = 4;
 
@@ -216,6 +217,7 @@ class _CarPoolingState extends State<CarPooling> {
               age: age,
               gender: gender,
               imageUrl: imageUrl,
+              userType: userType
             ),
           ),
         );

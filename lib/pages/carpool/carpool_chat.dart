@@ -5,8 +5,15 @@ class ChatScreen extends StatefulWidget {
   final String age;
   final String gender;
   final String imageUrl;
+  final String userType;
 
-  const ChatScreen({super.key, required this.name, required this.age, required this.gender, required this.imageUrl});
+  const ChatScreen(
+      {super.key,
+      required this.name,
+      required this.age,
+      required this.gender,
+      required this.imageUrl,
+      required this.userType});
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -16,23 +23,16 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   List<ChatMessage> _messages = [
     ChatMessage(
-      message:
-          "Hi Justin ! 👋 I'm interested in carpooling with you to FSKTM, UPM at 10:50 AM.",
+      message: "Hi ! 👋 I'm interested in carpooling with you. 😄",
       isSentByMe: true,
     ),
     ChatMessage(
-      message:
-          "Hihi 😄 ~ So, will you be picking me up in my area, or should I meet you at a nearby place for pickup?",
-      isSentByMe: true,
-    ),
-    ChatMessage(
-      message:
-          "Hey yo~!✌️ how should I address you? Maybe you can give me the name of your Taman, and I can pick you up there—it will be easier. 😉",
+      message: "Hey yo~!✌️ how should I address you? 😉",
       isSentByMe: false,
     ),
     ChatMessage(
       message:
-          "Is it okay to call you now? I can tell you where I live nearby. 😉",
+          "My name is Wendy. Is it okay to call you now? So that we can discuss further more. 😉",
       isSentByMe: true,
     ),
     ChatMessage(
@@ -75,6 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
           },
         ),
         actions: [
+          
           Padding(
             padding: const EdgeInsets.only(right: 13.0),
             child: ElevatedButton(
@@ -89,13 +90,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
               ),
-              child: Text(
-                'BOOK A RIDE',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 19.0,
-                ),
-              ),
+                child: Text(
+        widget.userType == 'driver' ? 'BOOK A RIDE' : 'SHARE A RIDE', // Conditional text
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 19.0,
+        ),
+      ),
             ),
           ),
         ],
@@ -113,7 +114,7 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 CircleAvatar(
                   radius: 45.0,
-                  backgroundImage: AssetImage('assets/profile_picture.jpg'),
+                  backgroundImage: AssetImage(widget.imageUrl),
                 ),
                 SizedBox(width: 20),
                 Column(
@@ -126,12 +127,24 @@ class _ChatScreenState extends State<ChatScreen> {
                         color: Color.fromRGBO(241, 241, 205, 1),
                       ),
                     ),
-                    Text(
-                      'AGE ${widget.age}',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Color.fromRGBO(241, 241, 205, 1),
-                      ),
+                    Row(
+                      children: [
+                        Icon(
+                          widget.gender == 'male' ? Icons.male : Icons.female,
+                          color: widget.gender == 'male'
+                              ? Colors.blue
+                              : Colors.pink,
+                          size: 21,
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          'AGE ${widget.age}',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color.fromRGBO(241, 241, 205, 1),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
