@@ -8,59 +8,59 @@ import 'package:hackathonx/pages/scanner.dart';
 
 class BottomNavPage extends StatefulWidget {
   BottomNavPage({required this.myCurrentPage, super.key});
-  int myCurrentPage;
+  int myCurrentPage; // Variable to keep track of the current page index.
 
   @override
   State<BottomNavPage> createState() => _BottomNavPageState();
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
+  // List of pages to navigate between.
   List pages = [
-    Remarket(),
-    GreenMap(),
-    Scanner(),
-    GreenConnect(),
-    CarPooling(),
+    Remarket(), // Home page (second-hand market)
+    GreenMap(), // Map page
+    Scanner(), // Scanner page 
+    GreenConnect(), // Educational Content & Community page
+    CarPooling(), // Carpooling page
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      // backgroundColor: Colors.transparent,
-      body: pages[widget.myCurrentPage],
+      body: pages[widget.myCurrentPage], // Displays the current page based on the selected index.
       bottomNavigationBar: CurvedNavigationBar(
         color: Colors.black,
         backgroundColor: Colors.transparent,
-        index: widget.myCurrentPage,
+        index: widget.myCurrentPage, // Sets the initial index of the navigation bar.
         onTap: (index) {
           setState(() {
-            widget.myCurrentPage = index;
+            widget.myCurrentPage = index; // Updates the current page index on tap.
           });
         },
         items: [
           Icon(
-            Icons.home,
+            Icons.home, // Icon for the home page.
             size: 32,
             color: Colors.white,
           ),
           Icon(
-            Icons.location_on,
+            Icons.location_on, // Icon for the map page.
             size: 32,
             color: Colors.white,
           ),
           Icon(
-            Icons.qr_code_scanner_sharp,
+            Icons.qr_code_scanner_sharp, // Icon for the scanner page.
             size: 32,
             color: Colors.white,
           ),
           Icon(
-            Icons.perm_device_information_rounded,
+            Icons.perm_device_information_rounded, // Icon for the green connect page.
             size: 32,
             color: Colors.white,
           ),
           Icon(
-            Icons.directions_car,
+            Icons.directions_car, // Icon for the carpooling page.
             size: 32,
             color: Colors.white,
           ),

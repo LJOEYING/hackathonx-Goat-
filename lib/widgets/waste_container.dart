@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+// A stateless widget that represents a waste container with an icon, label, and tap interaction.
+// This widget can be reused to display various waste types, each with different icons and dimensions.
 class WasteContainer extends StatelessWidget {
+  // Constructor requires specific properties for the waste container icon, type, dimensions, and tap functionality.
   WasteContainer(
       {required this.wasteIcon,
       required this.wasteType,
@@ -38,6 +41,7 @@ class WasteContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              // Display the waste icon image with specified dimensions
               Image.asset(
                 wasteIcon,
                 width: wasteWidth,

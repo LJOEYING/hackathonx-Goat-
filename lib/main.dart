@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Waste Management & Car Pooling App',
-      debugShowCheckedModeBanner: false,
+      title: 'Waste Management & Car Pooling App', // The title of the application.
+      debugShowCheckedModeBanner: false, // Hides the debug banner in the app.
       home: BottomNavPage(
-        myCurrentPage: 0,
+        myCurrentPage: 0, // The initial page index for the bottom navigation (0 for the first page).
       ),
     );
   }
