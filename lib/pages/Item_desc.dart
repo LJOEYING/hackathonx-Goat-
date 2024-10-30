@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// The main page that displays the item description
 class ItemDescPage extends StatefulWidget {
   const ItemDescPage({super.key});
 
@@ -9,9 +10,9 @@ class ItemDescPage extends StatefulWidget {
 
 class _ItemDescPageState extends State<ItemDescPage>
     with SingleTickerProviderStateMixin {
-  bool isHovering = false;
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
+  bool isHovering = false; // Track if the mouse is hovering over the redeem button
+  late AnimationController _controller; // Animation controller for scaling effect
+  late Animation<double> _scaleAnimation; // Animation for scaling effect
 
   @override
   void initState() {
@@ -47,7 +48,7 @@ class _ItemDescPageState extends State<ItemDescPage>
             ),
           ),
 
-          // Back Button
+          // Back Button to return to the previous page
           Positioned(
             top: 30,
             left: 5,
@@ -61,7 +62,7 @@ class _ItemDescPageState extends State<ItemDescPage>
               ),
             ),
           ),
-          // Item Name
+          // Item Name displayed at the top center of the page
           Positioned(
             top: 90,
             left: 0,
@@ -78,7 +79,7 @@ class _ItemDescPageState extends State<ItemDescPage>
             ),
           ),
 
-          // Item Photo
+          // Item Photo displayed below the item name
           Positioned(
             top: 150,
             left: 0,
@@ -96,6 +97,7 @@ class _ItemDescPageState extends State<ItemDescPage>
             ),
           ),
 
+          // Scrollable section for item details
           Positioned.fill(
             top: 380,
             left: 16,
@@ -104,7 +106,7 @@ class _ItemDescPageState extends State<ItemDescPage>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Points Section
+                  // Points Section with hover effect
                   Center(
                     child: MouseRegion(
                       onHover: (_) {
@@ -115,12 +117,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                               : _controller.reverse();
                         });
                       },
-                      // onExit: (_) {
-                      //   setState(() {
-                      //     isHovering = false;
-                      //     _controller.reverse();
-                      //   });
-                      // },
+                      
                       child: ScaleTransition(
                         scale: _scaleAnimation,
                         child: Container(
@@ -149,6 +146,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                   ),
                   SizedBox(height: 20),
 
+                  // Main container for item details
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
@@ -160,7 +158,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(width: 5),
-                        // Price Section
+                        // Price Section with original price, discounted price, and add to cart option
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -236,6 +234,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                         ),
                         SizedBox(height: 10),
 
+                        // Description section for item details
                         Text(
                           'Description:',
                           style: TextStyle(
