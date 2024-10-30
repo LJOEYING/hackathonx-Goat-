@@ -18,9 +18,9 @@ class CustomTextfield extends StatefulWidget {
 class _CustomTextfieldState extends State<CustomTextfield> {
   @override
   Widget build(BuildContext context) {
-    // Builds a TextFormField with provided controller and label text.
+    // Builds a TextFormField with provided controller and label text
     return TextFormField(
-      controller: widget.textEditingController, // Links the controller for input management.
+      controller: widget.textEditingController, // Links the controller for input management
       decoration: InputDecoration(labelText: widget.labelText),
     );
   }

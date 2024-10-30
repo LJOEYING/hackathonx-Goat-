@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hackathonx/pages/carpool/carpool.dart';
 
+
+// Car Pool filter options
 class CarPoolFilter extends StatefulWidget {
-  final double price;
-  final String? location;
-  final DateTime? date;
+  final double price; 
+  final String? location; 
+  final DateTime? date; 
 
   CarPoolFilter({
     required this.price,
@@ -17,6 +19,7 @@ class CarPoolFilter extends StatefulWidget {
 }
 
 class _CarPoolFilterState extends State<CarPoolFilter> {
+  // Declare state variables to store the selected filter values
   late double _price;
   String? _location;
   DateTime? _date;
@@ -32,6 +35,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
     _date = widget.date;
   }
 
+  // Method to show date picker and set selected date
   Future<void> _selectDate() async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -42,11 +46,12 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
 
     if (picked != null) {
       setState(() {
-        _date = picked;
+        _date = picked; // Update date if a valid date was picked
       });
     }
   }
 
+  // Method to show time picker and set selected time
   Future<void> _selectTime() async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
@@ -55,7 +60,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
 
     if (picked != null) {
       setState(() {
-        _time = picked;
+        _time = picked; // Update time if a valid time was picked
       });
     }
   }
@@ -83,6 +88,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 color: Colors.black,
               ),
             ),
+            // Toggle button for selecting between 'Driver' and 'Passenger'
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15.0),
               child: DividedButton(
@@ -97,6 +103,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 rightColor: isDriver ? Colors.grey : Colors.black,
               ),
             ),
+            // Location dropdown to select a destination
             const Text(
               'Location',
               style: TextStyle(
@@ -148,6 +155,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 color: Colors.grey,
               ),
             ),
+            // Date selection button
             const Text(
               'Date',
               style: TextStyle(
@@ -176,6 +184,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 color: Colors.grey,
               ),
             ),
+            // Time selection button
             Text(
               'Time',
               style: TextStyle(
@@ -202,6 +211,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 color: Colors.grey,
               ),
             ),
+            // Price selection with a slider
             Text(
               'Price: \RM ${_price.toStringAsFixed(2)}',
               style: TextStyle(
@@ -227,6 +237,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 color: Colors.grey,
               ),
             ),
+            // Gender preference selection with icons
             Text(
               'Gender Preference',
               style: TextStyle(
@@ -238,6 +249,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                // Male selection
                 GestureDetector(
                   onTap: () {
                     setState(() {
@@ -260,6 +272,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                     ],
                   ),
                 ),
+                // Female selection
                 GestureDetector(
                   onTap: () {
                     setState(() {
@@ -296,6 +309,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
           ],
         ),
       ),
+      // Actions at the bottom of the dialog: Cancel and Done buttons
       actions: [
         Row(
           mainAxisAlignment:

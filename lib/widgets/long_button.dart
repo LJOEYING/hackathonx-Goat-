@@ -25,7 +25,7 @@ class LongButton extends StatelessWidget {
             backgroundColor: Color(backgroundColor),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-        onPressed: onPressed, // Calls the provided function when button is pressed.
+        onPressed: onPressed, // Calls the provided function when button is pressed
         child: Text(
           buttonText,
           style: GoogleFonts.inter(
