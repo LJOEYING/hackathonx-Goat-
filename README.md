@@ -26,19 +26,19 @@ Ensure you have the following installed:
 ### Dependencies
 This project uses the following dependencies:
 * [image_picker](https://pub.dev/packages/image_picker))
-* :    
-* http: https://pub.dev/packages/http   
-* camera: https://pub.dev/packages/camera   
-* path_provider: https://pub.dev/packages/path_provider   
-* path: https://pub.dev/packages/path  
-* google_generative_ai: https://pub.dev/packages/google_generative_ai  
-* firebase_core: https://pub.dev/packages/firebase_core  
-* cloud_firestore: https://pub.dev/packages/cloud_firestore  
-* firebase_auth: https://pub.dev/packages/firebase_auth  
-* firebase_storage: https://pub.dev/packages/firebase_storage  
-* cupertino_icons: https://pub.dev/packages/cupertino_icons  
-* google_fonts: https://pub.dev/packages/google_fonts  
-* curved_navigation_bar: https://pub.dev/packages/curved_navigation_bar
+* image_picker : https://pub.dev/packages/image_picker 
+* http : https://pub.dev/packages/http   
+* camera : https://pub.dev/packages/camera   
+* path_provider : https://pub.dev/packages/path_provider   
+* path : https://pub.dev/packages/path  
+* google_generative_ai : https://pub.dev/packages/google_generative_ai  
+* firebase_core: https ://pub.dev/packages/firebase_core  
+* cloud_firestore : https://pub.dev/packages/cloud_firestore  
+* firebase_auth : https://pub.dev/packages/firebase_auth  
+* firebase_storage : https://pub.dev/packages/firebase_storage  
+* cupertino_icons : https://pub.dev/packages/cupertino_icons  
+* google_fonts : https://pub.dev/packages/google_fonts  
+* curved_navigation_bar : https://pub.dev/packages/curved_navigation_bar
 
 ### Install Dependencies:
 Run this command to install all dependencies:   
