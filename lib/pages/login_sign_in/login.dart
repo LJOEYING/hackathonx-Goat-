@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackathonx/pages/login_sign_in/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:hackathonx/pages/login_sign_in/sign_up.dart';
+import 'package:hackathonx/widgets/bottom_nav_page.dart';
 import 'package:hackathonx/widgets/custom_textfield.dart';
 import 'package:hackathonx/widgets/long_button.dart';
 
@@ -12,11 +15,65 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final FirebaseAuthServices auth = FirebaseAuthServices();
+
+  void signUp() async {
+    String email = signUpEmailController.text;
+    String password = signUpPasswordController.text;
+    String confirmPassword = signUpConfirmPasswordController.text;
+
+    User? user = await auth.signUpWithEmailAndPassword(email, password);
+
+    if (user != null) {
+      print('User is successfully created');
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => BottomNavPage(myCurrentPage: 0)));
+    } else {
+      print("Some error happened");
+    }
+  }
+
+  void signIn() async {
+    String email = loginEmailController.text;
+    String password = loginPasswordController.text;
+
+    User? user = await auth.signInWithEmailAndPassword(email, password);
+
+    if (user != null) {
+      print('User is successfully login');
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => BottomNavPage(myCurrentPage: 0)));
+    } else {
+      print("Some error happened");
+    }
+  }
+
+  @override
+  void dispose() {
+    signUpEmailController.dispose();
+    signUpPasswordController.dispose();
+    signUpConfirmPasswordController.dispose();
+    loginEmailController.dispose();
+    loginPasswordController.dispose();
+  }
+
   final formKey = GlobalKey<FormState>(); // Key to uniquely identify the form.
-  final emailController =
+  final loginEmailController =
       TextEditingController(); // Controller for the email/username input field.
-  final passwordController =
+  final loginPasswordController =
       TextEditingController(); // Controller for the password input field.
+
+  final signUpEmailController =
+      TextEditingController(); // Controller for the email/username input field.
+  final signUpPasswordController =
+      TextEditingController(); // Controller for the password input field.
+  final signUpConfirmPasswordController =
+      TextEditingController(); // Controller for the confirm password input field.
+
   bool isLogin =
       true; // State variable to toggle between login and signup forms.
 
@@ -61,14 +118,17 @@ class _LoginState extends State<Login> {
                               children: [
                                 // Username input field
                                 CustomTextfield(
-                                    textEditingController: emailController,
-                                    labelText: 'Username'),
+                                    textEditingController: loginEmailController,
+                                    obscureText: false,
+                                    labelText: 'Email'),
                                 const SizedBox(
                                   height: 30,
                                 ),
                                 // Password input field
                                 CustomTextfield(
-                                    textEditingController: passwordController,
+                                    textEditingController:
+                                        loginPasswordController,
+                                    obscureText: true,
                                     labelText: 'Password'),
                                 Align(
                                   alignment: Alignment.centerRight,
@@ -84,7 +144,39 @@ class _LoginState extends State<Login> {
                                 ),
                               ],
                             )
-                          : const SignUp()), // Display the SignUp widget if isLogin is false.
+                          : Column(
+                              children: [
+                                // Email/Username Input Field
+                                CustomTextfield(
+                                    textEditingController:
+                                        signUpEmailController, // Assign the email controller.
+                                    obscureText: false,
+                                    labelText:
+                                        'Email'), // Label for the username input.
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                // Password Input Field
+                                CustomTextfield(
+                                    textEditingController:
+                                        signUpPasswordController,
+                                    obscureText:
+                                        true, // Assign the password controller.
+                                    labelText:
+                                        'Password'), // Label for the password input.
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                // Confirm Password Input Field
+                                CustomTextfield(
+                                    textEditingController:
+                                        signUpConfirmPasswordController,
+                                    obscureText:
+                                        true, // Assign the confirm password controller.
+                                    labelText:
+                                        'Confirm Password'), // Label for the confirm password input.
+                              ],
+                            )), // Display the SignUp widget if isLogin is false.
                 ],
               ),
               Padding(
@@ -94,7 +186,9 @@ class _LoginState extends State<Login> {
                   children: [
                     // Long button for login or signup action.
                     LongButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        isLogin ? signIn() : signUp();
+                      },
                       buttonText: isLogin ? 'LOGIN' : 'SIGN UP',
                       fontColor: 0xffffffff,
                       backgroundColor: 0xff304B34,
