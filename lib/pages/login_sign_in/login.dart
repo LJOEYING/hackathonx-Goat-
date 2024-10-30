@@ -15,6 +15,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+<<<<<<< HEAD
   final FirebaseAuthServices auth = FirebaseAuthServices();
 
   void signUp() async {
@@ -61,19 +62,26 @@ class _LoginState extends State<Login> {
     loginPasswordController.dispose();
   }
 
-  final formKey = GlobalKey<FormState>(); // Key to uniquely identify the form
+  final formKey = GlobalKey<FormState>(); // Key to uniquely identify the form.
   final loginEmailController =
       TextEditingController(); // Controller for the email/username input field.
   final loginPasswordController =
       TextEditingController(); // Controller for the password input field.
 
   final signUpEmailController =
-      TextEditingController(); // Controller for the email/username input field
+      TextEditingController(); // Controller for the email/username input field.
   final signUpPasswordController =
-      TextEditingController(); // Controller for the password input field
+      TextEditingController(); // Controller for the password input field.
   final signUpConfirmPasswordController =
       TextEditingController(); // Controller for the confirm password input field.
 
+=======
+  final formKey = GlobalKey<FormState>(); // Key to uniquely identify the form
+  final emailController =
+      TextEditingController(); // Controller for the email/username input field
+  final passwordController =
+      TextEditingController(); // Controller for the password input field
+>>>>>>> 13a04b0737ca879834574b971def2483766f3485
   bool isLogin =
       true; // State variable to toggle between login and signup forms
 
@@ -144,7 +152,43 @@ class _LoginState extends State<Login> {
                                 ),
                               ],
                             )
-                          : const SignUp()), // Display the SignUp widget if isLogin is false.
+<<<<<<< HEAD
+                          : Column(
+                              children: [
+                                // Email/Username Input Field
+                                CustomTextfield(
+                                    textEditingController:
+                                        signUpEmailController, // Assign the email controller.
+                                    obscureText: false,
+                                    labelText:
+                                        'Email'), // Label for the username input.
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                // Password Input Field
+                                CustomTextfield(
+                                    textEditingController:
+                                        signUpPasswordController,
+                                    obscureText:
+                                        true, // Assign the password controller.
+                                    labelText:
+                                        'Password'), // Label for the password input.
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                // Confirm Password Input Field
+                                CustomTextfield(
+                                    textEditingController:
+                                        signUpConfirmPasswordController,
+                                    obscureText:
+                                        true, // Assign the confirm password controller.
+                                    labelText:
+                                        'Confirm Password'), // Label for the confirm password input.
+                              ],
+                            )), // Display the SignUp widget if isLogin is false.
+=======
+                          : const SignUp()), // Display the SignUp widget if isLogin is false
+>>>>>>> 13a04b0737ca879834574b971def2483766f3485
                 ],
               ),
               Padding(
