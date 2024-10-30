@@ -6,12 +6,14 @@ class CustomTextfield extends StatefulWidget {
       textEditingController; // Text controller to manage the text input value.
   String labelText; // Label text to display as a hint above the text input.
   bool obscureText;
+  final String? Function(String?) validator;
 
   CustomTextfield(
       {super.key,
       required this.textEditingController,
       required this.labelText,
-      required this.obscureText});
+      required this.obscureText,
+      required this.validator});
 
   @override
   State<CustomTextfield> createState() => _CustomTextfieldState();
@@ -22,6 +24,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   Widget build(BuildContext context) {
     // Builds a TextFormField with provided controller and label text
     return TextFormField(
+      validator: widget.validator,
       obscureText: widget.obscureText,
       controller: widget
           .textEditingController, // Links the controller for input management
