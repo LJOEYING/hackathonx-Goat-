@@ -21,7 +21,7 @@ class GreenConnectWaste extends StatelessWidget {
               size: 40,
               color: const Color(0xfffcfce2),
             )),
-            // Quiz button on the top-right to navigate to GreenConnectQuiz page
+        // Quiz button on the top-right to navigate to GreenConnectQuiz page
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -120,7 +120,7 @@ class GreenConnectWaste extends StatelessWidget {
                   child: const CircleAvatar(
                     radius: 100,
                     backgroundColor: Colors.white,
-                    backgroundImage: AssetImage('assets/waste1.png'),
+                    backgroundImage: AssetImage('assets/Ellipse 19.png'),
                   ),
                 ),
               ),
