@@ -1,7 +1,7 @@
 # Overview
 This app is designed to promote sustainable living by providing a comprehensive platform for eco-conscious buying, selling, and recycling. By facilitating second-hand purchases, informed recycling, and community engagement, the app addresses the environmental impacts of overproduction and waste. Aligning with the United Nations Sustainable Development Goals (SDGs) 11, 12, and 13—particularly SDG 11, which focuses on creating sustainable cities and communities—ReMarket empowers users to make responsible consumption choices, reduce their carbon footprints, and contribute to a greener future.
 
-# Core Functions
+### Core Functions
 1. Second-Hand Marketplace:
 - Users can easily buy and sell second-hand items, allowing them to give new life to products that would otherwise contribute to waste. This feature not only facilitates transactions but also cultivates a community centered around sustainability.
 2. Carpooling Feature:
