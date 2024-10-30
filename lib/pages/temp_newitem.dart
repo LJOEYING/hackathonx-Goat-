@@ -9,17 +9,10 @@ class AddNewItemPage extends StatefulWidget {
 }
 
 class _AddNewItemPageState extends State<AddNewItemPage> {
+  bool _isNeverWornSelected = false; // For "Never Worn"
   File? _selectedImage; // Variable to hold the selected image
+
   final ImagePicker _picker = ImagePicker();
-
-  // Controllers to get user input
-  final TextEditingController _productNameController = TextEditingController();
-  final TextEditingController _originalPriceController =
-      TextEditingController();
-  final TextEditingController _sellingPriceController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-
-  String? _selectedCondition; // To hold the selected condition
 
   // Method to pick an image from the gallery
   Future<void> _pickImage() async {
@@ -30,30 +23,6 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
         _selectedImage = File(image.path);
       });
     }
-  }
-
-  @override
-  void dispose() {
-    // Dispose controllers when the page is disposed to avoid memory leaks
-    _productNameController.dispose();
-    _originalPriceController.dispose();
-    _sellingPriceController.dispose();
-    _descriptionController.dispose();
-    super.dispose();
-  }
-
-  // Method to handle the 'Done' button and pass data back
-  void _saveProduct() {
-    final Map<String, dynamic> product = {
-      'productName': _productNameController.text,
-      'originalPrice': _originalPriceController.text,
-      'sellingPrice': _sellingPriceController.text,
-      'description': _descriptionController.text,
-      'condition': _selectedCondition,
-      'image': _selectedImage, // Can be null if not selected
-    };
-
-    Navigator.pop(context, product);
   }
 
   @override
@@ -135,14 +104,11 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildTextField('Product Name', 'Enter product name',
-                        _productNameController),
+                    _buildTextField('Product Name', 'Enter product name'),
                     SizedBox(height: 16),
-                    _buildTextField('Original Price', 'Enter original price',
-                        _originalPriceController),
+                    _buildTextField('Original Price', 'Enter original price'),
                     SizedBox(height: 16),
-                    _buildTextField('Selling Price', 'Enter selling price',
-                        _sellingPriceController),
+                    _buildTextField('Selling Price', 'Enter selling price'),
                     SizedBox(height: 16),
                     Text(
                       'Product Condition',
@@ -159,50 +125,40 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                         ChoiceChip(
                           label: Text('Never Worn',
                               style: TextStyle(fontSize: 12)),
-                          selected: _selectedCondition == 'Never Worn',
+                          selected: false,
                           onSelected: (bool selected) {
-                            setState(() {
-                              _selectedCondition = 'Never Worn';
-                            });
+                            // _isNeverWornSelected = selected; // Handle selection
                           },
                         ),
                         ChoiceChip(
                           label: Text('Very Good Condition',
                               style: TextStyle(fontSize: 12)),
-                          selected: _selectedCondition == 'Very Good Condition',
+                          selected: false,
                           onSelected: (bool selected) {
-                            setState(() {
-                              _selectedCondition = 'Very Good Condition';
-                            });
+                            // Handle selection
                           },
                         ),
                         ChoiceChip(
                           label: Text('Good Condition',
                               style: TextStyle(fontSize: 12)),
-                          selected: _selectedCondition == 'Good Condition',
+                          selected: false,
                           onSelected: (bool selected) {
-                            setState(() {
-                              _selectedCondition = 'Good Condition';
-                            });
+                            // Handle selection
                           },
                         ),
                         ChoiceChip(
                           label: Text('Fair Condition',
                               style: TextStyle(fontSize: 12)),
-                          selected: _selectedCondition == 'Fair Condition',
+                          selected: false,
                           onSelected: (bool selected) {
-                            setState(() {
-                              _selectedCondition = 'Fair Condition';
-                            });
+                            // Handle selection
                           },
                         ),
                         ChoiceChip(
                           label: Text('Others', style: TextStyle(fontSize: 12)),
-                          selected: _selectedCondition == 'Others',
+                          selected: false,
                           onSelected: (bool selected) {
-                            setState(() {
-                              _selectedCondition = 'Others';
-                            });
+                            // Handle selection
                           },
                         ),
                       ],
@@ -211,7 +167,6 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
 
                     // Product Description
                     _buildTextField('Description', 'Enter product description',
-                        _descriptionController,
                         maxLines: 3),
                     SizedBox(height: 16),
 
@@ -221,7 +176,9 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      onPressed: _saveProduct,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       style: ElevatedButton.styleFrom(
                         minimumSize: Size(double.infinity, 50),
                         foregroundColor: Colors.white,
@@ -241,8 +198,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
     );
   }
 
-  Widget _buildTextField(
-      String labelText, String hintText, TextEditingController controller,
+  Widget _buildTextField(String labelText, String hintText,
       {int maxLines = 1}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -256,7 +212,6 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
         ),
         SizedBox(height: 8),
         TextField(
-          controller: controller,
           maxLines: maxLines,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
@@ -272,3 +227,4 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
     );
   }
 }
+
