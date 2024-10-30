@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+// ChatScreen widget displaying a chat interface between users.
 class ChatScreen extends StatefulWidget {
-  final String name;
-  final String age;
-  final String gender;
-  final String imageUrl;
-  final String userType;
+  final String name; // User's name
+  final String age; // User's age
+  final String gender; // User's gender
+  final String imageUrl; // URL of user's profile image
+  final String userType; // Type of user ('driver' or 'passenger')
 
   const ChatScreen(
       {super.key,
@@ -21,6 +22,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
+  // Initial example messages
   List<ChatMessage> _messages = [
     ChatMessage(
       message: "Hi ! 👋 I'm interested in carpooling with you. 😄",
@@ -49,9 +51,11 @@ class _ChatScreenState extends State<ChatScreen> {
     ),
   ];
 
+  // Function to send message
   void _sendMessage() {
     if (_controller.text.isNotEmpty) {
       setState(() {
+        // Add the message to list and clear input
         _messages.add(ChatMessage(message: _controller.text, isSentByMe: true));
         _controller.clear();
       });
@@ -71,11 +75,10 @@ class _ChatScreenState extends State<ChatScreen> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(context); // Go back to previous screen
           },
         ),
         actions: [
-          
           Padding(
             padding: const EdgeInsets.only(right: 13.0),
             child: ElevatedButton(
@@ -90,19 +93,22 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
               ),
-                child: Text(
-        widget.userType == 'driver' ? 'BOOK A RIDE' : 'SHARE A RIDE', // Conditional text
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 19.0,
-        ),
-      ),
+              child: Text(
+                widget.userType == 'driver'
+                    ? 'BOOK A RIDE'
+                    : 'SHARE A RIDE', // Conditional text
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 19.0,
+                ),
+              ),
             ),
           ),
         ],
       ),
       body: Column(
         children: [
+          // User profile section
           Padding(
             padding: const EdgeInsets.only(
               top: 20.0,
@@ -114,19 +120,21 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 CircleAvatar(
                   radius: 45.0,
-                  backgroundImage: AssetImage(widget.imageUrl),
+                  backgroundImage:
+                      AssetImage(widget.imageUrl), // User profile image
                 ),
                 SizedBox(width: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.name,
+                      widget.name, // Display user name
                       style: TextStyle(
                         fontSize: 18,
                         color: Color.fromRGBO(241, 241, 205, 1),
                       ),
                     ),
+                    // Display gender icon and age
                     Row(
                       children: [
                         Icon(
@@ -149,6 +157,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ],
                 ),
                 Spacer(),
+                // Buttons for voice and video call
                 IconButton(
                   icon: Icon(
                     Icons.phone,
@@ -168,6 +177,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ],
             ),
           ),
+          // Chat messages section
           Expanded(
             child: Container(
               padding: const EdgeInsets.only(
@@ -183,7 +193,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
               ),
               child: ListView.builder(
-                itemCount: _messages.length,
+                itemCount: _messages.length, // Number of messages to display
                 itemBuilder: (context, index) {
                   final message = _messages[index];
                   if (message.isVoiceCall) {
@@ -192,12 +202,13 @@ class _ChatScreenState extends State<ChatScreen> {
                     return ChatBubble(
                       message: message.message!,
                       isSentByMe: message.isSentByMe,
-                    );
+                    ); // Text message bubble
                   }
                 },
               ),
             ),
           ),
+          // Message input section
           Container(
             color: Color.fromRGBO(209, 206, 206, 1),
             child: Padding(
@@ -219,7 +230,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   Expanded(
                     child: TextField(
-                      controller: _controller,
+                      controller: _controller, // Controller for text input
                       onSubmitted: (value) {
                         _sendMessage();
                       },
@@ -268,10 +279,11 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 
+// Model class for chat messages
 class ChatMessage {
-  final String? message;
-  final bool isSentByMe;
-  final bool isVoiceCall;
+  final String? message; // Text of the message
+  final bool isSentByMe; // Whether the message is sent by the user
+  final bool isVoiceCall; // Whether this is a voice call message
 
   ChatMessage({
     this.message,
@@ -280,6 +292,7 @@ class ChatMessage {
   });
 }
 
+// Widget for displaying a chat message bubble
 class ChatBubble extends StatelessWidget {
   final String message;
   final bool isSentByMe;
@@ -324,6 +337,7 @@ class ChatBubble extends StatelessWidget {
   }
 }
 
+// Widget to represent a voice call message
 class VoiceCallMessage extends StatelessWidget {
   final bool isSentByMe;
 
@@ -361,7 +375,7 @@ class VoiceCallMessage extends StatelessWidget {
                     Icons.phone_forwarded,
                     color: Colors.black,
                     size: 32,
-                  ), 
+                  ),
                 ],
               ),
               SizedBox(

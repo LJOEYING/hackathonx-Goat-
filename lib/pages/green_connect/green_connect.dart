@@ -6,6 +6,8 @@ import 'package:hackathonx/pages/green_connect/green_connect_events.dart';
 import 'package:hackathonx/widgets/custom_shapes/curved_edges.dart';
 import 'package:hackathonx/widgets/green_connect_top_button.dart';
 
+
+// Main GreenConnect page that provides tabs for Events, Education & Tips, and Community
 class GreenConnect extends StatefulWidget {
   GreenConnect({super.key});
 
@@ -14,7 +16,7 @@ class GreenConnect extends StatefulWidget {
 }
 
 class _GreenConnectState extends State<GreenConnect> {
-  int currentButtonIndex = 1;
+  int currentButtonIndex = 1; // Tracks the selected tab index, starting with "Education & Tips"
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +25,13 @@ class _GreenConnectState extends State<GreenConnect> {
       extendBody: true,
       backgroundColor: Colors.transparent,
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      // Show floating action button only when "Community" tab is active
       floatingActionButton: currentButtonIndex == 2
           ? Padding(
               padding: const EdgeInsets.only(bottom: 100),
               child: FloatingActionButton(
                 onPressed: () {
+                   // Display dialog for creating a new post in the "Community" tab
                   showDialog(
                       context: context,
                       builder: (BuildContext) {
@@ -80,6 +84,7 @@ class _GreenConnectState extends State<GreenConnect> {
                               ],
                             ),
                           ),
+                          // Action buttons: DONE and CANCEL
                           actions: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -150,6 +155,7 @@ class _GreenConnectState extends State<GreenConnect> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          // Header with a curved background shape and page title
           ClipPath(
             clipper: CurvedEdges(),
             child: Container(
@@ -160,6 +166,7 @@ class _GreenConnectState extends State<GreenConnect> {
                 padding: const EdgeInsets.all(20.0),
                 child: Stack(
                   children: [
+                    // Background image in the header
                     Positioned(
                       right: 10,
                       top: 10,
@@ -169,6 +176,7 @@ class _GreenConnectState extends State<GreenConnect> {
                         height: MediaQuery.of(context).size.width * 0.55,
                       ),
                     ),
+                    // Text title in the header
                     Positioned(
                       top: 30,
                       left: 30,
@@ -199,12 +207,14 @@ class _GreenConnectState extends State<GreenConnect> {
               ),
             ),
           ),
+          // Row of tab buttons for navigating between sections
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
+                  // Button for "Events" tab
                   GreenConnectTopButton(
                     buttonName: "Events",
                     fontColor:
@@ -215,11 +225,12 @@ class _GreenConnectState extends State<GreenConnect> {
                         currentButtonIndex == 2 ? 0xff000000 : 0x80000000,
                     onPressed: () {
                       setState(() {
-                        currentButtonIndex = 0;
+                        currentButtonIndex = 0; // Set index for Events
                       });
                     },
                   ),
                   const SizedBox(width: 5),
+                  // Button for "Educational & Tips" tab
                   GreenConnectTopButton(
                     buttonName: "Educational & Tips",
                     fontColor:
@@ -230,11 +241,12 @@ class _GreenConnectState extends State<GreenConnect> {
                         currentButtonIndex == 2 ? 0xff000000 : 0x80000000,
                     onPressed: () {
                       setState(() {
-                        currentButtonIndex = 1;
+                        currentButtonIndex = 1; // Set index for Educational & Tips
                       });
                     },
                   ),
                   const SizedBox(width: 5),
+                  // Button for "Community" tab
                   GreenConnectTopButton(
                     buttonName: "Community",
                     fontColor:
@@ -245,7 +257,7 @@ class _GreenConnectState extends State<GreenConnect> {
                         currentButtonIndex == 2 ? 0xff000000 : 0x80000000,
                     onPressed: () {
                       setState(() {
-                        currentButtonIndex = 2;
+                        currentButtonIndex = 2; // Set index for Community
                       });
                     },
                   ),
@@ -253,6 +265,7 @@ class _GreenConnectState extends State<GreenConnect> {
               ),
             ),
           ),
+           // Display the selected tab's content based on the current button index
           currentButtonIndex == 0
               ? GreenConnectEvents()
               : currentButtonIndex == 1

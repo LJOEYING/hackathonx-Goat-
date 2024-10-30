@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hackathonx/pages/green_connect/green_connect_quiz.dart';
 
+// Stateless widget for the GreenConnectWaste page, displaying information about recyclable waste
 class GreenConnectWaste extends StatelessWidget {
   const GreenConnectWaste({super.key});
 
@@ -20,6 +21,7 @@ class GreenConnectWaste extends StatelessWidget {
               size: 40,
               color: const Color(0xfffcfce2),
             )),
+            // Quiz button on the top-right to navigate to GreenConnectQuiz page
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -44,8 +46,10 @@ class GreenConnectWaste extends StatelessWidget {
         child: Container(
           child: Stack(
             children: [
+              // Main Column for content layout
               Column(
                 children: [
+                  // Banner section with background image
                   Container(
                     width: double.infinity,
                     height: MediaQuery.of(context).size.width * 0.55,
@@ -64,6 +68,7 @@ class GreenConnectWaste extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Content section with padding
                   Padding(
                     padding:
                         const EdgeInsets.only(top: 130, left: 40, right: 40),
@@ -76,11 +81,13 @@ class GreenConnectWaste extends StatelessWidget {
                                 fontSize: 30, fontWeight: FontWeight.w800),
                           ),
                         ),
+                        // Description of recyclable waste
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Text(
                               'Materials that can be processed and used again, reducing the need for raw resources. Common examples include paper, cardboard, plastics, glass, and metals.'),
                         ),
+                        // Subheading for waste management tips
                         Padding(
                           padding: const EdgeInsets.only(top: 60),
                           child: Text('To manage recyclable waste effectively:',
@@ -89,6 +96,7 @@ class GreenConnectWaste extends StatelessWidget {
                                     fontSize: 23, fontWeight: FontWeight.w700),
                               )),
                         ),
+                        // Additional tips on waste management
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Text(
@@ -99,6 +107,7 @@ class GreenConnectWaste extends StatelessWidget {
                   )
                 ],
               ),
+              // Positioned circular image for visual emphasis on recycling
               Positioned(
                 top: MediaQuery.of(context).size.width *
                     0.3, // Adjusted top position

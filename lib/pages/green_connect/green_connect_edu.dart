@@ -4,6 +4,7 @@ import 'package:hackathonx/pages/green_connect/green_connect_tips.dart';
 import 'package:hackathonx/pages/green_connect/green_connect_waste.dart';
 import 'package:hackathonx/widgets/waste_container.dart';
 
+// The GreenConnectEdu widget displays educational content related to waste management.
 class GreenConnectEdu extends StatelessWidget {
   const GreenConnectEdu({super.key});
 
@@ -16,6 +17,7 @@ class GreenConnectEdu extends StatelessWidget {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Title for Categories section
               const Padding(
                 padding: EdgeInsets.only(left: 10, top: 15, bottom: 1),
                 child: Align(
@@ -30,22 +32,26 @@ class GreenConnectEdu extends StatelessWidget {
                   ),
                 ),
               ),
+              // Horizontal scrolling list for waste categories
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
+                    // Waste category button for Recyclable
                     WasteContainer(
                       wasteIcon: 'assets/icon1.png',
                       wasteType: 'Recyclable',
                       wasteWidth: 60,
                       wasteHeight: 60,
                       onTap: () {
+                        // Navigates to the waste management page when tapped.
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => GreenConnectWaste()));
                       },
                     ),
+                    // Waste category button for Non-Recyclable
                     WasteContainer(
                       wasteIcon: 'assets/icon2.png',
                       wasteType: 'Non\nRecyclable',
@@ -58,6 +64,7 @@ class GreenConnectEdu extends StatelessWidget {
                                 builder: (context) => GreenConnectWaste()));
                       },
                     ),
+                    // Waste category button for Organic
                     WasteContainer(
                       wasteIcon: 'assets/icon3.png',
                       wasteType: 'Organic',
@@ -70,6 +77,7 @@ class GreenConnectEdu extends StatelessWidget {
                                 builder: (context) => GreenConnectWaste()));
                       },
                     ),
+                    // Waste category button for Chemical
                     WasteContainer(
                       wasteIcon: 'assets/icon4.png',
                       wasteType: 'Chemical',
@@ -85,6 +93,7 @@ class GreenConnectEdu extends StatelessWidget {
                   ],
                 ),
               ),
+              // Title for Waste Management Tips section
               Padding(
                 padding: const EdgeInsets.only(left: 10, top: 15, bottom: 1),
                 child: Align(
@@ -101,6 +110,7 @@ class GreenConnectEdu extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
+                  // Navigates to tips page when tapped.
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => GreenConnectTips()),
@@ -138,10 +148,12 @@ class GreenConnectEdu extends StatelessWidget {
               SizedBox(
                 height: 8,
               ),
+              // Row for displaying two different tip cards
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // First tip card for Zero-Waste Lifestyle
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -185,6 +197,7 @@ class GreenConnectEdu extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        // Tip card for Community Waste Initiatives
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -227,6 +240,7 @@ class GreenConnectEdu extends StatelessWidget {
                             ),
                           ),
                         ),
+                        // Tip card for Smart Waste Management
                         GestureDetector(
                           onTap: () {
                             Navigator.push(

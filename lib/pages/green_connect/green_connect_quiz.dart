@@ -4,11 +4,12 @@ import 'package:hackathonx/pages/green_connect/quiz.dart';
 import 'package:hackathonx/widgets/result_dialog.dart';
 import 'package:hackathonx/widgets/quiz_button.dart';
 
+// Main quiz screen widget for Green Connect
 class GreenConnectQuiz extends StatefulWidget {
   GreenConnectQuiz({super.key});
-  int currentQuiz = 1;
-  int score = 0;
-  bool success = false;
+  int currentQuiz = 1; // Track the current quiz question (initially set to 1)
+  int score = 0;  // Keep score of correct answers
+  bool success = false; // Flag to check if the user passed
 
   // void checkAns(int correctAns, int selectAns) {
   //   if (selectAns == correctAns) {
@@ -21,24 +22,30 @@ class GreenConnectQuiz extends StatefulWidget {
 }
 
 class _GreenConnectQuizState extends State<GreenConnectQuiz> {
+  // Method to handle actions when navigating to the next question
   void handleNextPage(int correctAns, int selectAns) {
+    // Increment score if the selected answer is correct
     if (selectAns == correctAns) {
       widget.score += 1;
       print(widget.score);
     }
+    // Check if the last question has been reached
     if (widget.currentQuiz == 3) {
+      // Set success to true if the score meets the passing threshold
       if (widget.score >= 3) {
         widget.success = true;
       }
+      // Show result dialog with the final score and success status
       showDialog(
           context: context,
           builder: (BuildContext) {
             return ResultDialog(success: widget.success, score: widget.score);
           });
     }
+    // If not the last question, proceed to the next one
     if (widget.currentQuiz < 3) {
       setState(() {
-        ++widget.currentQuiz;
+        ++widget.currentQuiz; // Increment the current question count
         print(widget.currentQuiz);
       });
     }
@@ -67,6 +74,7 @@ class _GreenConnectQuizState extends State<GreenConnectQuiz> {
           children: [
             Column(
               children: [
+                // Top container displaying background image for the quiz header
                 Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.width * 0.70,
@@ -81,6 +89,7 @@ class _GreenConnectQuizState extends State<GreenConnectQuiz> {
                     ),
                   ),
                 ),
+                // Display quiz content based on the current quiz question
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: widget.currentQuiz == 1
@@ -121,9 +130,10 @@ class _GreenConnectQuizState extends State<GreenConnectQuiz> {
                 ),
               ],
             ),
+            // Display a circular widget with the current quiz question number
             Positioned(
               top: MediaQuery.of(context).size.width *
-                  0.55, // Adjusted top position
+                  0.55, 
               left: MediaQuery.of(context).size.width * 0.35,
               right: MediaQuery.of(context).size.width * 0.35,
               child: Container(
@@ -138,7 +148,7 @@ class _GreenConnectQuizState extends State<GreenConnectQuiz> {
                   radius: 40,
                   backgroundColor: Colors.white,
                   child: Text(
-                    '${widget.currentQuiz}/3',
+                    '${widget.currentQuiz}/3', // Display current question number
                     style: GoogleFonts.workSans(
                       textStyle: const TextStyle(
                         fontWeight: FontWeight.w800,
