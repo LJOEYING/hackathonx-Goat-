@@ -18,7 +18,7 @@ This app is designed to promote sustainable living by providing a comprehensive 
 ## Getting Started
 Follow these instructions to set up the project on your local machine.
 
-###Prerequisites
+### Prerequisites
 Ensure you have the following installed:
   -  Flutter SDK  
   - Firebase CLI (for Firebase setup)
@@ -39,8 +39,8 @@ This project uses the following dependencies:
 - google_fonts: https://pub.dev/packages/google_fonts  
 - curved_navigation_bar: https://pub.dev/packages/curved_navigation_bar
 
-####Install Dependencies:
-Run this command to install all dependencies: 
+#### Install Dependencies:
+Run this command to install all dependencies:      
 flutter pub get
 
 
