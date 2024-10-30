@@ -54,7 +54,7 @@ class _ResultState extends State<Result> {
             maxChildSize: 0.8,
             builder: (BuildContext context, myScrollController) {
               return ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(30.0)),
                 child: Container(
                     color: Colors.white,
                     child: Stack(
@@ -70,7 +70,7 @@ class _ResultState extends State<Result> {
                               child: Text(
                                 'Waste',
                                 style: GoogleFonts.inter(
-                                    textStyle: TextStyle(
+                                    textStyle: const TextStyle(
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold)),
                               ),
@@ -80,9 +80,9 @@ class _ResultState extends State<Result> {
                                   horizontal: 30, vertical: 10),
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: Color(0xffd9d9d9),
+                                    color: const Color(0xffd9d9d9),
                                     borderRadius: BorderRadius.circular(15)),
-                                padding: EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(20),
                                 child:
                                     Text(widget.details), // Display the details
 
@@ -97,9 +97,9 @@ class _ResultState extends State<Result> {
                                 decoration: BoxDecoration(
                                     color: Color(0xff5A8A62),
                                     borderRadius: BorderRadius.circular(15)),
-                                padding: EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(20),
                                 child: Column(children: [
-                                  Text('Points Earned'),
+                                  const Text('Points Earned'),
                                   Text(
                                     '5',
                                     style: TextStyle(

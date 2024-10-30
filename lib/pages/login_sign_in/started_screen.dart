@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hackathonx/pages/login_sign_in/login.dart';
 import 'package:hackathonx/widgets/long_button.dart';
-
+//GetStarted Page
 class StartedScreen extends StatelessWidget {
   const StartedScreen({super.key});
 
@@ -10,8 +10,8 @@ class StartedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity, // Expands the container to full width
-        height: double.infinity, // Expands the container to full height
+        width: double.infinity,
+        height: double.infinity, 
         decoration: const BoxDecoration(
             gradient: LinearGradient(
                 colors: [Color(0xff5A8A62), Color(0xff17241A)],
@@ -29,7 +29,7 @@ class StartedScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // First line of the title
+                    //Slogan
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -41,7 +41,7 @@ class StartedScreen extends StatelessWidget {
                                 color: Colors.white)),
                       ),
                     ),
-                    // Second line of the title
+                    
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -53,7 +53,7 @@ class StartedScreen extends StatelessWidget {
                                 color: Colors.white)),
                       ),
                     ),
-                    // Third line of the title
+                    
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(

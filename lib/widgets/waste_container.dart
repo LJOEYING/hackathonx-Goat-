@@ -27,11 +27,11 @@ class WasteContainer extends StatelessWidget {
         child: Container(
           width: 110,
           height: 110,
-          padding: EdgeInsets.all(2),
+          padding: const EdgeInsets.all(2),
           decoration: BoxDecoration(
-              color: Color(0xffF1F1CD),
+              color: const Color(0xffF1F1CD),
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   blurRadius: 3,
                   offset: Offset(0, 3),

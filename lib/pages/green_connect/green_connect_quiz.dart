@@ -117,9 +117,6 @@ class _GreenConnectQuizState extends State<GreenConnectQuiz> {
                               quizOpt4: "D) Tissues and paper towels",
                               correctAns: 2,
                               handleNextPage: handleNextPage,
-                              // onPressed: () {
-                              //   print(widget.currentQuiz);
-                              // },
                             ),
                 ),
               ],

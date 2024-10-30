@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hackathonx/pages/carpool/carpool.dart';
 
-
 // Car Pool filter options
 class CarPoolFilter extends StatefulWidget {
-  final double price; 
-  final String? location; 
-  final DateTime? date; 
+  final double price;
+  final String? location;
+  final DateTime? date;
 
   CarPoolFilter({
     required this.price,
@@ -69,7 +68,8 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(10.0),
-      insetPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      insetPadding:
+          const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       title: const Text(
         'Car Pool Filters',
         style: TextStyle(
@@ -149,7 +149,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
             ),
             const SizedBox(height: 20),
             const Padding(
-              padding:  EdgeInsets.only(top: 0, bottom: 20.0),
+              padding: EdgeInsets.only(top: 0, bottom: 20.0),
               child: Divider(
                 thickness: 1.0,
                 color: Colors.grey,
@@ -176,36 +176,36 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, bottom: 20.0),
               child: Divider(
                 thickness: 1.0,
                 color: Colors.grey,
               ),
             ),
             // Time selection button
-            Text(
+            const Text(
               'Time',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 19.0,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextButton(
               onPressed: _selectTime,
               child: Text(
                 _time != null ? '${_time!.format(context)}' : 'Select time',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.blue,
                   fontSize: 17.0,
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, bottom: 20.0),
               child: Divider(
                 thickness: 1.0,
                 color: Colors.grey,
@@ -214,7 +214,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
             // Price selection with a slider
             Text(
               'Price: \RM ${_price.toStringAsFixed(2)}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 19.0,
               ),
@@ -229,23 +229,23 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 });
               },
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, bottom: 20.0),
               child: Divider(
                 thickness: 1.0,
                 color: Colors.grey,
               ),
             ),
             // Gender preference selection with icons
-            Text(
+            const Text(
               'Gender Preference',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 19.0,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -312,11 +312,10 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
       // Actions at the bottom of the dialog: Cancel and Done buttons
       actions: [
         Row(
-          mainAxisAlignment:
-              MainAxisAlignment.spaceBetween, 
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -329,7 +328,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
               ),
             ),
             ElevatedButton(
-              child: Text('Done'),
+              child: const Text('Done'),
               onPressed: () {
                 Navigator.of(context).pop();
               },

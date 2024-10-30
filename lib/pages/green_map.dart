@@ -45,15 +45,15 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: TextField(
         decoration: InputDecoration(
-          prefixIcon: Icon(
+          prefixIcon: const Icon(
             Icons.search,
             color: Colors.white,
           ),
           hintText: 'Search anywhere nearby...',
-          hintStyle: TextStyle(color: Colors.white),
+          hintStyle: const TextStyle(color: Colors.white),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
             borderSide:
@@ -106,12 +106,12 @@ class CollectionTypeSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       color: Colors.white,
       child: GridView.builder(
         shrinkWrap: true,
         itemCount: 6,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           crossAxisSpacing: 3,
           mainAxisSpacing: 3,
@@ -153,13 +153,13 @@ class CollectionTypeSelector extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           label, //display the label for the waste collection type
           textAlign: TextAlign.center,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14,
             color: Colors.grey,
             fontWeight: FontWeight.bold,

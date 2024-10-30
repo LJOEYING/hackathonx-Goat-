@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
 import 'package:hackathonx/pages/Item_desc.dart';
 import 'package:hackathonx/pages/newItem.dart';
 
@@ -25,7 +24,7 @@ class _RemarketState extends State<Remarket> {
     'assets/ad3.png',
   ];
 
-// Sample data for products for the "Sell" scetion
+//data for products for the "Sell" scetion
   final List<Map<String, dynamic>> _products = [
     {
       'image': 'assets/item1.png',
@@ -56,13 +55,13 @@ class _RemarketState extends State<Remarket> {
 
     // Automatically scroll images every 5 seconds
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      Timer.periodic(Duration(seconds: 5), (timer) {
+      Timer.periodic(const Duration(seconds: 5), (timer) {
         if (_pageController.hasClients) {
           // Moves to the next page or loops back to the first page
           int nextPage = (_currentPage + 1) % _imagePaths.length;
           _pageController.animateToPage(
             nextPage,
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
           );
           // Updates the current page index
@@ -88,7 +87,7 @@ class _RemarketState extends State<Remarket> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Color.fromRGBO(90, 138, 98, 1),
+        backgroundColor: const Color.fromRGBO(90, 138, 98, 1),
         elevation: 0,
         toolbarHeight: 90.0,
         title: TextField(
@@ -96,24 +95,24 @@ class _RemarketState extends State<Remarket> {
             filled: true,
             fillColor: Colors.white,
             hintText: 'Trousers',
-            prefixIcon: Icon(Icons.search, color: Colors.grey),
+            prefixIcon: const Icon(Icons.search, color: Colors.grey),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: BorderSide.none,
             ),
-            contentPadding: EdgeInsets.symmetric(vertical: 10.0),
+            contentPadding: const EdgeInsets.symmetric(vertical: 10.0),
           ),
         ),
         actions: [
           // Icon button for shopping cart
           IconButton(
-            icon: Icon(Icons.shopping_cart_outlined, color: Colors.white),
+            icon: const Icon(Icons.shopping_cart_outlined, color: Colors.white),
             iconSize: 28.0,
             onPressed: () {},
           ),
           // Icon button for chat
           IconButton(
-            icon: Icon(Icons.chat_outlined, color: Colors.white),
+            icon: const Icon(Icons.chat_outlined, color: Colors.white),
             iconSize: 28.0,
             onPressed: () {},
           ),
@@ -164,7 +163,7 @@ class _RemarketState extends State<Remarket> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(_imagePaths.length, (index) {
                         return Container(
-                          margin: EdgeInsets.symmetric(horizontal: 4.0),
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
                           width: 10,
                           height: 10,
                           decoration: BoxDecoration(
@@ -193,7 +192,7 @@ class _RemarketState extends State<Remarket> {
             ),
             // Build the tab section for Selected Goods and Sell
             _buildTabSection(),
-            SizedBox(
+            const SizedBox(
               height: 100,
             )
           ],
@@ -218,7 +217,7 @@ class _RemarketState extends State<Remarket> {
           ),
           if (isSelected)
             Container(
-              margin: EdgeInsets.only(top: 5),
+              margin: const EdgeInsets.only(top: 5),
               height: 3,
               width: 50,
               color: Colors.blue,
@@ -232,17 +231,17 @@ class _RemarketState extends State<Remarket> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Container(
-        padding: EdgeInsets.only(top: 20.0),
+        padding: const EdgeInsets.only(top: 20.0),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(44),
             topRight: Radius.circular(44),
             bottomLeft: Radius.circular(0),
             bottomRight: Radius.circular(0),
           ),
           border: Border.all(
-            color: Color.fromRGBO(227, 227, 130, 1),
+            color: const Color.fromRGBO(227, 227, 130, 1),
             width: 2,
           ),
         ),
@@ -253,12 +252,12 @@ class _RemarketState extends State<Remarket> {
               children: [
                 _buildTabButton(
                     'Selected Goods', _isSelectedGoods, () => _toggleTab(true)),
-                SizedBox(width: 60),
+                const SizedBox(width: 60),
                 _buildTabButton(
                     'Sell', !_isSelectedGoods, () => _toggleTab(false)),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             // Display content based on selected tab
             _isSelectedGoods
@@ -278,7 +277,7 @@ class _RemarketState extends State<Remarket> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Recommend Section
-          SectionHeader(title: 'Recommend'),
+          const SectionHeader(title: 'Recommend'),
           Container(
             height: 200,
             child: ListView(
@@ -291,32 +290,32 @@ class _RemarketState extends State<Remarket> {
                       MaterialPageRoute(builder: (context) => ItemDescPage()),
                     );
                   },
-                  child: ProductCard(
+                  child: const ProductCard(
                       title: 'Yamaha U2H Piano',
                       price: 'RM 374.50',
                       image: 'assets/item5.png'),
                 ),
-                ProductCard(
+                const ProductCard(
                     title: 'Nike Air Max',
                     price: 'RM 25.50',
                     image: 'assets/item6.png'),
-                ProductCard(
+                const ProductCard(
                     title: 'Lenovo IdeaPad i3',
                     price: 'RM 189.00',
                     image: 'assets/item7.png'),
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           // Daily Discover Section
-          SectionHeader(title: 'Daily Discover'),
+          const SectionHeader(title: 'Daily Discover'),
           Container(
             height: 200,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: [
+              children: const [
                 ProductCard(
                     title: 'BTS Lightstick',
                     price: 'RM 65.00',
@@ -346,8 +345,8 @@ class _RemarketState extends State<Remarket> {
           // Product Grid
           GridView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
@@ -370,9 +369,9 @@ class _RemarketState extends State<Remarket> {
                   MaterialPageRoute(builder: (context) => AddNewItemPage()),
                 );
               },
-              shape: CircleBorder(),
+              shape: const CircleBorder(),
               backgroundColor: Colors.black,
-              child: Icon(
+              child: const Icon(
                 Icons.add,
                 color: Colors.white,
                 size: 35,
@@ -388,7 +387,7 @@ class _RemarketState extends State<Remarket> {
   Widget _buildProductCard(Map<String, dynamic> product) {
     // Check if the product is null, and if so, return an empty box to prevent errors
     if (product == null) {
-      return SizedBox(); // Return an empty box if the product is null
+      return const SizedBox(); // Return an empty box if the product is null
     }
     return Card(
       elevation: 5,
@@ -399,7 +398,7 @@ class _RemarketState extends State<Remarket> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
             child: Image.asset(
               product['image'],
               fit: BoxFit.cover,
@@ -421,20 +420,20 @@ class _RemarketState extends State<Remarket> {
                     product['name'],
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                SizedBox(width: 4),
+                const SizedBox(width: 4),
 
                 // Product Price
                 Text(
                   product['price'],
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.red,
@@ -459,17 +458,17 @@ class PointsBar extends StatelessWidget {
         Row(
           children: [
             Icon(icon, color: iconColor),
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
             Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
           ],
         ),
         Text(
           subtitle,
-          style:
-              TextStyle(color: Color.fromRGBO(122, 111, 111, 1), fontSize: 14),
+          style: const TextStyle(
+              color: Color.fromRGBO(122, 111, 111, 1), fontSize: 14),
         ),
       ],
     );
@@ -547,11 +546,11 @@ class SectionHeader extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           TextButton(
             onPressed: () {},
-            child: Text('View All >'),
+            child: const Text('View All >'),
           ),
         ],
       ),
@@ -559,6 +558,7 @@ class SectionHeader extends StatelessWidget {
   }
 }
 
+//build Product Card for selectedGoods Tab
 class ProductCard extends StatelessWidget {
   final String title;
   final String price;
@@ -580,8 +580,7 @@ class ProductCard extends StatelessWidget {
       width: containerWidth,
       child: Card(
         elevation: 5,
-        margin: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
-        // margin: const EdgeInsets.only(right: 16.0),
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -601,17 +600,17 @@ class ProductCard extends StatelessWidget {
                       title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(
                     price,
                     maxLines: 2,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.red,
                         fontSize: 16,
                         fontWeight: FontWeight.bold),

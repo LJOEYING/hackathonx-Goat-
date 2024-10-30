@@ -94,7 +94,7 @@ class _GreenConnectState extends State<GreenConnect> {
                                       MediaQuery.of(context).size.width * 0.30,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xff304b34),
+                                      backgroundColor: const Color(0xff304b34),
                                       shape: BeveledRectangleBorder(
                                         borderRadius: BorderRadius.circular(5),
                                       ),
@@ -105,13 +105,13 @@ class _GreenConnectState extends State<GreenConnect> {
                                     child: Text(
                                       'DONE',
                                       style: GoogleFonts.inter(
-                                          textStyle: TextStyle(
+                                          textStyle: const TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w800)),
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5,
                                 ),
                                 Container(
@@ -119,7 +119,7 @@ class _GreenConnectState extends State<GreenConnect> {
                                       MediaQuery.of(context).size.width * 0.30,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xffbdbdbd),
+                                      backgroundColor: const Color(0xffbdbdbd),
                                       shape: BeveledRectangleBorder(
                                         borderRadius: BorderRadius.circular(5),
                                       ),
@@ -130,7 +130,7 @@ class _GreenConnectState extends State<GreenConnect> {
                                     child: Text(
                                       'CANCEL',
                                       style: GoogleFonts.inter(
-                                          textStyle: TextStyle(
+                                          textStyle: const TextStyle(
                                               color: Colors.black,
                                               fontWeight: FontWeight.w800)),
                                     ),
@@ -144,7 +144,7 @@ class _GreenConnectState extends State<GreenConnect> {
                 },
                 shape: const CircleBorder(),
                 backgroundColor: Colors.black,
-                child: Icon(
+                child: const Icon(
                   Icons.add,
                   size: 35,
                   color: Colors.white,
@@ -268,10 +268,10 @@ class _GreenConnectState extends State<GreenConnect> {
           ),
           // Display the selected tab's content based on the current button index
           currentButtonIndex == 0
-              ? GreenConnectEvents()
+              ? const GreenConnectEvents()
               : currentButtonIndex == 1
-                  ? GreenConnectEdu()
-                  : GreenConnectCommunity(),
+                  ? const GreenConnectEdu()
+                  : const GreenConnectCommunity(),
         ],
       ),
     );

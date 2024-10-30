@@ -15,16 +15,20 @@ class Scanner extends StatefulWidget {
 }
 
 class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
-  CameraController? cameraController; // Controller to manage camera functionalities
-  List<CameraDescription>? cameras; // List to hold available camera descriptions
+  CameraController?
+      cameraController; // Controller to manage camera functionalities
+  List<CameraDescription>?
+      cameras; // List to hold available camera descriptions
   String? imagePath; // Path to the captured image
-  bool isLoading = false; // Flag to indicate loading state during image processing
+  bool isLoading =
+      false; // Flag to indicate loading state during image processing
 
   // Lifecycle method that initializes the state
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this); // Adding the observer to listen to app lifecycle changes
+    WidgetsBinding.instance.addObserver(
+        this); // Adding the observer to listen to app lifecycle changes
     initializeCamera(); // Initializing the camera
   }
 
@@ -34,15 +38,17 @@ class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
       cameras = await availableCameras(); // Fetching available cameras
       if (cameras != null && cameras!.isNotEmpty) {
         // Checking if cameras are available
-        cameraController =
-            CameraController(cameras!.first, ResolutionPreset.medium); // Creating a camera controller
-        await cameraController!.initialize(); // Initializing the camera controller
+        cameraController = CameraController(cameras!.first,
+            ResolutionPreset.medium); // Creating a camera controller
+        await cameraController!
+            .initialize(); // Initializing the camera controller
         setState(() {});
       } else {
         print("No cameras found"); // Logging if no cameras are available
       }
     } catch (e) {
-      print('Camera initialization error: $e'); // Logging any initialization error
+      print(
+          'Camera initialization error: $e'); // Logging any initialization error
     }
   }
 
@@ -55,12 +61,14 @@ class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
           isLoading = true; // Set loading to true while capturing the image
         });
 
-        final XFile capturedFile = await cameraController!.takePicture(); // Capture image
+        final XFile capturedFile =
+            await cameraController!.takePicture(); // Capture image
         imagePath = capturedFile.path; // Store the path of the captured image
 
         if (imagePath != null) {
           // If image path is not null, process the image
-          final details = await generateDetailsByGemini(imagePath); // Generate details using AI
+          final details = await generateDetailsByGemini(
+              imagePath); // Generate details using AI
 
           setState(() {
             isLoading = false;
@@ -79,7 +87,8 @@ class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
         setState(() {
           isLoading = false; // Ensure loading indicator is hidden on error
         });
-        print('Error capturing image: $e'); // Log any error during image capture
+        print(
+            'Error capturing image: $e'); // Log any error during image capture
       }
     }
   }
@@ -105,7 +114,8 @@ class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
       Content.multi([TextPart(prompt), DataPart(mimetype, image)])
     ]);
 
-    final responseText = response.text!; // Extracting the generated text from the response
+    final responseText =
+        response.text!; // Extracting the generated text from the response
     return responseText; // Returning the generated details
   }
 
@@ -142,15 +152,19 @@ class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
       body: Stack(
         children: [
           cameraController != null && cameraController!.value.isInitialized
-              ? SizedBox.expand(child: CameraPreview(cameraController!)) // Show camera preview if initialized
-              : const Center(child: CircularProgressIndicator()), // Show loading indicator while initializing
+              ? SizedBox.expand(
+                  child: CameraPreview(
+                      cameraController!)) // Show camera preview if initialized
+              : const Center(
+                  child:
+                      CircularProgressIndicator()), // Show loading indicator while initializing
           Positioned(
             top: 100,
             left: 0,
             right: 0,
             child: Center(
               child: Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.50),
                   borderRadius: BorderRadius.circular(20),
@@ -158,7 +172,7 @@ class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
                 child: Text(
                   'Find item to scan',
                   style: GoogleFonts.workSans(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
@@ -176,8 +190,9 @@ class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
             child: Center(
               child: FloatingActionButton.large(
                 shape: CircleBorder(),
-                onPressed: () => captureImage(), // Capture image when button is pressed
-                child: Icon(
+                onPressed: () =>
+                    captureImage(), // Capture image when button is pressed
+                child: const Icon(
                   Icons.qr_code_scanner,
                   color: Colors.black,
                   size: 45,
@@ -189,7 +204,7 @@ class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
             Center(
               child: Container(
                 color: Colors.black.withOpacity(0.5),
-                child: CircularProgressIndicator(
+                child: const CircularProgressIndicator(
                   color: Colors.white,
                 ),
               ),

@@ -101,8 +101,8 @@ class _CreateNewPostDialogState extends State<CreateNewPostDialog> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 0.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, bottom: 0.0),
               child: Divider(
                 thickness: 3.0,
                 color: Colors.black,
@@ -124,14 +124,14 @@ class _CreateNewPostDialogState extends State<CreateNewPostDialog> {
               ),
             ),
             // Location selection
-            Text(
+            const Text(
               'Location',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 19.0,
               ),
             ),
-            SizedBox(height: 13.0),
+            const SizedBox(height: 13.0),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
@@ -142,11 +142,11 @@ class _CreateNewPostDialogState extends State<CreateNewPostDialog> {
               ),
               child: DropdownButtonFormField<String>(
                 value: _location, // Current selected location
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 6.0),
                   border: InputBorder.none,
                 ),
-                hint: Text('Select a location to go'),
+                hint: const Text('Select a location to go'),
                 items: [
                   'IOI City Mall',
                   'Mid Valley Megamall',
@@ -167,65 +167,65 @@ class _CreateNewPostDialogState extends State<CreateNewPostDialog> {
                 isExpanded: true,
               ),
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, bottom: 20.0),
               child: Divider(
                 thickness: 1.0,
                 color: Colors.grey,
               ),
             ),
             // Date selection
-            Text(
+            const Text(
               'Date',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 19.0,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextButton(
               onPressed: _selectDate, // Open date picker
               child: Text(
                 _date != null
-                    ? '${_date!.toLocal().toString().split(' ')[0]}' // Display selected date
+                    ? _date!.toLocal().toString().split(' ')[0] // Display selected date
                     : 'Select date', // Placeholder text
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.blue,
                   fontSize: 17.0,
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, bottom: 20.0),
               child: Divider(
                 thickness: 1.0,
                 color: Colors.grey,
               ),
             ),
              // Time selection
-            Text(
+            const Text(
               'Time',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 19.0,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextButton(
               onPressed: _selectTime, // Open time picker
               child: Text(
-                _time != null ? '${_time!.format(context)}' : 'Select time', // Display selected time
-                style: TextStyle(
+                _time != null ? _time!.format(context) : 'Select time', // Display selected time
+                style: const TextStyle(
                   color: Colors.blue,
                   fontSize: 17.0,
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, bottom: 20.0),
               child: Divider(
                 thickness: 1.0,
                 color: Colors.grey,
@@ -236,7 +236,7 @@ class _CreateNewPostDialogState extends State<CreateNewPostDialog> {
               // Display price per person for drivers
               Text(
                 'Price Per Person: ${_price.toStringAsFixed(2)}', // Display current price
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 19.0,
                 ),
@@ -251,9 +251,9 @@ class _CreateNewPostDialogState extends State<CreateNewPostDialog> {
                   });
                 },
               ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(top: 0, bottom: 20.0),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.only(top: 0, bottom: 20.0),
                 child: Divider(
                   thickness: 1.0,
                   color: Colors.grey,

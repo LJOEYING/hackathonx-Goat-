@@ -17,28 +17,31 @@ class BottomNavPage extends StatefulWidget {
 class _BottomNavPageState extends State<BottomNavPage> {
   // List of pages to navigate between
   List pages = [
-    Remarket(), // Home page (second-hand market)
+    const Remarket(), // Home page (second-hand market)
     GreenMap(), // Map page
-    Scanner(), // Scanner page 
+    const Scanner(), // Scanner page
     GreenConnect(), // Educational Content & Community page
-    CarPooling(), // Carpooling page
+    const CarPooling(), // Carpooling page
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: pages[widget.myCurrentPage], // Displays the current page based on the selected index
+      body: pages[widget
+          .myCurrentPage], // Displays the current page based on the selected index
       bottomNavigationBar: CurvedNavigationBar(
         color: Colors.black,
         backgroundColor: Colors.transparent,
-        index: widget.myCurrentPage, // Sets the initial index of the navigation bar
+        index: widget
+            .myCurrentPage, // Sets the initial index of the navigation bar
         onTap: (index) {
           setState(() {
-            widget.myCurrentPage = index; // Updates the current page index on tap
+            widget.myCurrentPage =
+                index; // Updates the current page index on tap
           });
         },
-        items: [
+        items: const [
           Icon(
             Icons.home, // Icon for the home page
             size: 32,

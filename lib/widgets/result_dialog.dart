@@ -86,7 +86,7 @@ class ResultDialog extends StatelessWidget {
                 // Retry button to navigate back to quiz page
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff373434)),
+                      backgroundColor: const Color(0xff373434)),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -110,13 +110,13 @@ class ResultDialog extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => GreenConnectTips(),
+                        builder: (context) => const GreenConnectTips(),
                       ),
                     );
                   },
                   child: Text('Close',
                       style: GoogleFonts.inter(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Colors.black, fontWeight: FontWeight.w700),
                       )),
                 ),

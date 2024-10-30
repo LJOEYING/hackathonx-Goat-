@@ -65,11 +65,11 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(48, 75, 52, 1),
+      backgroundColor: const Color.fromRGBO(48, 75, 52, 1),
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(48, 75, 52, 1),
+        backgroundColor: const Color.fromRGBO(48, 75, 52, 1),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             size: 35.0,
             color: Colors.white,
@@ -87,7 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0),
-                  side: BorderSide(
+                  side: const BorderSide(
                     color: Colors.black,
                     width: 4.0,
                   ),
@@ -97,7 +97,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 widget.userType == 'driver'
                     ? 'BOOK A RIDE'
                     : 'SHARE A RIDE',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 19.0,
                 ),
@@ -123,13 +123,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   backgroundImage:
                       AssetImage(widget.imageUrl), // User profile image
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       widget.name, // Display user name
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Color.fromRGBO(241, 241, 205, 1),
                       ),
@@ -147,7 +147,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         const SizedBox(width: 6),
                         Text(
                           'AGE ${widget.age}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 12,
                             color: Color.fromRGBO(241, 241, 205, 1),
                           ),
@@ -156,10 +156,10 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 // Buttons for voice and video call
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.phone,
                     size: 30.0,
                     color: Color.fromRGBO(241, 241, 205, 1),
@@ -167,7 +167,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   onPressed: () {},
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.video_camera_front,
                     size: 32.0,
                     color: Color.fromRGBO(241, 241, 205, 1),
@@ -186,7 +186,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 left: 15.0,
                 right: 15.0,
               ),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromRGBO(241, 241, 205, 1),
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(40.0),
@@ -210,7 +210,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           // Message input section
           Container(
-            color: Color.fromRGBO(209, 206, 206, 1),
+            color: const Color.fromRGBO(209, 206, 206, 1),
             child: Padding(
               padding: const EdgeInsets.only(
                 left: 5.0,
@@ -221,7 +221,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Row(
                 children: [
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.add,
                       size: 40,
                       color: Colors.black,
@@ -237,16 +237,16 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: InputDecoration(
                         hintText: 'Type a message...',
                         filled: true,
-                        fillColor: Color.fromRGBO(99, 96, 96, 0.5),
+                        fillColor: const Color.fromRGBO(99, 96, 96, 0.5),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                           borderSide: BorderSide.none,
                         ),
-                        contentPadding: EdgeInsets.symmetric(
+                        contentPadding: const EdgeInsets.symmetric(
                           vertical: 15.0,
                           horizontal: 20.0,
                         ),
-                        suffixIcon: Padding(
+                        suffixIcon: const Padding(
                           padding: EdgeInsets.only(right: 10.0),
                           child: Icon(
                             Icons.mic,
@@ -310,24 +310,24 @@ class ChatBubble extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(13.0),
         margin: const EdgeInsets.symmetric(vertical: 10.0),
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxWidth: 270,
         ),
         decoration: BoxDecoration(
           color: isSentByMe
-              ? Color.fromRGBO(200, 217, 143, 1)
-              : Color.fromRGBO(124, 186, 135, 1),
+              ? const Color.fromRGBO(200, 217, 143, 1)
+              : const Color.fromRGBO(124, 186, 135, 1),
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15.0),
-            topRight: Radius.circular(15.0),
-            bottomLeft: isSentByMe ? Radius.circular(15.0) : Radius.circular(0),
+            topLeft: const Radius.circular(15.0),
+            topRight: const Radius.circular(15.0),
+            bottomLeft: isSentByMe ? const Radius.circular(15.0) : const Radius.circular(0),
             bottomRight:
-                isSentByMe ? Radius.circular(0) : Radius.circular(15.0),
+                isSentByMe ? const Radius.circular(0) : const Radius.circular(15.0),
           ),
         ),
         child: Text(
           message,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 14.0,
           ),
@@ -350,13 +350,13 @@ class VoiceCallMessage extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10.0),
         margin: const EdgeInsets.symmetric(vertical: 10.0),
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxWidth: 200,
         ),
         decoration: BoxDecoration(
           color:
-              isSentByMe ? Color.fromRGBO(200, 217, 143, 1) : Colors.grey[300],
-          borderRadius: BorderRadius.only(
+              isSentByMe ? const Color.fromRGBO(200, 217, 143, 1) : Colors.grey[300],
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(15.0),
             topRight: Radius.circular(15.0),
             bottomLeft: Radius.circular(15.0),
@@ -365,8 +365,8 @@ class VoiceCallMessage extends StatelessWidget {
         ),
         child: Container(
           padding: const EdgeInsets.all(6.0),
-          color: Color.fromRGBO(229, 229, 171, 1),
-          child: Row(
+          color: const Color.fromRGBO(229, 229, 171, 1),
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(

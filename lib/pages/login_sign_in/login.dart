@@ -6,6 +6,7 @@ import 'package:hackathonx/widgets/bottom_nav_page.dart';
 import 'package:hackathonx/widgets/custom_textfield.dart';
 import 'package:hackathonx/widgets/long_button.dart';
 
+//Login and Sign Up Page
 class Login extends StatefulWidget {
   const Login({super.key});
 

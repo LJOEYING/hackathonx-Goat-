@@ -23,7 +23,7 @@ class _CarPoolingState extends State<CarPooling> {
               ClipPath(
                 clipper: AppBarClipper(),
                 child: Container(
-                  height: 130,
+                  height: 135,
                   color: Color.fromRGBO(48, 75, 52, 1),
                 ),
               ),
@@ -34,6 +34,7 @@ class _CarPoolingState extends State<CarPooling> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: AppBar(
+                    automaticallyImplyLeading: false,
                     title: const Text(
                       'Car Pool',
                       style: TextStyle(
@@ -125,9 +126,9 @@ class _CarPoolingState extends State<CarPooling> {
             ],
           ),
           // Display user location
-          Padding(
+          const Padding(
             padding:
-                const EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
+                EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -178,9 +179,9 @@ class _CarPoolingState extends State<CarPooling> {
             ),
           ),
           // Section title for nearby people
-          Padding(
+          const Padding(
             padding:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -291,9 +292,9 @@ class _CarPoolingState extends State<CarPooling> {
                   child: RichText(
                     text: TextSpan(
                       children: [
-                        TextSpan(
+                        const TextSpan(
                           text: 'to ',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
                             color: Colors.black,
                           ),
@@ -399,10 +400,10 @@ class _CarPoolingState extends State<CarPooling> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(''),
-                      Text(''),
+                      const Text(''),
+                      const Text(''),
                       Text(price, style: const TextStyle(fontSize: 18)),
-                      Text(
+                      const Text(
                         "Price per person",
                         style: const TextStyle(
                           fontSize: 13,
@@ -480,7 +481,7 @@ class _CarPoolingState extends State<CarPooling> {
                     person, // Display the number of persons for the ride
                     style: const TextStyle(fontSize: 17),
                   ),
-                  Icon(Icons.person, size: 35, color: Colors.black),
+                  const Icon(Icons.person, size: 35, color: Colors.black),
                 ],
               ),
             ],
@@ -513,7 +514,7 @@ class DividedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
       ),
       child: Row(
         children: [
@@ -522,7 +523,7 @@ class DividedButton extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                 color: leftColor,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(35),
                   bottomLeft: Radius.circular(35),
                 ),
@@ -530,7 +531,7 @@ class DividedButton extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 leftText,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
@@ -542,7 +543,7 @@ class DividedButton extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                 color: rightColor,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(35),
                   bottomRight: Radius.circular(35),
                 ),
@@ -550,7 +551,7 @@ class DividedButton extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 rightText,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),

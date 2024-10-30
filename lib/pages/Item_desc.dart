@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 // The main page that displays the item description
+import 'package:flutter/material.dart';
+
 class ItemDescPage extends StatefulWidget {
   const ItemDescPage({super.key});
 
@@ -13,30 +12,12 @@ class _ItemDescPageState extends State<ItemDescPage>
     with SingleTickerProviderStateMixin {
   bool isHovering =
       false; // Track if the mouse is hovering over the redeem button
-  late AnimationController
-      _controller; // Animation controller for scaling effect
-  late Animation<double> _scaleAnimation; // Animation for scaling effect
 
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 200),
-      vsync: this,
-    );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.1).animate(_controller);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(252, 252, 226, 1),
+      backgroundColor: const Color.fromRGBO(252, 252, 226, 1),
       body: Stack(
         children: [
           Positioned(
@@ -60,13 +41,13 @@ class _ItemDescPageState extends State<ItemDescPage>
                 Navigator.pop(context);
               },
               child: Container(
-                padding: EdgeInsets.all(8),
-                child: Icon(Icons.arrow_back, color: Colors.black, size: 40),
+                padding: const EdgeInsets.all(8),
+                child: const Icon(Icons.arrow_back, color: Colors.black, size: 40),
               ),
             ),
           ),
           // Item Name displayed at the top center of the page
-          Positioned(
+          const Positioned(
             top: 90,
             left: 0,
             right: 0,
@@ -113,12 +94,12 @@ class _ItemDescPageState extends State<ItemDescPage>
                   Center(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 20),
                           backgroundColor: isHovering == false
-                              ? Color.fromRGBO(252, 252, 226, 1)
+                              ? const Color.fromRGBO(252, 252, 226, 1)
                               : Colors.green[400],
-                          side: BorderSide(
+                          side: const BorderSide(
                               color: Color.fromRGBO(90, 138, 98, 1), width: 2)),
                       onPressed: () {
                         setState(() {
@@ -127,63 +108,29 @@ class _ItemDescPageState extends State<ItemDescPage>
                       },
                       child: Text(
                         isHovering == false ? 'Redeem' : '3500 points',
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    // MouseRegion(
-                    //   onHover: (_) {
-                    //     setState(() {
-                    //       isHovering = true;
-                    //       isHovering
-                    //           ? _controller.forward()
-                    //           : _controller.reverse();
-                    //     });
-                    //   },
-                    //   child: ScaleTransition(
-                    //     scale: _scaleAnimation,
-                    //     child: Container(
-                    //       padding:
-                    //           EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    //       decoration: BoxDecoration(
-                    //         color: isHovering
-                    //             ? Colors.green[400]
-                    //             : Color.fromRGBO(252, 252, 226, 1),
-                    //         border: Border.all(
-                    //             color: Color.fromRGBO(90, 138, 98, 1),
-                    //             width: 2),
-                    //         borderRadius: BorderRadius.circular(20),
-                    //       ),
-                    //       child: Text(
-                    //         isHovering ? 'Redeem' : '3500 points',
-                    //         style: TextStyle(
-                    //           color: Colors.black,
-                    //           fontSize: 20,
-                    //           fontWeight: FontWeight.bold,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
                   // Main container for item details
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+                    decoration: const BoxDecoration(
                         color: Color.fromRGBO(255, 255, 245, 1),
                         borderRadius:
                             BorderRadius.vertical(top: Radius.circular(60))),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         // Price Section with original price, discounted price, and add to cart option
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
@@ -229,26 +176,26 @@ class _ItemDescPageState extends State<ItemDescPage>
                             ),
                           ],
                         ),
-                        Divider(color: Colors.grey, thickness: 2),
-                        SizedBox(height: 10),
+                        const Divider(color: Colors.grey, thickness: 2),
+                        const SizedBox(height: 10),
                         Column(
                           children: [
-                            Text(
+                            const Text(
                               'Product Condition:',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Container(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 4),
                               decoration: BoxDecoration(
                                 color: Colors.grey[300],
                                 borderRadius: BorderRadius.circular(4),
                               ),
-                              child: Text(
+                              child: const Text(
                                 'Very Good Condition',
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 12),
@@ -256,10 +203,10 @@ class _ItemDescPageState extends State<ItemDescPage>
                             ),
                           ],
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
 
                         // Description section for item details
-                        Text(
+                        const Text(
                           'Description:',
                           style: TextStyle(
                             color: Colors.black,
@@ -267,8 +214,8 @@ class _ItemDescPageState extends State<ItemDescPage>
                             fontSize: 18,
                           ),
                         ),
-                        SizedBox(height: 8),
-                        Padding(
+                        const SizedBox(height: 8),
+                        const Padding(
                           padding:
                               EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           child: Text(
@@ -276,14 +223,14 @@ class _ItemDescPageState extends State<ItemDescPage>
                             style: TextStyle(color: Colors.black, fontSize: 16),
                           ),
                         ),
-                        SizedBox(height: 32),
+                        const SizedBox(height: 32),
 
                         // Purchase Button
                         Center(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green,
-                              minimumSize: Size(double.infinity, 50),
+                              minimumSize: const Size(double.infinity, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -291,7 +238,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                             onPressed: () {
                               // Handle purchase action
                             },
-                            child: Text(
+                            child: const Text(
                               'PURCHASE',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 18),

@@ -40,7 +40,7 @@ class _GreenConnectCommunityState extends State<GreenConnectCommunity> {
               profileName: 'Angel', // Name of the post author
               profilePic: 'assets/angel.jpg',
             ),
-            SizedBox(
+            const SizedBox(
               height: 100,
             )
           ],

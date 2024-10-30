@@ -22,7 +22,7 @@ class GreenConnectTopButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         backgroundColor: Color(backgroundColor),
         shape: RoundedRectangleBorder(
           side: BorderSide(color: Color(borderColor), width: 0.5),

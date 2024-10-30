@@ -66,7 +66,7 @@ class GreenConnectEvents extends StatelessWidget {
                   height: MediaQuery.of(context).size.width * 0.40,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               ClipRRect(
@@ -77,7 +77,7 @@ class GreenConnectEvents extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               )
             ],

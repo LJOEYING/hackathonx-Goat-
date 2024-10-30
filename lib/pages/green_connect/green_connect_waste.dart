@@ -77,13 +77,13 @@ class GreenConnectWaste extends StatelessWidget {
                         Text(
                           'Recyclable Waste',
                           style: GoogleFonts.workSans(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.w800),
                           ),
                         ),
                         // Description of recyclable waste
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 20),
                           child: Text(
                               'Materials that can be processed and used again, reducing the need for raw resources. Common examples include paper, cardboard, plastics, glass, and metals.'),
                         ),
@@ -92,13 +92,13 @@ class GreenConnectWaste extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 60),
                           child: Text('To manage recyclable waste effectively:',
                               style: GoogleFonts.workSans(
-                                textStyle: TextStyle(
+                                textStyle: const TextStyle(
                                     fontSize: 23, fontWeight: FontWeight.w700),
                               )),
                         ),
                         // Additional tips on waste management
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 20),
                           child: Text(
                               'Sort waste at the source: Use separate bins for recyclable and non-recyclable materials. Clean recyclables: Ensure items like containers and jars are rinsed before disposal. Follow local recycling rules: Be aware of specific guidelines on what can or cannot be recycled.'),
                         )

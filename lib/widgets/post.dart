@@ -28,11 +28,11 @@ class _PostState extends State<Post> {
       // Padding around the entire post widget for spacing
       padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
       child: Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(blurRadius: 2, offset: Offset(0, 1)),
             ]),
             // Column to structure the post's content in vertical layout
@@ -40,7 +40,7 @@ class _PostState extends State<Post> {
           children: [
             Text(
               widget.title,
-              style: TextStyle(fontWeight: FontWeight.w600),
+              style: const TextStyle(fontWeight: FontWeight.w600),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -57,7 +57,7 @@ class _PostState extends State<Post> {
                         widget.profilePic,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Text(widget.profileName)
@@ -73,11 +73,11 @@ class _PostState extends State<Post> {
                         });
                       },
                       icon: widget.isLike
-                          ? Icon(Icons.favorite)
-                          : Icon(Icons.favorite_outline),
+                          ? const Icon(Icons.favorite)
+                          : const Icon(Icons.favorite_outline),
                     ),
                     // Comment button with IconButton widget
-                    IconButton(onPressed: () {}, icon: Icon(Icons.comment)),
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.comment)),
                   ],
                 ),
               ],

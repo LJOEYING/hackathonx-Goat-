@@ -80,12 +80,12 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                 Navigator.pop(context);
               },
               child: Container(
-                padding: EdgeInsets.all(8),
-                child: Icon(Icons.arrow_back, color: Colors.black, size: 40),
+                padding: const EdgeInsets.all(8),
+                child: const Icon(Icons.arrow_back, color: Colors.black, size: 40),
               ),
             ),
           ),
-          Positioned(
+          const Positioned(
             top: 90,
             left: 0,
             right: 0,
@@ -150,7 +150,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                         _sellingPriceController),
                     SizedBox(height: 16),
                     // Product Condition
-                    Text(
+                    const Text(
                       'Product Condition',
                       style: TextStyle(
                         fontSize: 20,
@@ -158,13 +158,13 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                         color: Colors.black,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     // Condition selection chips
                     Wrap(
                       spacing: 10,
                       children: [
                         ChoiceChip(
-                          label: Text('Never Worn',
+                          label: const Text('Never Worn',
                               style: TextStyle(fontSize: 12)),
                           selected: _selectedCondition == 'Never Worn',
                           onSelected: (bool selected) {
@@ -174,7 +174,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                           },
                         ),
                         ChoiceChip(
-                          label: Text('Very Good Condition',
+                          label: const Text('Very Good Condition',
                               style: TextStyle(fontSize: 12)),
                           selected: _selectedCondition == 'Very Good Condition',
                           onSelected: (bool selected) {
@@ -184,7 +184,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                           },
                         ),
                         ChoiceChip(
-                          label: Text('Good Condition',
+                          label: const Text('Good Condition',
                               style: TextStyle(fontSize: 12)),
                           selected: _selectedCondition == 'Good Condition',
                           onSelected: (bool selected) {
@@ -194,7 +194,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                           },
                         ),
                         ChoiceChip(
-                          label: Text('Fair Condition',
+                          label: const Text('Fair Condition',
                               style: TextStyle(fontSize: 12)),
                           selected: _selectedCondition == 'Fair Condition',
                           onSelected: (bool selected) {
@@ -204,7 +204,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                           },
                         ),
                         ChoiceChip(
-                          label: Text('Others', style: TextStyle(fontSize: 12)),
+                          label: const Text('Others', style: TextStyle(fontSize: 12)),
                           selected: _selectedCondition == 'Others',
                           onSelected: (bool selected) {
                             setState(() {
@@ -214,13 +214,13 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
 
                     // Product Description field
                     _buildTextField('Description', 'Enter product description',
                         _descriptionController,
                         maxLines: 3),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
 
                     // Done button to save the product
                     ElevatedButton(
@@ -231,7 +231,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                       ),
                       onPressed: _saveProduct,
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity, 50),
+                        minimumSize: const Size(double.infinity, 50),
                         foregroundColor: Colors.white,
                         backgroundColor: Color(0xff3F6245),
                         shape: RoundedRectangleBorder(
@@ -257,22 +257,22 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
       children: [
         Text(
           labelText,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         TextField(
           controller: controller,
           maxLines: maxLines,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+            contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
             hintText: hintText,
-            hintStyle: TextStyle(fontSize: 12),
+            hintStyle: const TextStyle(fontSize: 12),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: Colors.grey),
+              borderSide: const BorderSide(color: Colors.grey),
             ),
           ),
         ),
