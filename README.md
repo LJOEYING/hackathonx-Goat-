@@ -59,8 +59,8 @@ Enable **Email/Password Authentication in the Authentication section** of your F
 git clone https://github.com/yourusername/yourrepository.git
 cd yourrepository
 ```
-3. Open the project in your preferred IDE (e.g., VSCode, Android Studio).
-4. Run the project on an emulator or connected device:
+2. Open the project in your preferred IDE (e.g., VSCode, Android Studio).
+3. Run the project on an emulator or connected device:
 ```
 flutter run
 ```
