@@ -40,8 +40,10 @@ This project uses the following dependencies:
 - curved_navigation_bar: https://pub.dev/packages/curved_navigation_bar
 
 #### Install Dependencies:
-Run this command to install all dependencies:      
+Run this command to install all dependencies:   
+```
 flutter pub get
+```
 
 
 
