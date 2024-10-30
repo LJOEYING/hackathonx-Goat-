@@ -113,68 +113,75 @@ class _LoginState extends State<Login> {
                   Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: isLogin
-                          ? Column(
-                              children: [
-                                // Username(Email) input field
-                                CustomTextfield(
-                                    textEditingController: loginEmailController,
-                                    obscureText: false,
-                                    labelText: 'Email'),
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                // Password input field
-                                CustomTextfield(
-                                    textEditingController:
-                                        loginPasswordController,
-                                    obscureText: true,
-                                    labelText: 'Password'),
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: TextButton(
-                                      onPressed:
-                                          () {}, // Action when the button is pressed
-                                      child: const Text(
-                                        'Forget Password?',
-                                        style: TextStyle(
-                                            color: Color(0xff7F7777),
-                                            fontWeight: FontWeight.w400),
-                                      )),
-                                ),
-                              ],
+                          ? SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Column(
+                                children: [
+                                  // Username(Email) input field
+                                  CustomTextfield(
+                                      textEditingController:
+                                          loginEmailController,
+                                      obscureText: false,
+                                      labelText: 'Email'),
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                  // Password input field
+                                  CustomTextfield(
+                                      textEditingController:
+                                          loginPasswordController,
+                                      obscureText: true,
+                                      labelText: 'Password'),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: TextButton(
+                                        onPressed:
+                                            () {}, // Action when the button is pressed
+                                        child: const Text(
+                                          'Forget Password?',
+                                          style: TextStyle(
+                                              color: Color(0xff7F7777),
+                                              fontWeight: FontWeight.w400),
+                                        )),
+                                  ),
+                                ],
+                              ),
                             )
-                          : Column(
-                              children: [
-                                // Email/Username Input Field
-                                CustomTextfield(
-                                    textEditingController:
-                                        signUpEmailController, // Assign the email controller.
-                                    obscureText: false,
-                                    labelText:
-                                        'Email'), // Label for the username input.
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                // Password Input Field
-                                CustomTextfield(
-                                    textEditingController:
-                                        signUpPasswordController,
-                                    obscureText:
-                                        true, // Assign the password controller.
-                                    labelText:
-                                        'Password'), // Label for the password input.
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                // Confirm Password Input Field
-                                CustomTextfield(
-                                    textEditingController:
-                                        signUpConfirmPasswordController,
-                                    obscureText:
-                                        true, // Assign the confirm password controller.
-                                    labelText:
-                                        'Confirm Password'), // Label for the confirm password input.
-                              ],
+                          : SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Column(
+                                children: [
+                                  // Email/Username Input Field
+                                  CustomTextfield(
+                                      textEditingController:
+                                          signUpEmailController, // Assign the email controller.
+                                      obscureText: false,
+                                      labelText:
+                                          'Email'), // Label for the username input.
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                  // Password Input Field
+                                  CustomTextfield(
+                                      textEditingController:
+                                          signUpPasswordController,
+                                      obscureText:
+                                          true, // Assign the password controller.
+                                      labelText:
+                                          'Password'), // Label for the password input.
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                  // Confirm Password Input Field
+                                  CustomTextfield(
+                                      textEditingController:
+                                          signUpConfirmPasswordController,
+                                      obscureText:
+                                          true, // Assign the confirm password controller.
+                                      labelText:
+                                          'Confirm Password'), // Label for the confirm password input.
+                                ],
+                              ),
                             )), // Display the SignUp widget if isLogin is false.
                 ],
               ),
