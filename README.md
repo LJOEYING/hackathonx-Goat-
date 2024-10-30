@@ -10,8 +10,8 @@
 * GoGreen includes an AI-powered scanner that helps users identify the materials of various items, providing guidance on how to recycle them correctly. This feature promotes awareness and encourages proper disposal methods.
 4.  **Recycling Education and Engagement:** 
 * The app offers valuable information about recycling practices, empowering users with the knowledge needed to make environmentally responsible choices. Users can participate in quizzes to test their recycling knowledge, earning points that can be redeemed for second-hand items.
-5. **Community Engagement:**
-* Users can post and engage with content on a community page, fostering a sense of belonging and encouraging discussions about sustainability initiatives, recycling tips, and second-hand shopping.
+5. **Connection Page:**
+* The Connection Platform in Go Green fosters a supportive network where users connect, learn eco-tips, and engage in interactive quizzes to enhance their green habits and knowledge.
 6. **Interactive Map of Recycling Centers:**
 * The app features an interactive map that shows nearby recycling centers, making it easy for users to locate drop-off points for recyclable materials. Planned future enhancements include displaying recycling rates for each center and offering home pickup services for convenient item collection.
 
