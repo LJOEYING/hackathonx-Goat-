@@ -18,30 +18,30 @@ class _RemarketState extends State<Remarket> {
   bool _isSelectedGoods = true;
   // List of image paths
   final List<String> _imagePaths = [
-    'assets/ad4.png',
-    'assets/ad7.png',
     'assets/ad1.png',
+    'assets/ad2.png',
+    'assets/ad3.png',
   ];
 
 // Sample data for products
   final List<Map<String, dynamic>> _products = [
     {
-      'image': 'assets/item5.png',
+      'image': 'assets/item1.png',
       'name': 'Molteni Cloths Closet ',
       'price': 'RM 199.20',
     },
     {
-      'image': 'assets/item4.png',
+      'image': 'assets/item2.png',
       'name': 'Panasonic Microwave',
       'price': 'RM 50.99',
     },
     {
-      'image': 'assets/item17.jpg',
+      'image': 'assets/item3.jpg',
       'name': 'Toshiba hair dryer',
       'price': 'RM 38.50',
     },
     {
-      'image': 'assets/item11.png',
+      'image': 'assets/item4.png',
       'name': 'BlackPink Lightstick',
       'price': 'RM45.99',
     },
@@ -278,16 +278,16 @@ class _RemarketState extends State<Remarket> {
                   child: ProductCard(
                       title: 'Yamaha U2H Piano',
                       price: 'RM 374.50',
-                      image: 'assets/item13.png'),
+                      image: 'assets/item5.png'),
                 ),
                 ProductCard(
                     title: 'Nike Air Max',
                     price: 'RM 25.50',
-                    image: 'assets/item2.png'),
+                    image: 'assets/item6.png'),
                 ProductCard(
                     title: 'Lenovo IdeaPad i3',
                     price: 'RM 189.00',
-                    image: 'assets/item6.png'),
+                    image: 'assets/item7.png'),
               ],
             ),
           ),
@@ -304,15 +304,15 @@ class _RemarketState extends State<Remarket> {
                 ProductCard(
                     title: 'BTS Lightstick',
                     price: 'RM 65.00',
-                    image: 'assets/item12.png'),
+                    image: 'assets/item8.png'),
                 ProductCard(
                     title: 'Padini T-Shirt',
                     price: 'RM 8.90',
-                    image: 'assets/item15.jpg'),
+                    image: 'assets/item9.jpg'),
                 ProductCard(
                     title: 'Cellini Leather Sofa',
                     price: 'RM 599.90',
-                    image: 'assets/item1.png'),
+                    image: 'assets/item10.png'),
               ],
             ),
           ),

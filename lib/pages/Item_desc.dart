@@ -87,7 +87,7 @@ class _ItemDescPageState extends State<ItemDescPage>
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30),
                 child: Image.asset(
-                  'assets/item13.png',
+                  'assets/item5.png',
                   height: 200,
                   width: 250,
                   fit: BoxFit.fill,
