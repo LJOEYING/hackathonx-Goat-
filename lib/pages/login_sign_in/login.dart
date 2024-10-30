@@ -22,16 +22,18 @@ class _LoginState extends State<Login> {
     String password = signUpPasswordController.text;
     String confirmPassword = signUpConfirmPasswordController.text;
 
-    User? user = await auth.signUpWithEmailAndPassword(email, password);
+    if (password == confirmPassword) {
+      User? user = await auth.signUpWithEmailAndPassword(email, password);
 
-    if (user != null) {
-      print('User is successfully created');
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => BottomNavPage(myCurrentPage: 0)));
-    } else {
-      print("Some error happened");
+      if (user != null) {
+        print('User is successfully created');
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => BottomNavPage(myCurrentPage: 0)));
+      } else {
+        print("Some error happened");
+      }
     }
   }
 
