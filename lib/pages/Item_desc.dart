@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 // The main page that displays the item description
 class ItemDescPage extends StatefulWidget {
@@ -10,8 +11,10 @@ class ItemDescPage extends StatefulWidget {
 
 class _ItemDescPageState extends State<ItemDescPage>
     with SingleTickerProviderStateMixin {
-  bool isHovering = false; // Track if the mouse is hovering over the redeem button
-  late AnimationController _controller; // Animation controller for scaling effect
+  bool isHovering =
+      false; // Track if the mouse is hovering over the redeem button
+  late AnimationController
+      _controller; // Animation controller for scaling effect
   late Animation<double> _scaleAnimation; // Animation for scaling effect
 
   @override
@@ -99,7 +102,7 @@ class _ItemDescPageState extends State<ItemDescPage>
 
           // Scrollable section for item details
           Positioned.fill(
-            top: 380,
+            top: 375,
             left: 16,
             right: 16,
             child: SingleChildScrollView(
@@ -108,43 +111,64 @@ class _ItemDescPageState extends State<ItemDescPage>
                 children: [
                   // Points Section with hover effect
                   Center(
-                    child: MouseRegion(
-                      onHover: (_) {
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          backgroundColor: isHovering == false
+                              ? Color.fromRGBO(252, 252, 226, 1)
+                              : Colors.green[400],
+                          side: BorderSide(
+                              color: Color.fromRGBO(90, 138, 98, 1), width: 2)),
+                      onPressed: () {
                         setState(() {
                           isHovering = true;
-                          isHovering
-                              ? _controller.forward()
-                              : _controller.reverse();
                         });
                       },
-                      
-                      child: ScaleTransition(
-                        scale: _scaleAnimation,
-                        child: Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: isHovering
-                                ? Colors.green[400]
-                                : Color.fromRGBO(252, 252, 226, 1),
-                            border: Border.all(
-                                color: Color.fromRGBO(90, 138, 98, 1),
-                                width: 2),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Text(
-                            isHovering ? 'Redeem' : '3500 points',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
+                      child: Text(
+                        isHovering == false ? 'Redeem' : '3500 points',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
+                    // MouseRegion(
+                    //   onHover: (_) {
+                    //     setState(() {
+                    //       isHovering = true;
+                    //       isHovering
+                    //           ? _controller.forward()
+                    //           : _controller.reverse();
+                    //     });
+                    //   },
+                    //   child: ScaleTransition(
+                    //     scale: _scaleAnimation,
+                    //     child: Container(
+                    //       padding:
+                    //           EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    //       decoration: BoxDecoration(
+                    //         color: isHovering
+                    //             ? Colors.green[400]
+                    //             : Color.fromRGBO(252, 252, 226, 1),
+                    //         border: Border.all(
+                    //             color: Color.fromRGBO(90, 138, 98, 1),
+                    //             width: 2),
+                    //         borderRadius: BorderRadius.circular(20),
+                    //       ),
+                    //       child: Text(
+                    //         isHovering ? 'Redeem' : '3500 points',
+                    //         style: TextStyle(
+                    //           color: Colors.black,
+                    //           fontSize: 20,
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
 
                   // Main container for item details
                   Container(

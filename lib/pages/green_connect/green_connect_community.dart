@@ -25,7 +25,8 @@ class _GreenConnectCommunityState extends State<GreenConnectCommunity> {
             ),
             // First post in the community feed
             Post(
-              title: '🗑️ Local Waste Disposal Guidelines 🗑️', // Title of the post
+              title:
+                  '🗑️ Local Waste Disposal Guidelines 🗑️', // Title of the post
               content:
                   'Recycling Days: Every Tuesday and Thursday. Make sure bins are out by 7 AM!\n What\’s Accepted?: Recycle plastics (#1-2), paper, cardboard, aluminum, and glass. Please, no plastic bags or... ',
               profileName: 'Labubu', // Name of the post author
@@ -39,6 +40,9 @@ class _GreenConnectCommunityState extends State<GreenConnectCommunity> {
               profileName: 'Angel', // Name of the post author
               profilePic: 'assets/angel.jpg',
             ),
+            SizedBox(
+              height: 100,
+            )
           ],
         ),
       ),

@@ -193,6 +193,9 @@ class _RemarketState extends State<Remarket> {
             ),
             // Build the tab section for Selected Goods and Sell
             _buildTabSection(),
+            SizedBox(
+              height: 100,
+            )
           ],
         ),
       ),
