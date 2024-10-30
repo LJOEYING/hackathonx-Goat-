@@ -50,8 +50,7 @@ flutter pub get
 3. Download the **google-services.json (for Android)** and/or **GoogleService-Info.plist (for iOS)** and place them in the appropriate folders:
 * android/app for google-services.json
 * ios/Runner for GoogleService-Info.plist
-
-Enable **Email/Password Authentication in the Authentication section** of your Firebase project.
+4. Enable **Email/Password Authentication in the Authentication section** of your Firebase project.
 
 ### Project Setup
 1. Clone the repository:
