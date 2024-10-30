@@ -48,7 +48,7 @@ flutter pub get
 ### Firebase Setup
 1. Create a Firebase project on the Firebase Console.
 2. Add an Android and/or iOS app in your Firebase project, depending on your platform.
-3. Download the google-services.json (for Android) and/or GoogleService-Info.plist (for iOS) and place them in the appropriate folders:
+3. Download the **google-services.json (for Android)** and/or **GoogleService-Info.plist (for iOS)** and place them in the appropriate folders:
 * android/app for google-services.json
 * ios/Runner for GoogleService-Info.plist
 
