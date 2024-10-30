@@ -7,12 +7,12 @@ class GreenMap extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-            top: -20,
+            top: -70,
             left: -5,
             right: 0,
             bottom: 20,
             child: Image.asset(
-              'assets/recycle_centre_map.png',
+              'assets/green_map.png',
               fit: BoxFit.cover,
               height: 300,
               width: double.infinity,
@@ -25,7 +25,7 @@ class GreenMap extends StatelessWidget {
             child: SearchBar(),
           ),
           Positioned(
-            bottom: 0,
+            bottom: -20,
             left: 0,
             right: 0,
             child: CollectionTypeSelector(),
@@ -45,8 +45,10 @@ class SearchBar extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.search),
-          hintText: 'Recycle Centre near me',
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          hintText: 'Search anywhere nearby...',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
         ),
       ),
     );
@@ -54,6 +56,39 @@ class SearchBar extends StatelessWidget {
 }
 
 class CollectionTypeSelector extends StatelessWidget {
+  final items = [
+    {
+      'label': 'Dustbins',
+      'photo': 'assets/dustbin.png',
+      'color': Colors.red[200]
+    },
+    {
+      'label': 'Recycle Bins',
+      'photo': 'assets/recycle_bin.png',
+      'color': Colors.orange[300]
+    },
+    {
+      'label': 'Communal Bins',
+      'photo': 'assets/communal_bin.png',
+      'color': Colors.yellow[300]
+    },
+    {
+      'label': 'Collection Centres',
+      'photo': 'assets/collection_center.png',
+      'color': Colors.green[200]
+    },
+    {
+      'label': 'Recycle Centres',
+      'photo': 'assets/recycle_center.png',
+      'color': Colors.blue[200]
+    },
+    {
+      'label': 'Mobile Recycling Centres',
+      'photo': 'assets/mobile_recycle_center.png',
+      'color': Colors.purple[200]
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -63,37 +98,22 @@ class CollectionTypeSelector extends StatelessWidget {
         shrinkWrap: true,
         itemCount: 6,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
-          crossAxisSpacing: 2,
-          mainAxisSpacing: 2,
-          childAspectRatio: 0.85,
+          crossAxisCount: 3,
+          crossAxisSpacing: 3,
+          mainAxisSpacing: 3,
+          childAspectRatio: 1,
         ),
         itemBuilder: (context, index) {
-          final items = [
-            {'label': 'Dustbin', 'photo': 'assets/dustbin.png'},
-            {'label': 'Recycle Bin', 'photo': 'assets/recycle_bin.png'},
-            {'label': 'Communal Bin', 'photo': 'assets/communal_bin.png'},
-            {
-              'label': 'Collection Centre',
-              'photo': 'assets/collection_centre.png'
-            },
-            {'label': 'Recycle Centre', 'photo': 'assets/recycle_centre.png'},
-            {
-              'label': 'Mobile Recycling Centre',
-              'photo': 'assets/mobile_recycle.png'
-            },
-          ];
-
-          final label = items[index]['label']!;
-          final photo = items[index]['photo']!;
-
-          return _buildCollectionIcon(label, photo);
+          final label = items[index]['label']! as String;
+          final photo = items[index]['photo']! as String;
+          final color = items[index]['color']! as Color;
+          return _buildCollectionIcon(label, photo, color);
         },
       ),
     );
   }
 
-  Widget _buildCollectionIcon(String label, String photo) {
+  Widget _buildCollectionIcon(String label, String photo, Color color) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -101,7 +121,7 @@ class CollectionTypeSelector extends StatelessWidget {
           height: 60,
           width: 60,
           decoration: BoxDecoration(
-            color: Colors.green[100],
+            color: color,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(20),
           ),
@@ -122,7 +142,10 @@ class CollectionTypeSelector extends StatelessWidget {
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-              fontSize: 12, color: Colors.grey, fontWeight: FontWeight.bold),
+            fontSize: 14,
+            color: Colors.grey,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ],
     );

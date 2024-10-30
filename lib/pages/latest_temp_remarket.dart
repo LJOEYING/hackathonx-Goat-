@@ -654,3 +654,64 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+
+
+
+
+// class RemarketPage extends StatefulWidget {
+//   @override
+//   _RemarketPageState createState() => _RemarketPageState();
+// }
+
+// class _RemarketPageState extends State<RemarketPage> {
+//   List<Map<String, dynamic>> products = []; // List to hold products
+
+//   // Navigate to AddNewItemPage and get the result
+//   Future<void> _navigateToAddNewItemPage() async {
+//     final product = await Navigator.push(
+//       context,
+//       MaterialPageRoute(builder: (context) => AddNewItemPage()),
+//     );
+
+//     if (product != null) {
+//       setState(() {
+//         products.add(product); // Add the product to the list
+//       });
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Remarket Page'),
+//       ),
+//       body: Column(
+//         children: [
+//           ElevatedButton(
+//             onPressed: _navigateToAddNewItemPage,
+//             child: Text('Add New Product'),
+//           ),
+//           Expanded(
+//             child: ListView.builder(
+//               itemCount: products.length,
+//               itemBuilder: (context, index) {
+//                 final product = products[index];
+//                 return Card(
+//                   margin: EdgeInsets.all(8),
+//                   child: ListTile(
+//                     leading: product['image'] != null
+//                         ? Image.file(product['image'], width: 50, height: 50)
+//                         : Icon(Icons.image),
+//                     title: Text(product['productName']),
+//                     subtitle: Text('Condition: ${product['condition']}'),
+//                   ),
+//                 );
+//               },
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
