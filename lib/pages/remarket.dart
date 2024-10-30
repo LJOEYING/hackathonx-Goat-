@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hackathonx/pages/Item_desc.dart';
 import 'package:hackathonx/pages/newItem.dart';
 
 class Remarket extends StatefulWidget {
@@ -57,7 +58,7 @@ class _RemarketState extends State<Remarket> {
       Timer.periodic(Duration(seconds: 5), (timer) {
         if (_pageController.hasClients) {
           int nextPage = (_currentPage + 1) %
-              _imagePaths.length; // Use length of imagePaths list
+              _imagePaths.length; 
           _pageController.animateToPage(
             nextPage,
             duration: Duration(milliseconds: 300),
@@ -123,11 +124,11 @@ class _RemarketState extends State<Remarket> {
                 children: [
                   // Add a PageView for horizontal scrolling
                   Container(
-                    height: screenWidth * 0.55, // Adjust height as needed
+                    height: screenWidth * 0.55, 
                     child: PageView.builder(
                       controller: _pageController,
                       itemCount:
-                          _imagePaths.length, // Use length of imagePaths list
+                          _imagePaths.length, 
                       onPageChanged: (index) {
                         setState(() {
                           _currentPage = index;
@@ -136,13 +137,12 @@ class _RemarketState extends State<Remarket> {
                       itemBuilder: (context, index) {
                         final imagePath = _imagePaths[index];
                         return Container(
-                          // margin: EdgeInsets.symmetric(horizontal: 20.0),
                           child: ClipRRect(
                             child: Image.asset(
                               imagePath,
                               fit: BoxFit.cover,
                               width:
-                                  screenWidth * 0.8, // Adjust width as needed
+                                  screenWidth * 0.8,
                             ),
                           ),
                         );
@@ -151,7 +151,6 @@ class _RemarketState extends State<Remarket> {
                   ),
                   // Add a circular bullet indicator at the bottom center
                   Positioned(
-                    // bottom: 50,
                     bottom: pointsBarHeight + 10,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -172,14 +171,14 @@ class _RemarketState extends State<Remarket> {
                   ),
                   // ),
                   Positioned(
-                    bottom: 0, // Adjust this value to control the overlap
+                    bottom: 0,
                     left: 0,
                     right: 0,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: FractionallySizedBox(
                           widthFactor: 0.95, child: PointsBar()),
-                    ), // Use your PointsBar widget here
+                    ), 
                   ),
                 ],
               ),
@@ -191,7 +190,7 @@ class _RemarketState extends State<Remarket> {
     );
   }
 
-// Reusable Tab Button Widget
+// Tab Button Widget
   Widget _buildTabButton(String label, bool isSelected, Function onTap) {
     return GestureDetector(
       onTap: () => onTap(),
@@ -221,11 +220,9 @@ class _RemarketState extends State<Remarket> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Container(
-        padding: EdgeInsets.only(top: 20.0), // Padding inside the container
-        // margin: EdgeInsets.symmetric(
-        //     horizontal: 8.0), // Margin around the container
+        padding: EdgeInsets.only(top: 20.0),
         decoration: BoxDecoration(
-          color: Colors.white, // Background color of the container
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(44),
             topRight: Radius.circular(44),
@@ -234,12 +231,11 @@ class _RemarketState extends State<Remarket> {
           ),
           border: Border.all(
             color: Color.fromRGBO(227, 227, 130, 1),
-            width: 2, // Yellow border outline
+            width: 2, 
           ),
         ),
         child: Column(
           children: [
-            // Tab buttons for "Selected Goods" and "Sell"
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -250,7 +246,7 @@ class _RemarketState extends State<Remarket> {
                     'Sell', !_isSelectedGoods, () => _toggleTab(false)),
               ],
             ),
-            SizedBox(height: 10), // Spacing between the tabs and the content
+            SizedBox(height: 10), 
 
             // Tab content (Selected Goods or Sell)
             _isSelectedGoods
@@ -265,7 +261,6 @@ class _RemarketState extends State<Remarket> {
   //Build Selected Goods section
   Widget _buildSelectedGoodsSection() {
     return Padding(
-      // padding: const EdgeInsets.all(8.0),
       padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
 
       child: Column(
@@ -278,10 +273,18 @@ class _RemarketState extends State<Remarket> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                ProductCard(
-                    title: 'Shoe',
-                    price: 'RM 34.50',
-                    image: 'assets/shoes1.png'),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ItemDescPage()),
+                    );
+                  },
+                  child: ProductCard(
+                      title: 'Shoe',
+                      price: 'RM 89.00',
+                      image: 'assets/shoes1.png'),
+                ),
                 ProductCard(
                     title: 'Bottle',
                     price: 'RM 34.99',
@@ -297,7 +300,7 @@ class _RemarketState extends State<Remarket> {
             height: 10,
           ),
           // Daily Discover Section
-          SectionHeader(title: 'Daily Discover'), //maybe need padding
+          SectionHeader(title: 'Daily Discover'),
           Container(
             height: 200,
             child: ListView(
@@ -323,7 +326,7 @@ class _RemarketState extends State<Remarket> {
     );
   }
 
-// Sell Section Content (Product Layout with Image, Name, Price, and Floating Button)
+// Sell Section Content 
   Widget _buildSellSection() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -333,9 +336,9 @@ class _RemarketState extends State<Remarket> {
           GridView.builder(
             shrinkWrap: true,
             physics:
-                NeverScrollableScrollPhysics(), // Disable scrolling for GridView
+                NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // 2 columns
+              crossAxisCount: 2, 
               crossAxisSpacing: 12, // Spacing between columns
               mainAxisSpacing: 12, // Spacing between rows
               childAspectRatio:
@@ -347,7 +350,7 @@ class _RemarketState extends State<Remarket> {
             },
           ),
 
-          // Positioned Floating Button (at the bottom right after the last product)
+          // Positioned Floating Button
           Positioned(
             right: 0,
             bottom: 50,
@@ -357,14 +360,14 @@ class _RemarketState extends State<Remarket> {
                   context,
                   MaterialPageRoute(builder: (context) => AddNewItemPage()),
                 );
-              }, // Handle adding products (e.g., trigger another action)
+              }, 
               shape: CircleBorder(),
-              backgroundColor: Colors.black, // Button color
+              backgroundColor: Colors.black, 
               child: Icon(
                 Icons.add,
                 color: Colors.white,
                 size: 35,
-              ), // Plus icon
+              ),
             ),
           ),
         ],
@@ -408,14 +411,14 @@ class _RemarketState extends State<Remarket> {
                     product['name'],
                     maxLines: 1,
                     overflow:
-                        TextOverflow.ellipsis, // Show ellipsis for overflow
+                        TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                SizedBox(width: 4), // Spacing between name and price
+                SizedBox(width: 4), 
 
                 // Product Price
                 Text(
@@ -466,7 +469,7 @@ class PointsBar extends StatelessWidget {
   Widget build(BuildContext context) {
     var pointsBarHeight;
     return Container(
-      height: pointsBarHeight, // Adjust height as needed
+      height: pointsBarHeight,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -581,7 +584,6 @@ class ProductCard extends StatelessWidget {
             ),
             Padding(
               padding:
-                  // const EdgeInsets.symmetric(vertical: 10, horizontal: 8.0),
                   const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

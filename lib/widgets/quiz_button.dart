@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// A stateless widget `QuizButton` that represents an option button in a quiz. It displays
+// the quiz option text and changes appearance based on whether it's the selected option.
 class QuizButton extends StatelessWidget {
+   // Constructor accepts parameters: quiz option text, onPressed callback, index of the option, 
+  // and currently selected option index to determine button appearance.
   QuizButton(
       {required this.quizOpt,
       required this.onPressed,
@@ -26,7 +30,7 @@ class QuizButton extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  quizOpt,
+                  quizOpt,  // Display the quiz option text
                   style: GoogleFonts.workSans(
                     textStyle: TextStyle(
                       fontSize: MediaQuery.of(context).size.width * 0.04,

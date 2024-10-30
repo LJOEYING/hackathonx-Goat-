@@ -11,7 +11,7 @@ class CarPooling extends StatefulWidget {
 }
 
 class _CarPoolingState extends State<CarPooling> {
-  bool isDriver = true;
+  bool isDriver = true; // Flag to check if the user is a driver or passenger
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +45,7 @@ class _CarPoolingState extends State<CarPooling> {
                     backgroundColor: Colors.transparent,
                     elevation: 0,
                     actions: [
+                      // Filter button
                       Container(
                         width: 40,
                         height: 40,
@@ -66,6 +67,7 @@ class _CarPoolingState extends State<CarPooling> {
                               color: Colors.black,
                             ),
                             onPressed: () {
+                               // Show the filter dialog when pressed
                               showDialog(
                                 context: context,
                                 builder: (context) => Dialog(
@@ -84,6 +86,7 @@ class _CarPoolingState extends State<CarPooling> {
                         ),
                       ),
                       const SizedBox(width: 12),
+                      // New post button
                       Container(
                         width: 40,
                         height: 40,
@@ -105,6 +108,7 @@ class _CarPoolingState extends State<CarPooling> {
                               color: Colors.black,
                             ),
                             onPressed: () {
+                              // Show the new post dialog when pressed
                               showDialog(
                                 context: context,
                                 builder: (context) =>
@@ -120,6 +124,7 @@ class _CarPoolingState extends State<CarPooling> {
               ),
             ],
           ),
+          // Display user location
           Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
@@ -133,13 +138,20 @@ class _CarPoolingState extends State<CarPooling> {
                 ),
                 Text(
                   ' Your Location : ',
+                  maxLines: 1,
+                    overflow:
+                        TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
+                     
                   ),
                 ),
                 Text(
-                  'Kolej Canselor, UPM',
+                  'Kolej Canselor, UPM', // Example current location
+                  maxLines: 1,
+                    overflow:
+                        TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -148,20 +160,41 @@ class _CarPoolingState extends State<CarPooling> {
               ],
             ),
           ),
+          // Toggle button for Driver/Passenger selection
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 0.0),
             child: DividedButton(
               leftText: 'Driver',
               rightText: 'Passenger',
               onPressed: () {
+                // Toggle between Driver and Passenger
                 setState(() {
-                  isDriver = !isDriver;
+                  isDriver = !isDriver; // Change the state
                 });
               },
+              // Change color based on selection
               leftColor: isDriver ? Colors.black : Colors.grey,
               rightColor: isDriver ? Colors.grey : Colors.black,
             ),
           ),
+          // Section title for nearby people
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'People Nearby You',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.blueGrey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Display the list of posts based on Driver/Passenger selection
           Expanded(
             child: ListView(
               children:
@@ -173,111 +206,289 @@ class _CarPoolingState extends State<CarPooling> {
     );
   }
 
+  // Returns a list of driver posts
   List<Widget> driverPosts(BuildContext context) {
     return [
-      carPoolList(
-        context,
-        'Justin Bieber',
-        '28',
-        'FSKTM, UPM',
-        '17:00',
-        'RM0.00',
-        '2',
-        'Driver',
-      ),
-      carPoolList(
-        context,
-        'Ariana Grande',
-        '23',
-        'IOI City Mall',
-        '18:00',
-        'RM5.00',
-        '5',
-        'Driver',
-      ),
+      // Sample driver posts with details
+      carPoolList(context, 'Justin Bieber', '31', 'FSKTM, UPM', '17:00',
+          'RM2.00', '2', 'male', 'assets/propic_1.jpg', 'driver'),
+      carPoolList(context, 'Ariana Grande', '27', 'IOI City Mall', '18:00',
+          'RM5.50', '4', 'female', 'assets/propic_2.png', 'driver'),
+      carPoolList(context, 'Firdhaus Farmizi ', '23', 'Pavillion KL', '20:30',
+          'RM13.00', '3', 'male', 'assets/propic_3.jpg', 'driver'),
     ];
   }
 
+  // Returns a list of passenger posts
   List<Widget> passengerPosts(BuildContext context) {
     return [
-      carPoolList(
-        context,
-        'Jackie Chan',
-        '65',
-        'Cheras Traders Square',
-        '08:30',
-        'RM5.00',
-        '1',
-        'Passenger',
-      ),
-      carPoolList(
-        context,
-        'Nicol David',
-        '20',
-        'TBS',
-        '14:45',
-        'RM7.50',
-        '1',
-        'Passenger',
-      ),
+      // Sample passenger posts with details
+      carPoolList(context, 'Jackie Chan', '65', 'Cheras Traders Square',
+          '08:30', 'RM5.00', '1', 'male', 'assets/propic_4.jpg', 'passenger'),
+      carPoolList(context, 'Pham Hanni', '20', 'Mid Valley Megamall', '14:45',
+          'RM7.50', '2', 'female', 'assets/propic_5.jpg', 'passenger'),
     ];
   }
 
-  Widget carPoolList(BuildContext context, String name, String age,
-    String location, String time, String price, String seats, String type) {
-  return Container(
-    margin: const EdgeInsets.symmetric(vertical: 8.0), // Add some margin
-    padding: const EdgeInsets.all(18.0), // Add some padding
-    decoration: BoxDecoration(
-      color: Color.fromRGBO(241, 241, 205, 1),
-      borderRadius: BorderRadius.circular(10),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 1,
-          blurRadius: 5,
-          offset: const Offset(0, 3), // changes position of shadow
-        ),
-      ],
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Text(
-              time,
-              style: const TextStyle(fontSize: 17),
-            ),
-            const SizedBox(width: 7),
-            const Icon(Icons.circle, size: 11, color: Colors.red),
-            const SizedBox(width: 7),
-            Expanded(
-              child: Text(
-                location,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 5),
-        Text('$location | $time | $price'),
-        const SizedBox(height: 5),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('$seats seats'),
-            Text(type),
-          ],
-        ),
-      ],
-    ),
-  );
-}
+  // Widget that displays a car pool listing
+  Widget carPoolList(
+      BuildContext context,
+      String name, // Name of the driver/passenger
+      String age, // Age of the driver/passenger
+      String location, // Destination location
+      String time, // Departure time
+      String price, // Price per person
+      String person, // Number of persons
+      String gender, // Gender of the driver/passenger
+      String imageUrl, // URL for the profile image
+      String userType // Type of user (driver or passenger)
+      ) {
+    int totalPerson = 4; // Total number of seats in the car
 
+    return GestureDetector(
+      // Navigate to ChatScreen when tapped
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChatScreen(
+                name: name,
+                age: age,
+                gender: gender,
+                imageUrl: imageUrl,
+                userType: userType),
+          ),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        padding: const EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          color: const Color.fromRGBO(241, 241, 205, 1),
+          borderRadius: BorderRadius.circular(13),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  time, // Display the departure time
+                  style: const TextStyle(fontSize: 17),
+                ),
+                const SizedBox(width: 7),
+                const Icon(Icons.circle, size: 11, color: Colors.red),
+                const SizedBox(width: 7),
+                Expanded(
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'to ',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: location, // Display the destination
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                if (isDriver) ...[
+                  Row(
+                    children: List.generate(
+                      totalPerson,
+                      (index) {
+                        return Icon(
+                          Icons.airline_seat_recline_normal_sharp,
+                          color: index < int.parse(person)
+                              ? Colors.green // Seat available
+                              : Colors.red, // Seat taken
+                          size: 25,
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ],
+            ),
+            const SizedBox(height: 2),
+            // Display additional details if the user is a driver
+            if (isDriver) ...[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    '$person Seats available', // Number of seats available
+                    style: const TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 13,
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: 2),
+              Row(
+                children: [
+                  // Profile image of the driver
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 2.0,
+                      ),
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        imageUrl,
+                        width: 70,
+                        height: 70,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          name, // Driver's name
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            // Driver's gender
+                            Icon(
+                              gender == 'male' ? Icons.male : Icons.female,
+                              color:
+                                  gender == 'male' ? Colors.blue : Colors.pink,
+                              size: 27,
+                            ),
+                            const SizedBox(width: 5),
+                            Text(
+                              'AGE $age', // Display age (driver or passenger)
+                              style: const TextStyle(fontSize: 15),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(''),
+                      Text(''),
+                      Text(price, style: const TextStyle(fontSize: 18)),
+                      Text(
+                        "Price per person",
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.blueGrey,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ] else ...[
+              // Render details if the user is a passenger
+              const SizedBox(height: 15),
+              Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        // Profile image of the passenger
+                        Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.0,
+                            ),
+                          ),
+                          child: ClipOval(
+                            child: Image.asset(
+                              imageUrl,
+                              width: 70,
+                              height: 70,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 15),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                name, // Passenger's name
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  // Passenger's gender
+                                  Icon(
+                                    gender == 'male'
+                                        ? Icons.male
+                                        : Icons.female,
+                                    color: gender == 'male'
+                                        ? Colors.blue
+                                        : Colors.pink,
+                                    size: 27,
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    'AGE $age', // Display age
+                                    style: const TextStyle(fontSize: 15),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text(
+                    person, // Display the number of persons for the ride
+                    style: const TextStyle(fontSize: 17),
+                  ),
+                  Icon(Icons.person, size: 35, color: Colors.black),
+                ],
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class DividedButton extends StatelessWidget {
@@ -292,8 +503,8 @@ class DividedButton extends StatelessWidget {
     required this.leftText,
     required this.rightText,
     required this.onPressed,
-    this.leftColor = Colors.grey,
-    this.rightColor = Colors.black,
+    this.leftColor = Colors.transparent,
+    this.rightColor = Colors.transparent,
   }) : super(key: key);
 
   @override

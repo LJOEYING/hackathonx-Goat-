@@ -122,7 +122,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
                 hint: const Text('Select a location to go'),
                 items: [
                   'IOI City Mall',
-                  'Olive Hill',
+                  'Mid Valley Megamall',
                   'Pavillion KL',
                   'Cheras Traders Square',
                   'Terminal Bersepadu Selatan (TBS)'
@@ -299,7 +299,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
       actions: [
         Row(
           mainAxisAlignment:
-              MainAxisAlignment.spaceBetween, // Align buttons on either side
+              MainAxisAlignment.spaceBetween, 
           children: [
             ElevatedButton(
               child: Text('Cancel'),

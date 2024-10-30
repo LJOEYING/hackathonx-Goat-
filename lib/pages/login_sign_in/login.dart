@@ -12,10 +12,13 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  bool isLogin = true;
+  final formKey = GlobalKey<FormState>(); // Key to uniquely identify the form.
+  final emailController =
+      TextEditingController(); // Controller for the email/username input field.
+  final passwordController =
+      TextEditingController(); // Controller for the password input field.
+  bool isLogin =
+      true; // State variable to toggle between login and signup forms.
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,8 @@ class _LoginState extends State<Login> {
       backgroundColor: const Color(0xffFFFFE7),
       body: SafeArea(
         child: Form(
+          // key: formKey, Assign form key for validation purposes.
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -32,12 +37,14 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 20,
                   ),
+                  // Display different images based on the login/signup state.
                   isLogin
                       ? Image.asset('assets/img2.png')
                       : Image.asset(
                           'assets/img3.png',
                           height: MediaQuery.of(context).size.height * 0.28,
                         ),
+                  // Title of the screen based on login/signup state.
                   Text(
                     isLogin ? 'Login' : 'Sign Up',
                     style: GoogleFonts.inter(
@@ -52,19 +59,22 @@ class _LoginState extends State<Login> {
                       child: isLogin
                           ? Column(
                               children: [
+                                // Username input field
                                 CustomTextfield(
                                     textEditingController: emailController,
                                     labelText: 'Username'),
                                 const SizedBox(
                                   height: 30,
                                 ),
+                                // Password input field
                                 CustomTextfield(
-                                    textEditingController: emailController,
+                                    textEditingController: passwordController,
                                     labelText: 'Password'),
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: TextButton(
-                                      onPressed: () {},
+                                      onPressed:
+                                          () {}, // Action when the button is pressed.
                                       child: const Text(
                                         'Forget Password?',
                                         style: TextStyle(
@@ -74,7 +84,7 @@ class _LoginState extends State<Login> {
                                 ),
                               ],
                             )
-                          : const SignUp()),
+                          : const SignUp()), // Display the SignUp widget if isLogin is false.
                 ],
               ),
               Padding(
@@ -82,6 +92,7 @@ class _LoginState extends State<Login> {
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
                 child: Column(
                   children: [
+                    // Long button for login or signup action.
                     LongButton(
                       onPressed: () {},
                       buttonText: isLogin ? 'LOGIN' : 'SIGN UP',
@@ -89,13 +100,14 @@ class _LoginState extends State<Login> {
                       backgroundColor: 0xff304B34,
                       fontSize: 20,
                     ),
+                    // Row for account switching text.
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                             isLogin
-                                ? 'Don\'t have an account?'
-                                : 'Already have an account?',
+                                ? 'Don\'t have an account?' // Text if currently on login form.
+                                : 'Already have an account?', // Text if currently on signup form.
                             style: const TextStyle(color: Color(0xff7F7777))),
                         TextButton(
                           onPressed: () {
