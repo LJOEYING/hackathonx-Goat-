@@ -24,6 +24,19 @@ class _ResultState extends State<Result> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              size: 40,
+              color: Colors.black,
+            )),
+        backgroundColor: Colors.transparent,
+      ),
       body: Stack(
         children: [
           SizedBox.expand(
@@ -31,11 +44,6 @@ class _ResultState extends State<Result> {
               File(widget.imgPath),
               fit: BoxFit.fill,
             ),
-          ),
-          Container(
-            height: height * 0.36,
-            width: width,
-            color: Colors.transparent,
           ),
           DraggableScrollableSheet(
             initialChildSize: 0.3,
@@ -51,26 +59,7 @@ class _ResultState extends State<Result> {
                         ListView(
                           controller: myScrollController,
                           children: [
-                            // Example of displaying data from details
-                            // ListTile(
-                            //   title: Text("Waste Name"),
-                            //   subtitle: Text(widget.details['waste_name'] ?? 'N/A'),
-                            // ),
-                            // ListTile(
-                            //   title: Text("Waste Type"),
-                            //   subtitle: Text(widget.details['waste_type'] ?? 'N/A'),
-                            // ),
-                            // ListTile(
-                            //   title: Text("Saved CO₂"),
-                            //   subtitle: Text(
-                            //       widget.details['saved_carbon_dioxide'] ?? 'N/A'),
-                            // ),
-                            // ListTile(
-                            //   title: Text("Ways to Manage"),
-                            //   subtitle:
-                            //       Text(widget.details['ways_to_manage'] ?? 'N/A'),
-                            // ),
-                            // Additional containers for styling
+                            
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 30, vertical: 10),
