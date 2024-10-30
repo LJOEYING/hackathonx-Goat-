@@ -18,9 +18,9 @@ class _RemarketState extends State<Remarket> {
   bool _isSelectedGoods = true;
   // List of image paths
   final List<String> _imagePaths = [
-    'assets/advertisement1.jpg',
-    'assets/advertisement1.jpg',
-    'assets/advertisement1.jpg',
+    'assets/ad1.png',
+    'assets/ad7.png',
+    'assets/ad6.png',
   ];
 
 // Sample data for products
