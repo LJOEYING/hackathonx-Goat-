@@ -103,7 +103,7 @@ class _ScannerState extends State<Scanner> with WidgetsBindingObserver {
 
     // Prompt for the AI model to generate information from the image
     final prompt =
-        "Based on the image provided, determine the name of the waste, type of waste, saved carbon footprint, and how to manage it, write the the following format: Waste Name : \n\n Waste Type: \n\n Saved Carbon Dioxide: \n\n Ways to manage:";
+        "Based on the image provided, determine the name of the waste, type of waste, saved carbon footprint, and how to manage it, write the the following format: Item Name : \n\n Item Type: \n\n Saved Carbon Dioxide: \n\n Ways to manage:";
 
     // Reading the image file as bytes
     final image = await File(imgPath!).readAsBytes();

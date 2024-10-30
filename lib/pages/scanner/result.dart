@@ -68,7 +68,7 @@ class _ResultState extends State<Result> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 30, vertical: 10),
                               child: Text(
-                                'Waste',
+                                'Result',
                                 style: GoogleFonts.inter(
                                     textStyle: const TextStyle(
                                         fontSize: 30,

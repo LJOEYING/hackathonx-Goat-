@@ -94,31 +94,6 @@ class _GreenConnectState extends State<GreenConnect> {
                                       MediaQuery.of(context).size.width * 0.30,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color(0xff304b34),
-                                      shape: BeveledRectangleBorder(
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text(
-                                      'DONE',
-                                      style: GoogleFonts.inter(
-                                          textStyle: const TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w800)),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.30,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xffbdbdbd),
                                       shape: BeveledRectangleBorder(
                                         borderRadius: BorderRadius.circular(5),
@@ -132,6 +107,31 @@ class _GreenConnectState extends State<GreenConnect> {
                                       style: GoogleFonts.inter(
                                           textStyle: const TextStyle(
                                               color: Colors.black,
+                                              fontWeight: FontWeight.w800)),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.30,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xff304b34),
+                                      shape: BeveledRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'DONE',
+                                      style: GoogleFonts.inter(
+                                          textStyle: const TextStyle(
+                                              color: Colors.white,
                                               fontWeight: FontWeight.w800)),
                                     ),
                                   ),

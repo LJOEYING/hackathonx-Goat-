@@ -5,7 +5,6 @@ import 'package:hackathonx/pages/green_connect/green_connect_quiz.dart';
 import 'package:hackathonx/pages/green_connect/green_connect_tips.dart';
 import 'package:hackathonx/widgets/bottom_nav_page.dart';
 
-
 // A stateless widget to display a result dialog after a quiz. It shows either a success or failure message,
 // provides options to retry or proceed to another screen, and gives feedback on the quiz score.
 class ResultDialog extends StatelessWidget {
@@ -45,7 +44,7 @@ class ResultDialog extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: success ? Color(0xff305135) : Color(0xff373434))),
           ),
-           // Display score feedback message with different encouragement based on success status
+          // Display score feedback message with different encouragement based on success status
           Text(
               success
                   ? 'You have correct $score question! Well done!'
@@ -58,7 +57,7 @@ class ResultDialog extends StatelessWidget {
       ),
       actions: success
           ? [
-            // Button for success case, which navigates to BottomNavPage and displays earned points message
+              // Button for success case, which navigates to BottomNavPage and displays earned points message
               Center(
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -110,7 +109,9 @@ class ResultDialog extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const GreenConnectTips(),
+                        builder: (context) => BottomNavPage(
+                          myCurrentPage: 3,
+                        ),
                       ),
                     );
                   },
