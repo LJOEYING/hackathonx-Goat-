@@ -68,7 +68,7 @@ class _ItemDescPageState extends State<ItemDescPage>
             right: 0,
             child: Center(
               child: Text(
-                'Nike Air Force ',
+                'Yamaha U2H Piano',
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -87,7 +87,7 @@ class _ItemDescPageState extends State<ItemDescPage>
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30),
                 child: Image.asset(
-                  'assets/shoes1.png',
+                  'assets/item13.png',
                   height: 200,
                   width: 250,
                   fit: BoxFit.fill,
@@ -177,7 +177,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                                 Row(
                                   children: [
                                     Text(
-                                      'RM 209.00',
+                                      'RM 2288.00',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 19,
@@ -187,10 +187,10 @@ class _ItemDescPageState extends State<ItemDescPage>
                                     ),
                                     SizedBox(width: 8),
                                     Text(
-                                      'RM 89.00',
+                                      'RM 374.50',
                                       style: TextStyle(
                                         color: Colors.red,
-                                        fontSize: 35,
+                                        fontSize: 28,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -231,7 +231,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
-                                'Never Worn',
+                                'Very Good Condition',
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 12),
                               ),
@@ -250,7 +250,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'It is a size of EU 40. Comfortable and supportive, perfect for daily wear or workouts. Iconic design that pairs well with any outfit. Well-maintained and cleaned, ready for a new home!',
+                          'This upright piano has 88 weighted keys for a realistic feel and delivers rich, warm sound with responsive action, suitable for all skill levels and music styles. Includes a built-in music stand and soft pedal for quieter practice. Well-maintained and recently tuned.',
                           style: TextStyle(color: Colors.black, fontSize: 16),
                         ),
                         SizedBox(height: 32),
