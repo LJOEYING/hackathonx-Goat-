@@ -107,7 +107,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                         });
                       },
                       child: Text(
-                        isHovering == false ? 'Redeem' : '3500 points',
+                        isHovering == false ? '3500 points' : 'Redeem',
                         style: const TextStyle(
                             color: Colors.black,
                             fontSize: 20,
