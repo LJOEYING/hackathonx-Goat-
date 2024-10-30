@@ -225,7 +225,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                     // Done button to save the product
                     ElevatedButton(
                       child: Text(
-                        'Done',
+                        'DONE',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
