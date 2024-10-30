@@ -1,5 +1,5 @@
 # Overview
-This app is designed to promote sustainable living by providing a comprehensive platform for eco-conscious buying, selling, and recycling. By facilitating second-hand purchases, informed recycling, and community engagement, the app addresses the environmental impacts of overproduction and waste. Aligning with the United Nations Sustainable Development Goals (SDGs) 11, 12, and 13—particularly SDG 11, which focuses on creating sustainable cities and communities—ReMarket empowers users to make responsible consumption choices, reduce their carbon footprints, and contribute to a greener future.
+**GoGreen** is an app that designed to promote sustainable living by providing a comprehensive platform for eco-conscious buying, selling, and recycling. By facilitating second-hand purchases, informed recycling, and community engagement, the app addresses the environmental impacts of overproduction and waste. Aligning with the United Nations Sustainable Development Goals (SDGs) 11, 12, and 13—particularly SDG 11, which focuses on creating sustainable cities and communities—GoGreen empowers users to make responsible consumption choices, reduce their carbon footprints, and contribute to a greener future.
 
 ### Features
 1. **Second-Hand Marketplace:**
@@ -7,7 +7,7 @@ This app is designed to promote sustainable living by providing a comprehensive 
 2. **Carpooling Feature:**
 * To further reduce carbon footprints, the app allows users to connect with others in their vicinity for carpooling, facilitating shared transportation and decreasing individual vehicle use.
 3. **AI Material Identification Scanner:**
-* ReMarket includes an AI-powered scanner that helps users identify the materials of various items, providing guidance on how to recycle them correctly. This feature promotes awareness and encourages proper disposal methods.
+* GoGreen includes an AI-powered scanner that helps users identify the materials of various items, providing guidance on how to recycle them correctly. This feature promotes awareness and encourages proper disposal methods.
 4.  **Recycling Education and Engagement:** 
 * The app offers valuable information about recycling practices, empowering users with the knowledge needed to make environmentally responsible choices. Users can participate in quizzes to test their recycling knowledge, earning points that can be redeemed for second-hand items.
 5. **Community Engagement:**
