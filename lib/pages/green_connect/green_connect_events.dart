@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// A [GreenConnectEvents] widget that displays an advertisement image,
+// an 'Upcoming Events' title with a 'View All' button, and additional images.
+// This widget is scrollable, allowing users to view more content.
 class GreenConnectEvents extends StatelessWidget {
   const GreenConnectEvents({super.key});
 
@@ -12,6 +15,7 @@ class GreenConnectEvents extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 20),
+              // Displays the first advertisement image with rounded corners
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
@@ -21,9 +25,11 @@ class GreenConnectEvents extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
+              // Row for 'Upcoming Events' title and 'View All' button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // Displays the 'Upcoming Events' title
                   const Padding(
                     padding: EdgeInsets.only(left: 10),
                     child: Text(
@@ -35,6 +41,7 @@ class GreenConnectEvents extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // 'View All' button to view more events
                   TextButton(
                     onPressed: () {},
                     child: const Text(
@@ -49,10 +56,12 @@ class GreenConnectEvents extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 15),
+              // Displays the second advertisement image
               Image.asset('assets/advertisement2.png'),
               SizedBox(
                 height: 10,
               ),
+              // Displays the third advertisement image
               Image.asset('assets/advertisement3.png'),
             ],
           ),
