@@ -315,7 +315,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
-              child: const Text('Cancel'),
+              child: const Text('CANCLE'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -328,7 +328,7 @@ class _CarPoolFilterState extends State<CarPoolFilter> {
               ),
             ),
             ElevatedButton(
-              child: const Text('Done'),
+              child: const Text('DONE'),
               onPressed: () {
                 Navigator.of(context).pop();
               },

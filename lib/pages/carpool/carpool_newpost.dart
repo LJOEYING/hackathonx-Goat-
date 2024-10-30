@@ -305,7 +305,7 @@ class _CreateNewPostDialogState extends State<CreateNewPostDialog> {
           children: [
             // Cancel button
             ElevatedButton(
-              child: Text('Cancel'),
+              child: Text('CANCLE'),
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
@@ -319,7 +319,7 @@ class _CreateNewPostDialogState extends State<CreateNewPostDialog> {
             ),
             // Done button (for create new post)
             ElevatedButton(
-              child: Text('Done'),
+              child: Text('DONE'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
