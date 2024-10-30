@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 // CustomTextfield widget, a reusable form field with label text and controller for text input.
-// ignore: must_be_immutable
 class CustomTextfield extends StatefulWidget {
   TextEditingController textEditingController; // Text controller to manage the text input value.
   String labelText;  // Label text to display as a hint above the text input.

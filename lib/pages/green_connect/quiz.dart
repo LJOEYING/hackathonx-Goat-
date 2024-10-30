@@ -11,7 +11,7 @@ class Quiz extends StatefulWidget {
       required this.quizOpt2, // Option 2 for the quiz question
       required this.quizOpt3, // Option 3 for the quiz question
       required this.quizOpt4, // Option 4 for the quiz question
-      // required this.onPressed,
+      
       required this.correctAns, // Correct answer index (1 to 4)
       required this.handleNextPage, // Function to handle page navigation after selecting an answer
       super.key});

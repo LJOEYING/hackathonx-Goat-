@@ -20,7 +20,7 @@ class _SignInState extends State<SignUp> {
         // Email Input Field
         CustomTextfield(
             textEditingController: emailController, // Assign the email controller
-            labelText: 'Username'), // Label for the username input
+            labelText: 'Username'), // Label for the username（email) input
         const SizedBox(
           height: 30,
         ),

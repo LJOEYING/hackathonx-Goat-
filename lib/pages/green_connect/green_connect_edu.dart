@@ -4,7 +4,7 @@ import 'package:hackathonx/pages/green_connect/green_connect_tips.dart';
 import 'package:hackathonx/pages/green_connect/green_connect_waste.dart';
 import 'package:hackathonx/widgets/waste_container.dart';
 
-// The GreenConnectEdu widget displays educational content related to waste management.
+// The GreenConnectEdu widget displays educational content related to waste management
 class GreenConnectEdu extends StatelessWidget {
   const GreenConnectEdu({super.key});
 
@@ -15,7 +15,7 @@ class GreenConnectEdu extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
+            
             children: [
               // Title for Categories section
               const Padding(

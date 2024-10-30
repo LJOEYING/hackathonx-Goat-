@@ -11,12 +11,6 @@ class GreenConnectQuiz extends StatefulWidget {
   int score = 0;  // Keep score of correct answers
   bool success = false; // Flag to check if the user passed
 
-  // void checkAns(int correctAns, int selectAns) {
-  //   if (selectAns == correctAns) {
-  //     score += 1;
-  //   }
-  // }
-
   @override
   State<GreenConnectQuiz> createState() => _GreenConnectQuizState();
 }
