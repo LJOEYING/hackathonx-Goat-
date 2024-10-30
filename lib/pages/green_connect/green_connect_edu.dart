@@ -15,7 +15,6 @@ class GreenConnectEdu extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
-            
             children: [
               // Title for Categories section
               const Padding(
@@ -287,7 +286,10 @@ class GreenConnectEdu extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
+              SizedBox(
+                height: 100,
+              ),
             ],
           ),
         ),

@@ -49,7 +49,7 @@ class GreenConnectTips extends StatelessWidget {
             Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.width * 0.70,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage('assets/background2.png')),
@@ -64,14 +64,14 @@ class GreenConnectTips extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   // Title of the section
                   Text(
                     'How To Improve Waste Management',
                     style: GoogleFonts.workSans(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             fontWeight: FontWeight.w800, fontSize: 29)),
                   ),
                   SizedBox(

@@ -19,7 +19,7 @@ class GreenConnectEvents extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
-                  'assets/advertisement1.jpg',
+                  'assets/event1.jpg',
                   fit: BoxFit.cover,
                   width: MediaQuery.of(context).size.width,
                 ),
@@ -57,12 +57,29 @@ class GreenConnectEvents extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               // Displays the second advertisement image
-              Image.asset('assets/advertisement2.png'),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  'assets/event2.jpg',
+                  fit: BoxFit.cover,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.width * 0.40,
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
-              // Displays the third advertisement image
-              Image.asset('assets/advertisement3.png'),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  'assets/event3.jpg',
+                  fit: BoxFit.cover,
+                  width: MediaQuery.of(context).size.width,
+                ),
+              ),
+              SizedBox(
+                height: 100,
+              )
             ],
           ),
         ),
