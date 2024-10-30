@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hackathonx/pages/login_sign_in/firebase_auth_implementation/firebase_auth_services.dart';
-import 'package:hackathonx/pages/login_sign_in/sign_up.dart';
 import 'package:hackathonx/widgets/bottom_nav_page.dart';
 import 'package:hackathonx/widgets/custom_textfield.dart';
 import 'package:hackathonx/widgets/long_button.dart';
@@ -15,7 +14,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-<<<<<<< HEAD
   final FirebaseAuthServices auth = FirebaseAuthServices();
 
   void signUp() async {
@@ -75,13 +73,6 @@ class _LoginState extends State<Login> {
   final signUpConfirmPasswordController =
       TextEditingController(); // Controller for the confirm password input field.
 
-=======
-  final formKey = GlobalKey<FormState>(); // Key to uniquely identify the form
-  final emailController =
-      TextEditingController(); // Controller for the email/username input field
-  final passwordController =
-      TextEditingController(); // Controller for the password input field
->>>>>>> 13a04b0737ca879834574b971def2483766f3485
   bool isLogin =
       true; // State variable to toggle between login and signup forms
 
@@ -152,7 +143,6 @@ class _LoginState extends State<Login> {
                                 ),
                               ],
                             )
-<<<<<<< HEAD
                           : Column(
                               children: [
                                 // Email/Username Input Field
@@ -186,9 +176,6 @@ class _LoginState extends State<Login> {
                                         'Confirm Password'), // Label for the confirm password input.
                               ],
                             )), // Display the SignUp widget if isLogin is false.
-=======
-                          : const SignUp()), // Display the SignUp widget if isLogin is false
->>>>>>> 13a04b0737ca879834574b971def2483766f3485
                 ],
               ),
               Padding(
