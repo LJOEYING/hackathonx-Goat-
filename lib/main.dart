@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hackathonx/pages/Item_desc.dart';
-import 'package:hackathonx/pages/carpool/carpool.dart';
-import 'package:hackathonx/pages/green_connect/green_connect.dart';
-import 'package:hackathonx/pages/green_connect/green_connect_quiz.dart';
-import 'package:hackathonx/pages/green_connect/green_connect_tips.dart';
-import 'package:hackathonx/pages/green_connect/green_connect_waste.dart';
-import 'package:hackathonx/widgets/result_dialog.dart';
-import 'package:hackathonx/pages/login_sign_in/login.dart';
-import 'package:hackathonx/pages/login_sign_in/sign_up.dart';
-import 'package:hackathonx/pages/login_sign_in/started_screen.dart';
+import 'package:hackathonx/pages/scanner/result.dart';
+import 'package:hackathonx/pages/scanner/scanner.dart';
 import 'package:hackathonx/widgets/bottom_nav_page.dart';
 
 void main() {
@@ -24,9 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Waste Management & Car Pooling App',
       debugShowCheckedModeBanner: false,
-      home: BottomNavPage(
-        myCurrentPage: 0,
-      ),
+      home: Scanner(),
+      //     BottomNavPage(
+      //   myCurrentPage: 0,
+      // ),
     );
   }
 }
