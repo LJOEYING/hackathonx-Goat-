@@ -55,7 +55,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
             color: Colors.white,
           ),
           Icon(
-            Icons.perm_device_information_rounded, // Icon for the green connect page
+            Icons.groups, // Icon for the green connect page
             size: 32,
             color: Colors.white,
           ),

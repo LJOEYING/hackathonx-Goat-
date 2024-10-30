@@ -87,6 +87,7 @@ class _RemarketState extends State<Remarket> {
     final pointsBarHeight = 60.0;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color.fromRGBO(90, 138, 98, 1),
         elevation: 0,
         toolbarHeight: 90.0,
@@ -518,7 +519,6 @@ class PointsBar extends StatelessWidget {
             // Points Section
             iconTextSection(
               Icons.stars,
-              
               Colors.yellow,
               "1,000 points",
               "Redeem Goodies",

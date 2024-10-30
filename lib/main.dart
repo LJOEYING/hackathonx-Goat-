@@ -1,11 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathonx/pages/login_sign_in/login.dart';
+
 import 'package:hackathonx/pages/login_sign_in/started_screen.dart';
-import 'package:hackathonx/pages/scanner/result.dart';
-import 'package:hackathonx/pages/scanner/scanner.dart';
-import 'package:hackathonx/widgets/bottom_nav_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Waste Management & Car Pooling App',
       debugShowCheckedModeBanner: false,
-      home:Login(),
+      home: StartedScreen(),
     );
   }
 }
