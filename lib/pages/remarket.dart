@@ -13,9 +13,11 @@ class Remarket extends StatefulWidget {
 }
 
 class _RemarketState extends State<Remarket> {
-  late PageController _pageController;
-  late int _currentPage;
-  bool _isSelectedGoods = true;
+  late PageController _pageController; // Controller for managing page views
+  late int _currentPage; // Stores the current page index for image slider
+  bool _isSelectedGoods =
+      true; // Boolean to toggle between tabs (Selected Goods or Sell)
+
   // List of image paths
   final List<String> _imagePaths = [
     'assets/ad1.png',
@@ -23,7 +25,7 @@ class _RemarketState extends State<Remarket> {
     'assets/ad3.png',
   ];
 
-// Sample data for products
+// Sample data for products for the "Sell" scetion
   final List<Map<String, dynamic>> _products = [
     {
       'image': 'assets/item1.png',
@@ -56,12 +58,14 @@ class _RemarketState extends State<Remarket> {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       Timer.periodic(Duration(seconds: 5), (timer) {
         if (_pageController.hasClients) {
+          // Moves to the next page or loops back to the first page
           int nextPage = (_currentPage + 1) % _imagePaths.length;
           _pageController.animateToPage(
             nextPage,
             duration: Duration(milliseconds: 300),
             curve: Curves.easeInOut,
           );
+          // Updates the current page index
           setState(() {
             _currentPage = nextPage;
           });
@@ -70,6 +74,7 @@ class _RemarketState extends State<Remarket> {
     });
   }
 
+  // Toggles between the "Selected Goods" and "Sell" tab
   void _toggleTab(bool isSelectedGoods) {
     setState(() {
       _isSelectedGoods = isSelectedGoods;
@@ -99,11 +104,13 @@ class _RemarketState extends State<Remarket> {
           ),
         ),
         actions: [
+          // Icon button for shopping cart
           IconButton(
             icon: Icon(Icons.shopping_cart_outlined, color: Colors.white),
             iconSize: 28.0,
             onPressed: () {},
           ),
+          // Icon button for chat
           IconButton(
             icon: Icon(Icons.chat_outlined, color: Colors.white),
             iconSize: 28.0,
@@ -120,21 +127,24 @@ class _RemarketState extends State<Remarket> {
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: [
-                  // Add a PageView for horizontal scrolling
+                  // PageView for horizontal scrolling of images
                   Container(
                     height: screenWidth * 0.55,
                     child: PageView.builder(
                       controller: _pageController,
                       itemCount: _imagePaths.length,
                       onPageChanged: (index) {
+                        // Updates the current page when the user scrolls
                         setState(() {
                           _currentPage = index;
                         });
                       },
                       itemBuilder: (context, index) {
-                        final imagePath = _imagePaths[index];
+                        final imagePath =
+                            _imagePaths[index]; // Gets the image path
                         return Container(
                           child: ClipRRect(
+                            // Displays the image with fit and clipping
                             child: Image.asset(
                               imagePath,
                               fit: BoxFit.cover,
@@ -145,9 +155,10 @@ class _RemarketState extends State<Remarket> {
                       },
                     ),
                   ),
-                  // Add a circular bullet indicator at the bottom center
+                  // Circular bullet indicator for the slider
                   Positioned(
-                    bottom: pointsBarHeight + 10,
+                    bottom:
+                        pointsBarHeight + 10, // Positions the bullet indicator
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(_imagePaths.length, (index) {
@@ -179,6 +190,7 @@ class _RemarketState extends State<Remarket> {
                 ],
               ),
             ),
+            // Build the tab section for Selected Goods and Sell
             _buildTabSection(),
           ],
         ),
@@ -186,7 +198,7 @@ class _RemarketState extends State<Remarket> {
     );
   }
 
-// Tab Button Widget
+  // Widget to build a tab button (Selected Goods or Sell)
   Widget _buildTabButton(String label, bool isSelected, Function onTap) {
     return GestureDetector(
       onTap: () => onTap(),
@@ -244,10 +256,10 @@ class _RemarketState extends State<Remarket> {
             ),
             SizedBox(height: 10),
 
-            // Tab content (Selected Goods or Sell)
+            // Display content based on selected tab
             _isSelectedGoods
-                ? _buildSelectedGoodsSection()
-                : _buildSellSection(),
+                ? _buildSelectedGoodsSection() // Show selected goods
+                : _buildSellSection(), // Show sell section
           ],
         ),
       ),
@@ -321,7 +333,7 @@ class _RemarketState extends State<Remarket> {
     );
   }
 
-// Sell Section Content
+  // Sell Section Content
   Widget _buildSellSection() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -333,10 +345,9 @@ class _RemarketState extends State<Remarket> {
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 12, // Spacing between columns
-              mainAxisSpacing: 12, // Spacing between rows
-              childAspectRatio:
-                  0.9, // Adjust this to control the card aspect ratio
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 0.9,
             ),
             itemCount: _products.length,
             itemBuilder: (context, index) {
@@ -344,12 +355,12 @@ class _RemarketState extends State<Remarket> {
             },
           ),
 
-          // Positioned Floating Button
           Positioned(
             right: 0,
             bottom: 50,
             child: FloatingActionButton(
               onPressed: () {
+                // Navigates to AddNewItemPage when the button is clicked
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => AddNewItemPage()),
@@ -371,6 +382,7 @@ class _RemarketState extends State<Remarket> {
 
 // Build each product card with image, name, and price
   Widget _buildProductCard(Map<String, dynamic> product) {
+    // Check if the product is null, and if so, return an empty box to prevent errors
     if (product == null) {
       return SizedBox(); // Return an empty box if the product is null
     }
@@ -388,7 +400,7 @@ class _RemarketState extends State<Remarket> {
               product['image'],
               fit: BoxFit.cover,
               width: double.infinity,
-              height: 140,
+              height: 125,
             ),
             // ),
           ),
@@ -433,6 +445,7 @@ class _RemarketState extends State<Remarket> {
   }
 }
 
+// Widget for a points bar that displays QR scan, wallet, and points sections
 class PointsBar extends StatelessWidget {
   Widget iconTextSection(
       IconData icon, Color iconColor, String text, String subtitle) {
@@ -505,7 +518,7 @@ class PointsBar extends StatelessWidget {
             // Points Section
             iconTextSection(
               Icons.stars,
-              // Color.fromRGBO(251, 209, 95, 1),
+              
               Colors.yellow,
               "1,000 points",
               "Redeem Goodies",
@@ -558,7 +571,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final containerWidth = screenWidth * 0.5;
-    final imageHeight = containerWidth * 0.66;
+    final imageHeight = containerWidth * 0.62;
 
     return Container(
       width: containerWidth,
