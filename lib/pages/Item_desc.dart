@@ -174,27 +174,23 @@ class _ItemDescPageState extends State<ItemDescPage>
                                     fontSize: 12,
                                   ),
                                 ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'RM 2288.00',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 19,
-                                        fontWeight: FontWeight.bold,
-                                        decoration: TextDecoration.lineThrough,
-                                      ),
-                                    ),
-                                    SizedBox(width: 8),
-                                    Text(
-                                      'RM 374.50',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
+                                Text(
+                                  'RM 2288.00',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.lineThrough,
+                                  ),
+                                ),
+                                SizedBox(width: 8),
+                                Text(
+                                  'RM 374.50',
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 35,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -213,7 +209,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                         ),
                         Divider(color: Colors.grey, thickness: 2),
                         SizedBox(height: 10),
-                        Row(
+                        Column(
                           children: [
                             Text(
                               'Product Condition:',
@@ -222,7 +218,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(width: 8),
+                            SizedBox(height: 10),
                             Container(
                               padding: EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 4),
@@ -249,9 +245,13 @@ class _ItemDescPageState extends State<ItemDescPage>
                           ),
                         ),
                         SizedBox(height: 8),
-                        Text(
-                          'This upright piano has 88 weighted keys for a realistic feel and delivers rich, warm sound with responsive action, suitable for all skill levels and music styles. Includes a built-in music stand and soft pedal for quieter practice. Well-maintained and recently tuned.',
-                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          child: Text(
+                            'This upright piano has 88 weighted keys for a realistic feel and delivers rich, warm sound with responsive action, suitable for all skill levels and music styles. Includes a built-in music stand and soft pedal for quieter practice. Well-maintained and recently tuned.',
+                            style: TextStyle(color: Colors.black, fontSize: 16),
+                          ),
                         ),
                         SizedBox(height: 32),
 

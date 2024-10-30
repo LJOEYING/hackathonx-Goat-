@@ -388,7 +388,7 @@ class _RemarketState extends State<Remarket> {
               product['image'],
               fit: BoxFit.cover,
               width: double.infinity,
-              height: 140,
+              height: 125,
             ),
             // ),
           ),
@@ -558,7 +558,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final containerWidth = screenWidth * 0.5;
-    final imageHeight = containerWidth * 0.66;
+    final imageHeight = containerWidth * 0.62;
 
     return Container(
       width: containerWidth,
