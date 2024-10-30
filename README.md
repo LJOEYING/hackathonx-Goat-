@@ -40,12 +40,27 @@ This project uses the following dependencies:
 * google_fonts : https://pub.dev/packages/google_fonts  
 * curved_navigation_bar : https://pub.dev/packages/curved_navigation_bar
 
-### Install Dependencies:
+#### Install Dependencies:
 Run this command to install all dependencies:   
 ```
 flutter pub get
 ```
+### Firebase Setup
+1. Create a Firebase project on the Firebase Console.
+2. Add an Android and/or iOS app in your Firebase project, depending on your platform.
+3. Download the google-services.json (for Android) and/or GoogleService-Info.plist (for iOS) and place them in the appropriate folders:
+* android/app for google-services.json
+* ios/Runner for GoogleService-Info.plist
+Enable **Email/Password Authentication in the Authentication section** of your Firebase project.
 
-
-
-
+### Project Setup
+1. Clone the repository:
+```
+git clone https://github.com/yourusername/yourrepository.git
+cd yourrepository
+```
+3. Open the project in your preferred IDE (e.g., VSCode, Android Studio).
+4. Run the project on an emulator or connected device:
+```
+flutter run
+```
