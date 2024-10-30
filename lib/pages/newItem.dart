@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -25,6 +24,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
   Future<void> _pickImage() async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
+    // If an image is selected, update the state with the new image
     if (image != null) {
       setState(() {
         _selectedImage = File(image.path);
@@ -53,7 +53,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
       'image': _selectedImage, // Can be null if not selected
     };
 
-    Navigator.pop(context, product);
+    Navigator.pop(context, product); // Pass the product data back to the previous screen
   }
 
   @override
@@ -100,9 +100,10 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
               ),
             ),
           ),
+          // Image selection area
           Positioned(
             top:
-                150, // Adjust this to overlap the bottom part of background3.png
+                150, 
             left: 0,
             right: 0,
             child: Center(
@@ -112,13 +113,13 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                   borderRadius: BorderRadius.circular(20),
                   child: _selectedImage != null
                       ? Image.file(
-                          _selectedImage!,
+                          _selectedImage!, // Display selected image
                           height: 200,
                           width: 250,
                           fit: BoxFit.cover,
                         )
                       : Image.asset(
-                          'assets/addPhoto.png',
+                          'assets/addPhoto.png', // Default image if none selected
                           height: 200,
                           width: 250,
                           fit: BoxFit.cover,
@@ -127,6 +128,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
               ),
             ),
           ),
+          // Form fields for product details
           Positioned.fill(
             top: 370,
             child: Padding(
@@ -135,15 +137,19 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Product Name field
                     _buildTextField('Product Name', 'Enter product name',
                         _productNameController),
                     SizedBox(height: 16),
+                    // Original Price field
                     _buildTextField('Original Price', 'Enter original price',
                         _originalPriceController),
                     SizedBox(height: 16),
+                    // Selling Price field
                     _buildTextField('Selling Price', 'Enter selling price',
                         _sellingPriceController),
                     SizedBox(height: 16),
+                    // Product Condition
                     Text(
                       'Product Condition',
                       style: TextStyle(
@@ -153,6 +159,7 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                       ),
                     ),
                     SizedBox(height: 8),
+                    // Condition selection chips
                     Wrap(
                       spacing: 10,
                       children: [
@@ -209,12 +216,13 @@ class _AddNewItemPageState extends State<AddNewItemPage> {
                     ),
                     SizedBox(height: 16),
 
-                    // Product Description
+                    // Product Description field
                     _buildTextField('Description', 'Enter product description',
                         _descriptionController,
                         maxLines: 3),
                     SizedBox(height: 16),
 
+                    // Done button to save the product
                     ElevatedButton(
                       child: Text(
                         'Done',

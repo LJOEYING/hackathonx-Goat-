@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// The main page that displays the item description
 class ItemDescPage extends StatefulWidget {
   const ItemDescPage({super.key});
 
@@ -9,9 +10,9 @@ class ItemDescPage extends StatefulWidget {
 
 class _ItemDescPageState extends State<ItemDescPage>
     with SingleTickerProviderStateMixin {
-  bool isHovering = false;
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
+  bool isHovering = false; // Track if the mouse is hovering over the redeem button
+  late AnimationController _controller; // Animation controller for scaling effect
+  late Animation<double> _scaleAnimation; // Animation for scaling effect
 
   @override
   void initState() {
@@ -47,7 +48,7 @@ class _ItemDescPageState extends State<ItemDescPage>
             ),
           ),
 
-          // Back Button
+          // Back Button to return to the previous page
           Positioned(
             top: 30,
             left: 5,
@@ -61,14 +62,14 @@ class _ItemDescPageState extends State<ItemDescPage>
               ),
             ),
           ),
-          // Item Name
+          // Item Name displayed at the top center of the page
           Positioned(
             top: 90,
             left: 0,
             right: 0,
             child: Center(
               child: Text(
-                'Nike Air Force ',
+                'Yamaha U2H Piano',
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -78,7 +79,7 @@ class _ItemDescPageState extends State<ItemDescPage>
             ),
           ),
 
-          // Item Photo
+          // Item Photo displayed below the item name
           Positioned(
             top: 150,
             left: 0,
@@ -87,7 +88,7 @@ class _ItemDescPageState extends State<ItemDescPage>
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30),
                 child: Image.asset(
-                  'assets/shoes1.png',
+                  'assets/item5.png',
                   height: 200,
                   width: 250,
                   fit: BoxFit.fill,
@@ -96,6 +97,7 @@ class _ItemDescPageState extends State<ItemDescPage>
             ),
           ),
 
+          // Scrollable section for item details
           Positioned.fill(
             top: 380,
             left: 16,
@@ -104,7 +106,7 @@ class _ItemDescPageState extends State<ItemDescPage>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Points Section
+                  // Points Section with hover effect
                   Center(
                     child: MouseRegion(
                       onHover: (_) {
@@ -115,12 +117,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                               : _controller.reverse();
                         });
                       },
-                      // onExit: (_) {
-                      //   setState(() {
-                      //     isHovering = false;
-                      //     _controller.reverse();
-                      //   });
-                      // },
+                      
                       child: ScaleTransition(
                         scale: _scaleAnimation,
                         child: Container(
@@ -149,6 +146,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                   ),
                   SizedBox(height: 20),
 
+                  // Main container for item details
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
@@ -160,7 +158,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(width: 5),
-                        // Price Section
+                        // Price Section with original price, discounted price, and add to cart option
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -174,27 +172,23 @@ class _ItemDescPageState extends State<ItemDescPage>
                                     fontSize: 12,
                                   ),
                                 ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'RM 209.00',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 19,
-                                        fontWeight: FontWeight.bold,
-                                        decoration: TextDecoration.lineThrough,
-                                      ),
-                                    ),
-                                    SizedBox(width: 8),
-                                    Text(
-                                      'RM 89.00',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 35,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
+                                Text(
+                                  'RM 2288.00',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.lineThrough,
+                                  ),
+                                ),
+                                SizedBox(width: 8),
+                                Text(
+                                  'RM 374.50',
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 35,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -213,7 +207,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                         ),
                         Divider(color: Colors.grey, thickness: 2),
                         SizedBox(height: 10),
-                        Row(
+                        Column(
                           children: [
                             Text(
                               'Product Condition:',
@@ -222,7 +216,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(width: 8),
+                            SizedBox(height: 10),
                             Container(
                               padding: EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 4),
@@ -231,7 +225,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
-                                'Never Worn',
+                                'Very Good Condition',
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 12),
                               ),
@@ -240,6 +234,7 @@ class _ItemDescPageState extends State<ItemDescPage>
                         ),
                         SizedBox(height: 10),
 
+                        // Description section for item details
                         Text(
                           'Description:',
                           style: TextStyle(
@@ -249,9 +244,13 @@ class _ItemDescPageState extends State<ItemDescPage>
                           ),
                         ),
                         SizedBox(height: 8),
-                        Text(
-                          'It is a size of EU 40. Comfortable and supportive, perfect for daily wear or workouts. Iconic design that pairs well with any outfit. Well-maintained and cleaned, ready for a new home!',
-                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          child: Text(
+                            'This upright piano has 88 weighted keys for a realistic feel and delivers rich, warm sound with responsive action, suitable for all skill levels and music styles. Includes a built-in music stand and soft pedal for quieter practice. Well-maintained and recently tuned.',
+                            style: TextStyle(color: Colors.black, fontSize: 16),
+                          ),
                         ),
                         SizedBox(height: 32),
 
