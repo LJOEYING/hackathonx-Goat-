@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
+//display the map and collection type selector
 class GreenMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
+          //display the recycle points, collection centres, recycle bins, communal bins nearby
           Positioned(
             top: -70,
             left: -5,
@@ -18,12 +19,14 @@ class GreenMap extends StatelessWidget {
               width: double.infinity,
             ),
           ),
+          //place the search bar at the top of the screen
           Positioned(
             top: 30,
             left: 10,
             right: 0,
             child: SearchBar(),
           ),
+          //display the collection type selector
           Positioned(
             bottom: -20,
             left: 0,
@@ -35,7 +38,7 @@ class GreenMap extends StatelessWidget {
     );
   }
 }
-
+//represent a search input field
 class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -54,36 +57,36 @@ class SearchBar extends StatelessWidget {
     );
   }
 }
-
+//display various types of waste collection options
 class CollectionTypeSelector extends StatelessWidget {
   final items = [
     {
-      'label': 'Dustbins',
+      'label': 'Dustbins',//label for the dustbin
       'photo': 'assets/dustbin.png',
       'color': Colors.red[200]
     },
     {
-      'label': 'Recycle Bins',
+      'label': 'Recycle Bins',//label for the recycle bin option
       'photo': 'assets/recycle_bin.png',
       'color': Colors.orange[300]
     },
     {
-      'label': 'Communal Bins',
+      'label': 'Communal Bins',//label for the communal bin option
       'photo': 'assets/communal_bin.png',
       'color': Colors.yellow[300]
     },
     {
-      'label': 'Collection Centres',
+      'label': 'Collection Centres',//label for the collection centre option
       'photo': 'assets/collection_center.png',
       'color': Colors.green[200]
     },
     {
-      'label': 'Recycle Centres',
+      'label': 'Recycle Centres',//label for the recycle centre option
       'photo': 'assets/recycle_center.png',
       'color': Colors.blue[200]
     },
     {
-      'label': 'Mobile Recycling Centres',
+      'label': 'Mobile Recycling Centres',//label for the mobile recycling centre option
       'photo': 'assets/mobile_recycle_center.png',
       'color': Colors.purple[200]
     },
@@ -104,15 +107,15 @@ class CollectionTypeSelector extends StatelessWidget {
           childAspectRatio: 1,
         ),
         itemBuilder: (context, index) {
-          final label = items[index]['label']! as String;
-          final photo = items[index]['photo']! as String;
-          final color = items[index]['color']! as Color;
-          return _buildCollectionIcon(label, photo, color);
+          final label = items[index]['label']! as String;//get the label
+          final photo = items[index]['photo']! as String;//get the image path
+          final color = items[index]['color']! as Color;// get the background color
+          return _buildCollectionIcon(label, photo, color);// build the icon for the item
         },
       ),
     );
   }
-
+//build waste collection 
   Widget _buildCollectionIcon(String label, String photo, Color color) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -121,14 +124,14 @@ class CollectionTypeSelector extends StatelessWidget {
           height: 60,
           width: 60,
           decoration: BoxDecoration(
-            color: color,
+            color: color,//set the background color for the waste collection type
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              photo,
+              photo,//load the image from assets
               fit: BoxFit.contain,
               height: 45,
               width: 45,
@@ -137,7 +140,7 @@ class CollectionTypeSelector extends StatelessWidget {
         ),
         SizedBox(height: 8),
         Text(
-          label,
+          label,//display the label for the waste collection type
           textAlign: TextAlign.center,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,

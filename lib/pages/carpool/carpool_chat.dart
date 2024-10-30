@@ -75,7 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.pop(context); // Go back to previous screen
+            Navigator.pop(context);
           },
         ),
         actions: [
@@ -96,7 +96,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Text(
                 widget.userType == 'driver'
                     ? 'BOOK A RIDE'
-                    : 'SHARE A RIDE', // Conditional text
+                    : 'SHARE A RIDE',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 19.0,
@@ -202,7 +202,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     return ChatBubble(
                       message: message.message!,
                       isSentByMe: message.isSentByMe,
-                    ); // Text message bubble
+                    ); 
                   }
                 },
               ),
