@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
@@ -19,32 +18,32 @@ class _RemarketState extends State<Remarket> {
   bool _isSelectedGoods = true;
   // List of image paths
   final List<String> _imagePaths = [
-    'assets/advertisement1.jpg',
-    'assets/advertisement1.jpg',
-    'assets/advertisement1.jpg',
+    'assets/ad1.png',
+    'assets/ad2.png',
+    'assets/ad3.png',
   ];
 
 // Sample data for products
   final List<Map<String, dynamic>> _products = [
     {
-      'image': 'assets/shoes1.png',
-      'name': 'Product 1',
-      'price': 'RM 99.99',
+      'image': 'assets/item1.png',
+      'name': 'Molteni Cloths Closet ',
+      'price': 'RM 199.20',
     },
     {
-      'image': 'assets/shoes2.png',
-      'name': 'Product 2',
-      'price': 'RM 79.99',
+      'image': 'assets/item2.png',
+      'name': 'Panasonic Microwave',
+      'price': 'RM 50.99',
     },
     {
-      'image': 'assets/shoes1.png',
-      'name': 'Product 3',
-      'price': 'RM 59.99',
+      'image': 'assets/item3.jpg',
+      'name': 'Toshiba hair dryer',
+      'price': 'RM 38.50',
     },
     {
-      'image': 'assets/shoes2.png',
-      'name': 'Product 4',
-      'price': 'RM 49.99',
+      'image': 'assets/item4.png',
+      'name': 'BlackPink Lightstick',
+      'price': 'RM45.99',
     },
   ];
   @override
@@ -57,8 +56,7 @@ class _RemarketState extends State<Remarket> {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       Timer.periodic(Duration(seconds: 5), (timer) {
         if (_pageController.hasClients) {
-          int nextPage = (_currentPage + 1) %
-              _imagePaths.length; 
+          int nextPage = (_currentPage + 1) % _imagePaths.length;
           _pageController.animateToPage(
             nextPage,
             duration: Duration(milliseconds: 300),
@@ -124,11 +122,10 @@ class _RemarketState extends State<Remarket> {
                 children: [
                   // Add a PageView for horizontal scrolling
                   Container(
-                    height: screenWidth * 0.55, 
+                    height: screenWidth * 0.55,
                     child: PageView.builder(
                       controller: _pageController,
-                      itemCount:
-                          _imagePaths.length, 
+                      itemCount: _imagePaths.length,
                       onPageChanged: (index) {
                         setState(() {
                           _currentPage = index;
@@ -141,8 +138,7 @@ class _RemarketState extends State<Remarket> {
                             child: Image.asset(
                               imagePath,
                               fit: BoxFit.cover,
-                              width:
-                                  screenWidth * 0.8,
+                              width: screenWidth * 0.8,
                             ),
                           ),
                         );
@@ -178,7 +174,7 @@ class _RemarketState extends State<Remarket> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: FractionallySizedBox(
                           widthFactor: 0.95, child: PointsBar()),
-                    ), 
+                    ),
                   ),
                 ],
               ),
@@ -231,7 +227,7 @@ class _RemarketState extends State<Remarket> {
           ),
           border: Border.all(
             color: Color.fromRGBO(227, 227, 130, 1),
-            width: 2, 
+            width: 2,
           ),
         ),
         child: Column(
@@ -246,7 +242,7 @@ class _RemarketState extends State<Remarket> {
                     'Sell', !_isSelectedGoods, () => _toggleTab(false)),
               ],
             ),
-            SizedBox(height: 10), 
+            SizedBox(height: 10),
 
             // Tab content (Selected Goods or Sell)
             _isSelectedGoods
@@ -262,7 +258,6 @@ class _RemarketState extends State<Remarket> {
   Widget _buildSelectedGoodsSection() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -281,18 +276,18 @@ class _RemarketState extends State<Remarket> {
                     );
                   },
                   child: ProductCard(
-                      title: 'Shoe',
-                      price: 'RM 89.00',
-                      image: 'assets/shoes1.png'),
+                      title: 'Yamaha U2H Piano',
+                      price: 'RM 374.50',
+                      image: 'assets/item5.png'),
                 ),
                 ProductCard(
-                    title: 'Bottle',
-                    price: 'RM 34.99',
-                    image: 'assets/shoes2.png'),
+                    title: 'Nike Air Max',
+                    price: 'RM 25.50',
+                    image: 'assets/item6.png'),
                 ProductCard(
-                    title: 'Bottle',
-                    price: 'RM 57.99',
-                    image: 'assets/shoes2.png'),
+                    title: 'Lenovo IdeaPad i3',
+                    price: 'RM 189.00',
+                    image: 'assets/item7.png'),
               ],
             ),
           ),
@@ -307,17 +302,17 @@ class _RemarketState extends State<Remarket> {
               scrollDirection: Axis.horizontal,
               children: [
                 ProductCard(
-                    title: 'Shoe',
-                    price: 'RM 89.90',
-                    image: 'assets/shoes2.png'),
+                    title: 'BTS Lightstick',
+                    price: 'RM 65.00',
+                    image: 'assets/item8.png'),
                 ProductCard(
-                    title: 'Shoe',
-                    price: 'RM 69.90',
-                    image: 'assets/shoes1.png'),
+                    title: 'Padini T-Shirt',
+                    price: 'RM 8.90',
+                    image: 'assets/item9.jpg'),
                 ProductCard(
-                    title: 'Shoe',
-                    price: 'RM 48.90',
-                    image: 'assets/shoes1.png'),
+                    title: 'Cellini Leather Sofa',
+                    price: 'RM 599.90',
+                    image: 'assets/item10.png'),
               ],
             ),
           ),
@@ -326,7 +321,7 @@ class _RemarketState extends State<Remarket> {
     );
   }
 
-// Sell Section Content 
+// Sell Section Content
   Widget _buildSellSection() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -335,10 +330,9 @@ class _RemarketState extends State<Remarket> {
           // Product Grid
           GridView.builder(
             shrinkWrap: true,
-            physics:
-                NeverScrollableScrollPhysics(),
+            physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, 
+              crossAxisCount: 2,
               crossAxisSpacing: 12, // Spacing between columns
               mainAxisSpacing: 12, // Spacing between rows
               childAspectRatio:
@@ -360,9 +354,9 @@ class _RemarketState extends State<Remarket> {
                   context,
                   MaterialPageRoute(builder: (context) => AddNewItemPage()),
                 );
-              }, 
+              },
               shape: CircleBorder(),
-              backgroundColor: Colors.black, 
+              backgroundColor: Colors.black,
               child: Icon(
                 Icons.add,
                 color: Colors.white,
@@ -410,15 +404,14 @@ class _RemarketState extends State<Remarket> {
                   child: Text(
                     product['name'],
                     maxLines: 1,
-                    overflow:
-                        TextOverflow.ellipsis,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                SizedBox(width: 4), 
+                SizedBox(width: 4),
 
                 // Product Price
                 Text(
@@ -565,7 +558,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final containerWidth = screenWidth * 0.5;
-    final imageHeight = containerWidth * 0.75;
+    final imageHeight = containerWidth * 0.66;
 
     return Container(
       width: containerWidth,
@@ -583,8 +576,7 @@ class ProductCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             Padding(
-              padding:
-                  const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

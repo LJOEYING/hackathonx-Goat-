@@ -14,11 +14,11 @@ class SignUp extends StatefulWidget {
 class _SignInState extends State<SignUp> {
   final FirebaseAuthServices auth = FirebaseAuthServices();
   final emailController =
-      TextEditingController(); // Controller for the email/username input field.
+      TextEditingController(); // Controller for the email/username input field
   final passwordController =
-      TextEditingController(); // Controller for the password input field.
+      TextEditingController(); // Controller for the password input field
   final confirmPasswordController =
-      TextEditingController(); // Controller for the confirm password input field.
+      TextEditingController(); // Controller for the confirm password input field
 
   void signUp() async {
     String email = emailController.text;
@@ -51,29 +51,24 @@ class _SignInState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Email/Username Input Field
+        // Email Input Field
         CustomTextfield(
-            textEditingController:
-                emailController, // Assign the email controller.
-            obscureText: false,
-            labelText: 'Email'), // Label for the username input.
+            textEditingController: emailController, // Assign the email controller.
+            labelText: 'Username'), // Label for the username input.
         const SizedBox(
           height: 30,
         ),
         // Password Input Field
         CustomTextfield(
-            textEditingController: passwordController,
-            obscureText: true, // Assign the password controller.
+            textEditingController: passwordController, // Assign the password controller.
             labelText: 'Password'), // Label for the password input.
         const SizedBox(
           height: 30,
         ),
         // Confirm Password Input Field
         CustomTextfield(
-            textEditingController: confirmPasswordController,
-            obscureText: true, // Assign the confirm password controller.
-            labelText:
-                'Confirm Password'), // Label for the confirm password input.
+            textEditingController: editPasswordController, // Assign the confirm password controller.
+            labelText: 'Confirm Password'), // Label for the confirm password input.
       ],
     );
   }

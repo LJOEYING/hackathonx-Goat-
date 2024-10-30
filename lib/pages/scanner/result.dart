@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
+// Result widget to display scanned image and generated details
 class Result extends StatefulWidget {
   Result({
-    required this.imgPath,
-    required this.details,
+    required this.imgPath, // Path of the captured image
+    required this.details, // Details generated from the image
     super.key,
   });
   final String imgPath;
-  final String details; // Change details to a single Map<String, String>
+  final String details;
 
   @override
   State<Result> createState() => _ResultState();
@@ -39,12 +40,14 @@ class _ResultState extends State<Result> {
       ),
       body: Stack(
         children: [
+          // Display the scanned image
           SizedBox.expand(
             child: Image.file(
-              File(widget.imgPath),
-              fit: BoxFit.fill,
+              File(widget.imgPath), // Load image from file
+              fit: BoxFit.fill, // Fill the container with the image
             ),
           ),
+          // DraggableScrollableSheet to allow users to scroll for more details
           DraggableScrollableSheet(
             initialChildSize: 0.3,
             minChildSize: 0.3,
@@ -56,10 +59,11 @@ class _ResultState extends State<Result> {
                     color: Colors.white,
                     child: Stack(
                       children: [
+                        // ListView to display the content of the sheet
                         ListView(
                           controller: myScrollController,
                           children: [
-                            
+                            // Title section for waste details
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 30, vertical: 10),
@@ -79,11 +83,13 @@ class _ResultState extends State<Result> {
                                     color: Color(0xffd9d9d9),
                                     borderRadius: BorderRadius.circular(15)),
                                 padding: EdgeInsets.all(20),
-                                child: Text(widget.details),
-                                // height: 200.0,
+                                child:
+                                    Text(widget.details), // Display the details
+
                                 width: width,
                               ),
                             ),
+                            // Points earned section
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 30, vertical: 10),
@@ -101,12 +107,12 @@ class _ResultState extends State<Result> {
                                         fontWeight: FontWeight.w700),
                                   )
                                 ]),
-                                // height: 200.0,
                                 width: width,
                               ),
                             ),
                           ],
                         ),
+                        // Drag handle indicator at the top of the sheet
                         Positioned(
                           top: 20,
                           left: 0,

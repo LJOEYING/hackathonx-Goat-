@@ -11,8 +11,8 @@ class StartedScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          width: double.infinity, // Expands the container to full width.
-          height: double.infinity, // Expands the container to full height.
+          width: double.infinity, // Expands the container to full width
+          height: double.infinity, // Expands the container to full height
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [Color(0xff5A8A62), Color(0xff17241A)],
@@ -81,10 +81,10 @@ class StartedScreen extends StatelessWidget {
                     backgroundColor: 0xffffffff,
                     fontColor: 0xff489658,
                     onPressed: () {
-                      // Action when the button is pressed.
+                      // Action when the button is pressed
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              const Login() // Navigate to the Login page.
+                              const Login() // Navigate to the Login page
                           ));
                     },
                     buttonText: "Get Started",
