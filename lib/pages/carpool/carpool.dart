@@ -491,6 +491,7 @@ class _CarPoolingState extends State<CarPooling> {
   }
 }
 
+//divide button into two parts
 class DividedButton extends StatelessWidget {
   final String leftText;
   final String rightText;
@@ -561,7 +562,7 @@ class DividedButton extends StatelessWidget {
     );
   }
 }
-
+//build specific shape for an AppBar
 class AppBarClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
@@ -583,8 +584,7 @@ class AppBarClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
+    return false;//indicate that the clipper does not need to reclip when the widget rebuilds
   }
 }
 
-void main() => runApp(const CarPooling());

@@ -6,7 +6,6 @@ import 'package:hackathonx/pages/green_connect/green_connect_events.dart';
 import 'package:hackathonx/widgets/custom_shapes/curved_edges.dart';
 import 'package:hackathonx/widgets/green_connect_top_button.dart';
 
-
 // Main GreenConnect page that provides tabs for Events, Education & Tips, and Community
 class GreenConnect extends StatefulWidget {
   GreenConnect({super.key});
@@ -16,7 +15,8 @@ class GreenConnect extends StatefulWidget {
 }
 
 class _GreenConnectState extends State<GreenConnect> {
-  int currentButtonIndex = 1; // Tracks the selected tab index, starting with "Education & Tips"
+  int currentButtonIndex =
+      1; // Tracks the selected tab index, starting with "Education & Tips"
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _GreenConnectState extends State<GreenConnect> {
               padding: const EdgeInsets.only(bottom: 100),
               child: FloatingActionButton(
                 onPressed: () {
-                   // Display dialog for creating a new post in the "Community" tab
+                  // Display dialog for creating a new post in the "Community" tab
                   showDialog(
                       context: context,
                       builder: (BuildContext) {
@@ -160,7 +160,7 @@ class _GreenConnectState extends State<GreenConnect> {
             clipper: CurvedEdges(),
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width * 0.45,
+              height: MediaQuery.of(context).size.width * 0.55,
               color: const Color(0xff304B34),
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -241,7 +241,8 @@ class _GreenConnectState extends State<GreenConnect> {
                         currentButtonIndex == 2 ? 0xff000000 : 0x80000000,
                     onPressed: () {
                       setState(() {
-                        currentButtonIndex = 1; // Set index for Educational & Tips
+                        currentButtonIndex =
+                            1; // Set index for Educational & Tips
                       });
                     },
                   ),
@@ -265,7 +266,7 @@ class _GreenConnectState extends State<GreenConnect> {
               ),
             ),
           ),
-           // Display the selected tab's content based on the current button index
+          // Display the selected tab's content based on the current button index
           currentButtonIndex == 0
               ? GreenConnectEvents()
               : currentButtonIndex == 1
